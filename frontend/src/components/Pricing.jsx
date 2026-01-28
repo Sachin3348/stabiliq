@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Check, Shield, Sparkles } from 'lucide-react';
+import { Check, Shield, Sparkles, Zap } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
-import { membershipData, processMembership } from '../mock';
+import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
 
 const Pricing = () => {
   const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState({ basic: false, pro: false });
 
-  const handleBecomeMember = async () => {
-    setLoading(true);
+  const handleBecomeMember = async (plan) => {
+    setLoading({ ...loading, [plan]: true });
     try {
       const result = await processMembership({
+        plan,
         timestamp: new Date().toISOString()
       });
       
@@ -27,7 +28,7 @@ const Pricing = () => {
         variant: "destructive"
       });
     } finally {
-      setLoading(false);
+      setLoading({ ...loading, [plan]: false });
     }
   };
 
@@ -38,10 +39,42 @@ const Pricing = () => {
     }
   };
 
+  const plans = [
+    {
+      id: 'basic',
+      name: 'Basic',
+      subtitle: 'Perfect for salaried professionals',
+      price: 999,
+      features: [
+        'Access to member support resources',
+        'Job Transition KIT',
+        'Eligibility for support during involuntary job loss'
+      ],
+      icon: Shield,
+      gradient: 'from-slate-600 to-slate-700',
+      popular: false
+    },
+    {
+      id: 'pro',
+      name: 'Pro',
+      subtitle: 'For serious professionals',
+      price: 2499,
+      features: [
+        'AI upskilling course',
+        'Job transition KIT',
+        'Access to member support resources',
+        'Eligibility for support during involuntary job loss'
+      ],
+      icon: Zap,
+      gradient: 'from-blue-600 to-teal-600',
+      popular: true
+    }
+  ];
+
   return (
-    <section id="pricing" className="py-24 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 relative overflow-hidden">
+    <section id="pricing" className="py-24 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
           backgroundSize: '48px 48px'
@@ -53,98 +86,83 @@ const Pricing = () => {
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-block bg-blue-500/20 backdrop-blur-sm text-blue-200 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-blue-400/30">
+        <div className="text-center mb-20">
+          <div className="inline-block bg-blue-500/20 backdrop-blur-sm text-blue-200 px-5 py-2.5 rounded-full text-sm font-bold mb-6 border border-blue-400/30">
             SIMPLE PRICING
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Sora, sans-serif' }}>
-            One Membership. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">Complete Access.</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'Sora, sans-serif' }}>
+            Simple, transparent pricing
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Transparent annual pricing with all benefits included
+            Choose the plan that's right for you. No hidden fees.
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
-          <Card className="border-0 shadow-2xl bg-white relative overflow-hidden">
-            {/* Popular Badge */}
-            <div className="absolute top-0 right-0">
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-bl-2xl flex items-center gap-2">
-                <Sparkles className="h-4 w-4" />
-                <span className="font-bold text-sm">MOST POPULAR</span>
-              </div>
-            </div>
-            
-            <CardContent className="p-10 md:p-12">
-              <div className="text-center mb-10">
-                <div className="flex items-center justify-center mb-6">
-                  <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-4 rounded-2xl shadow-xl">
-                    <Shield className="h-12 w-12 text-white" strokeWidth={2.5} />
-                  </div>
-                </div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-4" style={{ fontFamily: 'Sora, sans-serif' }}>STABILIQ Membership</h3>
-                <div className="flex items-baseline justify-center mb-3">
-                  <span className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700" style={{ fontFamily: 'Sora, sans-serif' }}>₹{membershipData.price}</span>
-                  <span className="text-2xl text-slate-600 ml-3 font-semibold">/ {membershipData.duration}</span>
-                </div>
-                <p className="text-slate-600 font-medium">Annual membership with complete benefits</p>
-              </div>
-
-              <div className="space-y-4 mb-10 bg-slate-50 rounded-2xl p-8">
-                {membershipData.benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start group">
-                    <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-2 mr-4 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg">
-                      <Check className="h-5 w-5 text-white" strokeWidth={3} />
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {plans.map((plan) => {
+            const Icon = plan.icon;
+            return (
+              <Card key={plan.id} className={`border-0 shadow-2xl bg-white relative overflow-hidden ${
+                plan.popular ? 'md:scale-105 ring-4 ring-blue-500/50' : ''
+              }`}>
+                {plan.popular && (
+                  <div className="absolute top-0 right-0">
+                    <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white px-6 py-2 rounded-bl-2xl flex items-center gap-2 font-bold text-sm">
+                      <Sparkles className="h-4 w-4" />
+                      MOST POPULAR
                     </div>
-                    <span className="text-slate-700 text-lg font-medium">{benefit}</span>
                   </div>
-                ))}
-              </div>
-
-              <div className="space-y-4 mb-8">
-                <Button 
-                  size="lg" 
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xl py-8 font-bold rounded-xl shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 transition-all hover:scale-105"
-                  onClick={handleBecomeMember}
-                  disabled={loading}
-                >
-                  {loading ? 'Processing...' : 'Become a Member Now'}
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="w-full border-2 border-slate-300 text-slate-700 hover:bg-slate-50 text-lg py-7 font-bold rounded-xl transition-all"
-                  onClick={scrollToLeadForm}
-                >
-                  Know More Before Joining
-                </Button>
-              </div>
-
-              {/* Important Notes */}
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-2xl p-6 shadow-lg">
-                <div className="flex items-start mb-3">
-                  <div className="bg-amber-500 rounded-xl p-2 mr-3 flex-shrink-0">
-                    <span className="text-white font-bold text-lg">!</span>
+                )}
+                
+                <CardContent className="p-10">
+                  <div className="mb-8">
+                    <div className={`bg-gradient-to-br ${plan.gradient} p-4 rounded-2xl inline-flex shadow-xl mb-6`}>
+                      <Icon className="h-10 w-10 text-white" strokeWidth={2.5} />
+                    </div>
+                    <h3 className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.name}</h3>
+                    <p className="text-slate-600 font-medium mb-6">{plan.subtitle}</p>
+                    <div className="flex items-baseline mb-2">
+                      <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}" style={{ fontFamily: 'Sora, sans-serif' }}>₹{plan.price}</span>
+                      <span className="text-2xl text-slate-600 ml-2 font-semibold">/year</span>
+                    </div>
                   </div>
-                  <h4 className="font-bold text-slate-900 text-lg" style={{ fontFamily: 'Sora, sans-serif' }}>Important Notes:</h4>
-                </div>
-                <ul className="space-y-3 text-slate-700 ml-11">
-                  <li className="flex items-start">
-                    <span className="mr-2 text-amber-600 font-bold">•</span>
-                    <span className="text-base">Membership is <strong>non-cancellable and non-refundable</strong></span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-amber-600 font-bold">•</span>
-                    <span className="text-base">STABILIQ is <strong>not an insurance product</strong></span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-amber-600 font-bold">•</span>
-                    <span className="text-base">Support is <strong>discretionary</strong> and subject to eligibility verification</span>
-                  </li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
+
+                  <div className="space-y-4 mb-8 bg-slate-50 rounded-2xl p-6">
+                    {plan.features.map((feature, index) => (
+                      <div key={index} className="flex items-start">
+                        <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-2 mr-3 flex-shrink-0 shadow-md">
+                          <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                        </div>
+                        <span className="text-slate-700 text-base font-medium leading-relaxed">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Button 
+                    size="lg" 
+                    className={`w-full bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white text-lg py-7 font-bold rounded-xl shadow-xl transition-all hover:scale-105`}
+                    onClick={() => handleBecomeMember(plan.id)}
+                    disabled={loading[plan.id]}
+                  >
+                    {loading[plan.id] ? 'Processing...' : 'Get Started'}
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+
+        {/* Questions CTA */}
+        <div className="mt-16 text-center">
+          <p className="text-slate-300 mb-4 text-lg">Have questions about which plan is right for you?</p>
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 hover:border-white/50 px-10 py-6 text-lg font-bold rounded-xl transition-all"
+            onClick={scrollToLeadForm}
+          >
+            Talk to Us
+          </Button>
         </div>
       </div>
     </section>
