@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from './ui/accordion';
 import { faqData } from '../mock';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, PhoneCall } from 'lucide-react';
 
 const FAQ = () => {
   return (
