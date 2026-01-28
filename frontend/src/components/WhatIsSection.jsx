@@ -20,7 +20,8 @@ const WhatIsSection = () => {
     },
     {
       icon: BookOpen,
-      title: 'Skill upgrade and learning guidance',\n      description: 'Curated learning and skill upgrade recommendations to help members stay relevant during transitions.'
+      title: 'Skill upgrade and learning guidance',
+      description: 'Curated learning and skill upgrade recommendations to help members stay relevant during transitions.'
     },
     {
       icon: Target,
