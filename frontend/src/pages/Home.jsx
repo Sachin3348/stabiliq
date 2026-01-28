@@ -1,6 +1,5 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import ProblemSection from '../components/ProblemSection';
 import WhatIsSection from '../components/WhatIsSection';
 import HowItWorks from '../components/HowItWorks';
 import Benefits from '../components/Benefits';
@@ -14,7 +13,6 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Hero />
-      <ProblemSection />
       <WhatIsSection />
       <HowItWorks />
       <Benefits />
