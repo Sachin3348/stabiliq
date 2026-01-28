@@ -93,7 +93,7 @@ const Hero = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 hover:border-white/50 px-12 py-7 text-xl font-bold rounded-2xl transition-all hover:scale-105"
-                onClick={() => scrollToSection('problem')}
+                onClick={() => scrollToSection('what-stabiliq')}
               >
                 Learn More
               </Button>
