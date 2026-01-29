@@ -6,6 +6,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
+import AIUpskill from "./pages/dashboard/AIUpskill";
+import ProfileAnalysis from "./pages/dashboard/ProfileAnalysis";
+import FinancialAssistance from "./pages/dashboard/FinancialAssistance";
 import { Toaster } from "./components/ui/sonner";
 
 function App() {
@@ -22,6 +25,30 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/courses"
+              element={
+                <ProtectedRoute>
+                  <AIUpskill />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/profile-analysis"
+              element={
+                <ProtectedRoute>
+                  <ProfileAnalysis />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/financial-assistance"
+              element={
+                <ProtectedRoute>
+                  <FinancialAssistance />
                 </ProtectedRoute>
               }
             />
