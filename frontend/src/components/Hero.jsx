@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from './ui/button';
-import { Shield, ArrowRight, CheckCircle2, Users, Award, TrendingUp } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Users, Award, TrendingUp } from 'lucide-react';
 
 const Hero = () => {
   const scrollToSection = (id) => {
