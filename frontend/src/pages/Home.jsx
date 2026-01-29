@@ -5,6 +5,7 @@ import WhatIsSection from '../components/WhatIsSection';
 import HowItWorks from '../components/HowItWorks';
 import InteractiveBenefits from '../components/InteractiveBenefits';
 import Pricing from '../components/Pricing';
+import MemberLoginCTA from '../components/MemberLoginCTA';
 import Testimonials from '../components/Testimonials';
 import LeadForm from '../components/LeadForm';
 import FAQ from '../components/FAQ';
@@ -19,6 +20,7 @@ const Home = () => {
       <HowItWorks />
       <InteractiveBenefits />
       <Pricing />
+      <MemberLoginCTA />
       <Testimonials />
       <LeadForm />
       <FAQ />
