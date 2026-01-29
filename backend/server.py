@@ -72,6 +72,13 @@ async def get_status_checks():
 # Include the router in the main app
 app.include_router(api_router)
 
+# Include all dashboard route modules
+app.include_router(auth.router)
+app.include_router(dashboard.router)
+app.include_router(courses.router)
+app.include_router(profile.router)
+app.include_router(financial_assistance.router)
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
