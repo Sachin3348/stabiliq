@@ -18,7 +18,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 overflow-hidden">
+    <div className="relative bg-gradient-to-br from-slate-950 via-slate-800 to-blue-950 overflow-hidden">
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute inset-0">
