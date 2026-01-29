@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from './ui/card';
 import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -64,6 +64,7 @@ const testimonialsData = [
 
 const Testimonials = () => {
   const scrollContainerRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
@@ -74,6 +75,34 @@ const Testimonials = () => {
       });
     }
   };
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (isPaused) return;
+
+    const autoScrollInterval = setInterval(() => {
+      if (scrollContainerRef.current) {
+        const container = scrollContainerRef.current;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        
+        // If we've reached the end, scroll back to start
+        if (container.scrollLeft >= maxScroll - 10) {
+          container.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          // Otherwise scroll right
+          container.scrollBy({
+            left: 400,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }, 3000); // Auto-scroll every 3 seconds
+
+    return () => clearInterval(autoScrollInterval);
+  }, [isPaused]);
 
   return (
     <section id="testimonials" className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
@@ -107,7 +136,11 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Horizontal Scrolling Container */}
-        <div className="relative">
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Left Scroll Button */}
           <button
             onClick={() => scroll('left')}
@@ -189,6 +222,18 @@ const Testimonials = () => {
         >
           <p className="text-sm text-slate-500">← Swipe to see more →</p>
         </motion.div>
+
+        {/* Auto-scroll indicator */}
+        {!isPaused && (
+          <motion.div
+            className="text-center mt-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+          >
+            <p className="text-xs text-slate-400">Auto-scrolling • Hover to pause</p>
+          </motion.div>
+        )}
       </div>
 
       {/* CSS for hiding scrollbar */}
