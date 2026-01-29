@@ -4,9 +4,17 @@ import { Banknote, Briefcase, GraduationCap, CheckCircle, XCircle, FileText, Mai
 import { Card, CardContent } from './ui/card';
 
 const InteractiveBenefits = () => {
-  const [activeTab, setActiveTab] = useState('toolkit');
+  const [activeTab, setActiveTab] = useState('ai-course');
 
   const pillars = [
+    {
+      id: 'ai-course',
+      name: 'AI Upskilling Course',
+      icon: GraduationCap,
+      color: 'from-indigo-500 to-purple-600',
+      bgGradient: 'from-indigo-50 to-purple-50',
+      description: 'Future-ready skills'
+    },
     {
       id: 'toolkit',
       name: 'Job Transition Toolkit',
@@ -22,14 +30,6 @@ const InteractiveBenefits = () => {
       color: 'from-blue-500 to-blue-600',
       bgGradient: 'from-blue-50 to-indigo-50',
       description: 'Up to ₹40,000 support'
-    },
-    {
-      id: 'ai-course',
-      name: 'AI Upskilling Course',
-      icon: GraduationCap,
-      color: 'from-indigo-500 to-purple-600',
-      bgGradient: 'from-indigo-50 to-purple-50',
-      description: 'Future-ready skills'
     }
   ];
 
