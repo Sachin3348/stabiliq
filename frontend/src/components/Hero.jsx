@@ -32,26 +32,8 @@ const Hero = () => {
       <div className="absolute top-20 -left-40 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 -right-40 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
 
-      {/* Floating Header */}
-      <header className="sticky top-0 left-0 right-0 z-50 backdrop-blur-md bg-slate-950/70 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-br from-blue-500 to-teal-500 p-2.5 rounded-xl shadow-lg shadow-blue-500/20">
-              <Shield className="h-6 w-6 text-white" strokeWidth={2.5} />
-            </div>
-            <span className="text-2xl font-bold text-white" style={{ fontFamily: 'Sora, sans-serif' }}>STABILIQ</span>
-          </div>
-          <nav className="hidden md:flex items-center space-x-1">
-            <button onClick={() => scrollToSection('what-stabiliq')} className="text-slate-300 hover:text-white hover:bg-white/5 px-4 py-2.5 rounded-lg transition-all text-sm font-medium">What is STABILIQ</button>
-            <button onClick={() => scrollToSection('how-it-works')} className="text-slate-300 hover:text-white hover:bg-white/5 px-4 py-2.5 rounded-lg transition-all text-sm font-medium">How It Works</button>
-            <button onClick={() => scrollToSection('pricing')} className="text-slate-300 hover:text-white hover:bg-white/5 px-4 py-2.5 rounded-lg transition-all text-sm font-medium">Pricing</button>
-            <button onClick={() => scrollToSection('testimonials')} className="text-slate-300 hover:text-white hover:bg-white/5 px-4 py-2.5 rounded-lg transition-all text-sm font-medium">Testimonials</button>
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero Content */}
-      <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-24 md:pt-28 md:pb-32">
+      {/* Hero Content - Added pt-32 to account for fixed header */}
+      <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="max-w-5xl mx-auto">
           {/* Stats Bar */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
