@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Banknote, Lock, Unlock, Clock, FileText, Mail, 
@@ -23,11 +23,7 @@ const FinancialAssistance = () => {
   const [showDocuments, setShowDocuments] = useState(false);
   const [requesting, setRequesting] = useState(false);
 
-  useEffect(() => {
-    fetchStatus();
-  }, []);
-
-  const fetchStatus = async () => {
+  const fetchStatus = useCallback(async () => {
     try {
       const [statusRes, docsRes] = await Promise.all([
         axios.get(`${API}/financial-assistance/status`, {
@@ -45,7 +41,11 @@ const FinancialAssistance = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    fetchStatus();
+  }, [fetchStatus]);
 
   const handleRequestAssistance = async () => {
     setRequesting(true);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   GraduationCap, Play, FileText, Download, CheckCircle, 
@@ -20,11 +20,7 @@ const AIUpskill = () => {
   const [expandedModule, setExpandedModule] = useState(null);
   const [activeVideo, setActiveVideo] = useState(null);
 
-  useEffect(() => {
-    fetchModules();
-  }, []);
-
-  const fetchModules = async () => {
+  const fetchModules = useCallback(async () => {
     try {
       const response = await axios.get(`${API}/courses/modules`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -35,7 +31,11 @@ const AIUpskill = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    fetchModules();
+  }, [fetchModules]);
 
   const toggleModule = (moduleId) => {
     setExpandedModule(expandedModule === moduleId ? null : moduleId);

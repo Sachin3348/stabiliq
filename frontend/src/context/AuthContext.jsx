@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -19,15 +19,13 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('stabiliq_token'));
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (token) {
-      fetchCurrentUser();
-    } else {
-      setLoading(false);
-    }
-  }, [token]);
+  const logout = useCallback(() => {
+    localStorage.removeItem('stabiliq_token');
+    setToken(null);
+    setUser(null);
+  }, []);
 
-  const fetchCurrentUser = async () => {
+  const fetchCurrentUser = useCallback(async () => {
     try {
       const response = await axios.get(`${API}/auth/me`, {
         headers: {
@@ -41,18 +39,20 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token, logout]);
+
+  useEffect(() => {
+    if (token) {
+      fetchCurrentUser();
+    } else {
+      setLoading(false);
+    }
+  }, [token, fetchCurrentUser]);
 
   const login = (newToken, userData) => {
     localStorage.setItem('stabiliq_token', newToken);
     setToken(newToken);
     setUser(userData);
-  };
-
-  const logout = () => {
-    localStorage.removeItem('stabiliq_token');
-    setToken(null);
-    setUser(null);
   };
 
   const isAuthenticated = !!token && !!user;
