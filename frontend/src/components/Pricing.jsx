@@ -47,7 +47,7 @@ const Pricing = () => {
       price: 999,
       features: [
         'Access to member support resources',
-        'Job Transition KIT',
+        'AI upskilling course',
         'Eligibility for support during involuntary job loss'
       ],
       icon: Shield,

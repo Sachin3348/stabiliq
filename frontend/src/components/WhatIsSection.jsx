@@ -1,7 +1,18 @@
-import React from 'react';
-import { Check, Shield, Users, BookOpen, Briefcase, Target, Handshake } from 'lucide-react';
+import React, { useRef, useState, useEffect } from 'react';
+import { Shield, Users, BookOpen, Briefcase, Target, Handshake } from 'lucide-react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+
+const FOCUS_INTERVAL_MS = 2000;
 
 const WhatIsSection = () => {
+  const sectionRef = useRef(null);
+  const { inView } = useIntersectionObserver(sectionRef, { threshold: 0.2 });
+  const [autoFocusedIndex, setAutoFocusedIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const intervalRef = useRef(null);
+
+  const displayFocusedIndex = hoveredIndex !== null ? hoveredIndex : autoFocusedIndex;
+
   const whatItIs = [
     {
       icon: Shield,
@@ -20,8 +31,8 @@ const WhatIsSection = () => {
     },
     {
       icon: BookOpen,
-      title: 'Skill upgrade and learning guidance',
-      description: 'Curated learning and skill upgrade recommendations to help members stay relevant during transitions.'
+      title: 'AI Learning & Career Upskilling',
+      description: 'Expert-curated AI courses and guidance to help members build in-demand skills and navigate career transitions.'
     },
     {
       icon: Target,
@@ -35,8 +46,27 @@ const WhatIsSection = () => {
     }
   ];
 
+  useEffect(() => {
+    if (inView && hoveredIndex === null) {
+      intervalRef.current = setInterval(() => {
+        setAutoFocusedIndex((i) => (i + 1) % whatItIs.length);
+      }, FOCUS_INTERVAL_MS);
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    }
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [inView, hoveredIndex, whatItIs.length]);
+
   return (
-    <section id="what-stabiliq" className="py-24 bg-gradient-to-b from-white to-slate-50">
+    <section ref={sectionRef} id="what-stabiliq" className="py-24 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <div className="inline-block bg-blue-100 text-blue-700 px-5 py-2.5 rounded-full text-sm font-bold mb-6">
@@ -53,9 +83,21 @@ const WhatIsSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {whatItIs.map((item, index) => {
             const Icon = item.icon;
+            const isFocused = index === displayFocusedIndex;
             return (
-              <div key={index} className="bg-white border-2 border-slate-100 hover:border-blue-300 rounded-3xl p-8 hover:shadow-2xl transition-all hover:-translate-y-2 group">
-                <div className="bg-gradient-to-br from-blue-600 to-teal-600 rounded-2xl h-16 w-16 flex items-center justify-center mb-6 shadow-xl group-hover:scale-110 transition-transform">
+              <div
+                key={index}
+                className={`bg-white border-2 rounded-3xl p-8 transition-all duration-300 group ${
+                  isFocused ? 'border-blue-300 shadow-2xl -translate-y-2' : 'border-slate-100'
+                }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div
+                  className={`bg-gradient-to-br from-blue-600 to-teal-600 rounded-2xl h-16 w-16 flex items-center justify-center mb-6 shadow-xl transition-transform duration-300 ${
+                    isFocused ? 'scale-110' : ''
+                  }`}
+                >
                   <Icon className="h-8 w-8 text-white" strokeWidth={2} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3" style={{ fontFamily: 'Sora, sans-serif' }}>{item.title}</h3>
@@ -66,7 +108,7 @@ const WhatIsSection = () => {
         </div>
 
         {/* Important Note */}
-        <div className="mt-16 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-3xl p-10 shadow-xl">
+        {/* <div className="mt-16 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-3xl p-10 shadow-xl">
           <div className="flex items-start gap-4">
             <div className="bg-amber-500 rounded-2xl p-3 flex-shrink-0 shadow-lg">
               <span className="text-white font-bold text-2xl">!</span>
@@ -78,7 +120,7 @@ const WhatIsSection = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

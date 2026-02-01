@@ -9,7 +9,7 @@ const InteractiveBenefits = () => {
   const pillars = [
     {
       id: 'ai-course',
-      name: 'AI Upskilling Course',
+      name: 'AI Upskilling Course With Certificate',
       icon: GraduationCap,
       color: 'from-indigo-500 to-purple-600',
       bgGradient: 'from-indigo-50 to-purple-50',
@@ -123,14 +123,14 @@ const InteractiveBenefits = () => {
       }
     ],
     modules: [
-      'AI-Assisted Resume Writing & Optimization',
-      'Smart Job Search with AI Tools',
-      'AI-Powered Interview Preparation',
-      'Networking Automation with AI',
-      'Personal Branding with AI Content',
-      'Skill Gap Analysis using AI',
-      'AI Productivity Tools for Career Growth',
-      'Future-Ready Skills Development'
+      'Master AI Fundamentals and How to Use AI Effectively at Work',
+      'Write High-Impact Prompts to Get Better Results from AI Tools',
+      'Build and Use AI Agents to Automate Career and Work Tasks',
+      'Use AI to Create Resumes, Profiles, and Career Assets That Convert',
+      'Leverage AI for Smarter Job Search, Matching, and Applications',
+      'Use AI for Interview Preparation, Practice, and Skill Coaching',
+      'Discover and Use New AI Tools to Improve Productivity',
+      'Build a Future-Ready AI Skill Set for Long-Term Career Growth'
     ]
   };
 
@@ -194,9 +194,9 @@ const InteractiveBenefits = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-block bg-gradient-to-r from-blue-600 to-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-bold mb-6 shadow-lg">
+          {/* <div className="inline-block bg-gradient-to-r from-blue-600 to-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-bold mb-6 shadow-lg">
             COMPREHENSIVE SUPPORT
-          </div>
+          </div> */}
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6" style={{ fontFamily: 'Sora, sans-serif' }}>
             Support When You Need It
           </h2>

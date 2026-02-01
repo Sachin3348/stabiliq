@@ -51,13 +51,13 @@ const Hero = () => {
                 <div className="text-xs text-slate-400 font-medium">Members Upskilled</div>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-6 py-3">
+            {/* <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-6 py-3">
               <TrendingUp className="h-5 w-5 text-emerald-400" />
               <div>
                 <div className="text-2xl font-bold text-white" style={{ fontFamily: 'Sora, sans-serif' }}>₹30K</div>
                 <div className="text-xs text-slate-400 font-medium">Max Support</div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="text-center">
@@ -88,14 +88,14 @@ const Hero = () => {
               </Button>
             </div>
 
-            <div className="inline-flex items-center gap-3 bg-amber-500/10 border-2 border-amber-400/30 rounded-2xl px-8 py-4 backdrop-blur-md shadow-2xl">
+            {/* <div className="inline-flex items-center gap-3 bg-amber-500/10 border-2 border-amber-400/30 rounded-2xl px-8 py-4 backdrop-blur-md shadow-2xl">
               <div className="flex-shrink-0 flex items-center justify-center w-6 h-6 bg-amber-500 rounded-full">
                 <span className="text-white text-sm font-bold">!</span>
               </div>
               <p className="text-sm text-amber-100 font-medium">
                 STABILIQ is not an insurance product. Support is discretionary, subject to eligibility and verification.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

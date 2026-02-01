@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -76,11 +77,17 @@ const Header = () => {
             Pricing
           </button>
           <button 
-            onClick={() => scrollToSection('testimonials')} 
+            onClick={() => navigate('/login')} 
             className="text-slate-300 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg transition-all text-sm font-medium"
           >
-            Testimonials
+            Login
           </button>
+          {/* <button 
+            onClick={() => navigate('/signup')} 
+            className="text-slate-300 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg transition-all text-sm font-medium"
+          >
+            Signup
+          </button> */}
         </nav>
       </div>
     </motion.header>

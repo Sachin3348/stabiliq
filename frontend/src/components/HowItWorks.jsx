@@ -37,7 +37,7 @@ const HowItWorks = () => {
                   
                   <div className="mt-10 text-center">
                     <h3 className="text-2xl font-bold text-slate-900 mb-4" style={{ fontFamily: 'Sora, sans-serif' }}>{item.title}</h3>
-                    <p className="text-slate-600 leading-relaxed text-lg">{item.description}</p>
+                    <p className="text-slate-600 leading-relaxed text-medium">{item.description}</p>
                   </div>
                   
                   {index < howItWorksSteps.length - 1 && (

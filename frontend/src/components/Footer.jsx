@@ -15,7 +15,7 @@ const Footer = () => {
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Top Section */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
@@ -23,8 +23,9 @@ const Footer = () => {
               <span className="text-2xl font-bold tracking-tight">STABILIQ</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Structured support for salaried professionals during involuntary job loss. 
-              Transparent. Responsible. Built for your reality.
+            STABILIQ is a subscription based membership program for salaried professionals
+            that provides upskilling courses, job transition support and financial assistance
+            in case of involuntary job loss.
             </p>
           </div>
 
@@ -66,6 +67,22 @@ const Footer = () => {
                   </a>
                 </li>
               ))}
+            </ul>
+          </div>
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="mailto:support@stabiliq.in" className="text-slate-400 hover:text-white transition-colors text-sm">
+                  Email: <span className="text-white">support@stabiliq.in</span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+916239368517" className="text-slate-400 hover:text-white transition-colors text-sm">
+                  Phone: <span className="text-white">+91 6239368517</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

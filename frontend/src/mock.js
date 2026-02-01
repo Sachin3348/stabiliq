@@ -44,18 +44,18 @@ export const faqData = [
 export const howItWorksSteps = [
   {
     step: 1,
-    title: 'Join as a Member',
-    description: 'Pay ₹999 for annual membership and get instant access to all benefits.'
+    title: 'Activate Your Membership',
+    description: 'Become a STABILIQ member to unlock structured career support, AI learning resources, and exclusive member benefits.'
   },
   {
     step: 2,
-    title: 'Submit Support Request',
-    description: 'If you face involuntary job loss due to employer-initiated reasons, submit a support request with documentation.'
+    title: 'Request Support or Upskill',
+    description: 'If you face involuntary job loss, submit a verified support request — and access curated AI courses to strengthen your next career move.'
   },
   {
     step: 3,
-    title: 'Review & Approval',
-    description: 'Requests are reviewed based on eligibility, documentation, and verification. Approved members receive structured support within defined limits.'
+    title: 'Review, Support & Skill Growth',
+    description: 'Requests are reviewed for eligibility and verification. Approved members receive structured assistance along with guided AI upskilling based on their membership benefits.'
   }
 ];
 

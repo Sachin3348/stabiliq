@@ -69,7 +69,7 @@ const Eligibility = () => {
         </div>
 
         {/* Important Note */}
-        <div className="mt-12 bg-amber-50 border-2 border-amber-300 rounded-xl p-8">
+        {/* <div className="mt-12 bg-amber-50 border-2 border-amber-300 rounded-xl p-8">
           <div className="flex items-start">
             <div className="bg-amber-500 rounded-full p-2 mr-4 flex-shrink-0">
               <span className="text-white font-bold text-xl">!</span>
@@ -83,7 +83,7 @@ const Eligibility = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
