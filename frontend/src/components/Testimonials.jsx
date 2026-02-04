@@ -172,33 +172,33 @@ const Testimonials = () => {
             {testimonialsData.map((testimonial, index) => (
               <motion.div
                 key={index}
-                className="flex-shrink-0 w-[380px] snap-center"
+                className="flex-shrink-0 w-[320px] md:w-[380px] snap-center"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="border-0 shadow-xl hover:shadow-2xl transition-all h-full bg-white group hover:-translate-y-2 duration-300">
-                  <CardContent className="p-8 flex flex-col h-full">
+                  <CardContent className="p-5 md:p-8 flex flex-col h-full">
                     {/* Quote Icon */}
-                    <div className="mb-6">
-                      <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl p-4 inline-block">
-                        <Quote className="h-8 w-8 text-slate-400 group-hover:text-slate-600 transition-colors" />
+                    <div className="mb-4 md:mb-6">
+                      <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl p-3 md:p-4 inline-block">
+                        <Quote className="h-6 w-6 md:h-8 md:w-8 text-slate-400 group-hover:text-slate-600 transition-colors" />
                       </div>
                     </div>
 
                     {/* Quote Text */}
-                    <p className="text-slate-700 text-lg leading-relaxed mb-8 flex-grow">
+                    <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8 flex-grow">
                       "{testimonial.quote}"
                     </p>
 
                     {/* Author Info */}
-                    <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
-                      <div className={`bg-gradient-to-br ${testimonial.gradient} rounded-2xl h-16 w-16 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
-                        <span className="text-white font-bold text-xl" style={{ fontFamily: 'Sora, sans-serif' }}>{testimonial.initials}</span>
+                    <div className="flex items-center gap-3 md:gap-4 pt-4 md:pt-6 border-t border-slate-100">
+                      <div className={`bg-gradient-to-br ${testimonial.gradient} rounded-2xl h-12 w-12 md:h-16 md:w-16 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+                        <span className="text-white font-bold text-base md:text-xl" style={{ fontFamily: 'Sora, sans-serif' }}>{testimonial.initials}</span>
                       </div>
                       <div>
-                        <div className="font-bold text-slate-900 text-lg" style={{ fontFamily: 'Sora, sans-serif' }}>{testimonial.name}</div>
+                        <div className="font-bold text-slate-900 text-base md:text-lg" style={{ fontFamily: 'Sora, sans-serif' }}>{testimonial.name}</div>
                         <div className="text-slate-600 text-sm">{testimonial.role}</div>
                       </div>
                     </div>
@@ -208,9 +208,9 @@ const Testimonials = () => {
             ))}
           </div>
 
-          {/* Scroll Indicator Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-8 w-20 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-8 w-20 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none"></div>
+          {/* Scroll Indicator Gradient Overlays - desktop only; hidden on mobile to avoid hiding content */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-8 w-20 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none"></div>
+          <div className="hidden md:block absolute right-0 top-0 bottom-8 w-20 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none"></div>
         </div>
 
         {/* Mobile Scroll Hint */}
