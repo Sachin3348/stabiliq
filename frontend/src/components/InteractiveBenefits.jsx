@@ -271,15 +271,15 @@ const InteractiveBenefits = () => {
             })}
           </div>
 
-          {/* Right Content Area - Animated Content */}
-          <div className="lg:col-span-3">
+          {/* Right Content Area - Animated Content - min-w-0 allows grid child to shrink on mobile and prevent overflow */}
+          <div className="lg:col-span-3 min-w-0">
             <motion.div
-              className={`bg-gradient-to-br ${getCurrentGradient()} rounded-3xl p-2 shadow-2xl`}
+              className={`min-w-0 bg-gradient-to-br ${getCurrentGradient()} rounded-3xl p-2 shadow-2xl`}
               layout
               transition={{ duration: 0.4 }}
             >
-              <Card className="border-0 bg-white/80 backdrop-blur-sm h-full">
-                <CardContent className="p-10">
+              <Card className="border-0 bg-white/80 backdrop-blur-sm h-full min-w-0 overflow-hidden">
+                <CardContent className="p-6 md:p-10 overflow-x-hidden">
                   <AnimatePresence mode="wait">
                     {/* Job Transition Toolkit Content */}
                     {activeTab === 'toolkit' && (
@@ -289,6 +289,7 @@ const InteractiveBenefits = () => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
+                        className="min-w-0"
                       >
                         <motion.div variants={itemVariants} className="mb-8">
                           <h3 className="text-3xl font-bold text-slate-900 mb-3 flex items-center gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
@@ -340,6 +341,7 @@ const InteractiveBenefits = () => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
+                        className="min-w-0"
                       >
                         <motion.div variants={itemVariants} className="mb-8">
                           <h3 className="text-3xl font-bold text-slate-900 mb-3 flex items-center gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
@@ -374,12 +376,12 @@ const InteractiveBenefits = () => {
                                 </motion.div>
                               )}
                               <h4 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.name}</h4>
-                              <div className="text-4xl font-bold mb-1" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.price}<span className="text-lg">/year</span></div>
+                              <div className="text-3xl md:text-4xl font-bold mb-1 break-words" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.price}<span className="text-lg">/year</span></div>
                               <div className="border-t border-white/30 my-4"></div>
                               <div className="text-sm opacity-90 mb-2">Financial Assistance Up To</div>
-                              <div className="text-5xl font-bold flex items-center gap-2" style={{ fontFamily: 'Sora, sans-serif' }}>
-                                {plan.assistance}
-                                <ArrowRight className="h-8 w-8" />
+                              <div className="text-4xl md:text-5xl font-bold flex items-center gap-2 min-w-0 flex-wrap" style={{ fontFamily: 'Sora, sans-serif' }}>
+                                <span className="break-words">{plan.assistance}</span>
+                                <ArrowRight className="h-8 w-8 flex-shrink-0" />
                               </div>
                               <p className="text-sm opacity-90 mt-3">Structured over up to 2 months, subject to verification</p>
                             </motion.div>
@@ -451,6 +453,7 @@ const InteractiveBenefits = () => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
+                        className="min-w-0"
                       >
                         <motion.div variants={itemVariants} className="mb-8">
                           <h3 className="text-3xl font-bold text-slate-900 mb-3 flex items-center gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
@@ -511,10 +514,10 @@ const InteractiveBenefits = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="mt-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl p-6 flex items-center gap-4 shadow-xl"
+                            className="mt-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl p-6 flex items-center gap-4 shadow-xl min-w-0"
                           >
                             <Award className="h-12 w-12 text-white flex-shrink-0" />
-                            <div>
+                            <div className="min-w-0">
                               <div className="text-white font-bold text-lg mb-1" style={{ fontFamily: 'Sora, sans-serif' }}>
                                 Certificate of Completion
                               </div>
@@ -525,8 +528,8 @@ const InteractiveBenefits = () => {
                           </motion.div>
                         </motion.div>
 
-                        <motion.div variants={itemVariants} className="mt-8 bg-indigo-50 border-2 border-indigo-300 rounded-2xl p-6 shadow-lg">
-                          <p className="text-slate-800 font-medium text-center flex items-center justify-center gap-2">
+                        <motion.div variants={itemVariants} className="mt-8 bg-indigo-50 border-2 border-indigo-300 rounded-2xl p-6 shadow-lg min-w-0">
+                          <p className="text-slate-800 font-medium text-center flex items-center justify-center gap-2 flex-wrap">
                             <Sparkles className="h-5 w-5 text-indigo-600" />
                             <strong>Pro Plan Exclusive:</strong> Get unlimited access to all course modules, future updates, and advanced playbooks
                           </p>
