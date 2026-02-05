@@ -167,8 +167,9 @@ const InteractiveBenefits = () => {
   };
 
   return (
-    <section id="benefits" className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
-      {/* Animated Background Orbs */}
+    <section id="benefits" className="py-24 bg-gradient-to-b from-white to-slate-50 relative">
+      {/* Animated Background Orbs - wrapped so section can use sticky without overflow-hidden */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div 
         className="absolute top-0 right-0 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl"
         animate={{ 
@@ -185,7 +186,8 @@ const InteractiveBenefits = () => {
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
-      
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
           className="text-center mb-16"
@@ -205,9 +207,51 @@ const InteractiveBenefits = () => {
           </p>
         </motion.div>
 
+        {/* Mobile: Sticky segmented tab bar - sticks only while this section is in view (section has no overflow-hidden) */}
+        <div className="lg:hidden sticky top-16 z-20 mb-6 -mx-6 px-6 py-2.5 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+          <div className="flex rounded-xl bg-slate-200/90 p-1.5 gap-1 relative" role="tablist" aria-label="Support pillars">
+            {pillars.map((pillar) => {
+              const Icon = pillar.icon;
+              const isActive = activeTab === pillar.id;
+              return (
+                <motion.button
+                  key={pillar.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${pillar.id}`}
+                  id={`tab-${pillar.id}`}
+                  onClick={() => setActiveTab(pillar.id)}
+                  className="relative flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-lg text-sm font-semibold transition-colors duration-200 min-w-0"
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="mobileTabPill"
+                      className={`absolute inset-0 rounded-lg bg-gradient-to-r ${pillar.color} shadow-lg`}
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      style={{ zIndex: 0 }}
+                    />
+                  )}
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <Icon
+                      className={`h-4 w-4 flex-shrink-0 transition-colors duration-200 ${isActive ? 'text-white' : 'text-slate-500'}`}
+                      strokeWidth={2.5}
+                    />
+                    <span className={`truncate transition-colors duration-200 ${isActive ? 'text-white' : 'text-slate-600 hover:text-slate-800'}`}>
+                      {pillar.id === 'ai-course' ? 'AI Course' : pillar.id === 'toolkit' ? 'Toolkit' : 'Financial'}
+                    </span>
+                  </span>
+                </motion.button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="grid lg:grid-cols-4 gap-8">
-          {/* Left Sidebar - Animated Tabs */}
-          <div className="lg:col-span-1 space-y-4">
+          {/* Left Sidebar - Animated Tabs (desktop only) */}
+          <div className="hidden lg:block lg:col-span-1 space-y-4">
             {pillars.map((pillar, index) => {
               const Icon = pillar.icon;
               const isActive = activeTab === pillar.id;
@@ -285,6 +329,9 @@ const InteractiveBenefits = () => {
                     {activeTab === 'toolkit' && (
                       <motion.div
                         key="toolkit"
+                        id="panel-toolkit"
+                        role="tabpanel"
+                        aria-labelledby="tab-toolkit"
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
@@ -337,6 +384,9 @@ const InteractiveBenefits = () => {
                     {activeTab === 'financial' && (
                       <motion.div
                         key="financial"
+                        id="panel-financial"
+                        role="tabpanel"
+                        aria-labelledby="tab-financial"
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
@@ -449,6 +499,9 @@ const InteractiveBenefits = () => {
                     {activeTab === 'ai-course' && (
                       <motion.div
                         key="ai-course"
+                        id="panel-ai-course"
+                        role="tabpanel"
+                        aria-labelledby="tab-ai-course"
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
