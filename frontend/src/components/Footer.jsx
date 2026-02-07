@@ -1,14 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const whatsappUrl = 'https://wa.me/916239368517?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20STABILIQ%20membership.%20Can%20you%20help%20me%3F';
+
   const footerLinks = [
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Refund Policy', href: '#' },
-    { name: 'Contact Us', href: '#' }
+    { name: 'Terms & Conditions', to: '/terms' },
+    { name: 'Privacy Policy', to: '/privacy' },
+    { name: 'Refund Policy', to: '/refund' },
+    { name: 'Contact Us', to: whatsappUrl, external: true }
   ];
 
   return (
@@ -62,9 +65,15 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-slate-400 hover:text-white transition-colors text-sm">
-                    {link.name}
-                  </a>
+                  {link.external ? (
+                    <a href={link.to} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors text-sm">
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link to={link.to} className="text-slate-400 hover:text-white transition-colors text-sm">
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
