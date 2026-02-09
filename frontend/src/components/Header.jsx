@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const NAV_ITEMS = [
   { label: 'What is STABILIQ', id: 'what-stabiliq' },
@@ -13,6 +14,16 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { isAuthenticated } = useAuth();
+
+  const handleLogoClick = () => {
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,6 +75,11 @@ const Header = () => {
     navigate('/login');
   };
 
+  const handleDashboardClick = () => {
+    setMenuOpen(false);
+    navigate('/dashboard');
+  };
+
   return (
     <>
       <motion.header
@@ -80,7 +96,7 @@ const Header = () => {
           <motion.div
             className="flex items-center space-x-3 cursor-pointer"
             whileHover={{ scale: 1.05 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={handleLogoClick}
           >
             <div className={`bg-gradient-to-br from-blue-500 to-teal-500 p-2.5 rounded-xl shadow-lg transition-all duration-300 ${
               scrolled ? 'shadow-blue-500/30' : 'shadow-blue-500/20'
@@ -103,10 +119,10 @@ const Header = () => {
               </button>
             ))}
             <button
-              onClick={() => navigate('/login')}
+              onClick={isAuthenticated ? handleDashboardClick : handleLoginClick}
               className="text-slate-300 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg transition-all text-sm font-medium"
             >
-              Login
+              {isAuthenticated ? 'Go to Dashboard' : 'Login'}
             </button>
           </nav>
 
@@ -177,10 +193,10 @@ const Header = () => {
                   initial={{ opacity: 0, x: 16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * NAV_ITEMS.length, duration: 0.2 }}
-                  onClick={handleLoginClick}
+                  onClick={isAuthenticated ? handleDashboardClick : handleLoginClick}
                   className="text-left text-white bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 px-4 py-3.5 rounded-xl transition-all text-base font-medium mt-2"
                 >
-                  Login
+                  {isAuthenticated ? 'Go to Dashboard' : 'Login'}
                 </motion.button>
               </nav>
             </motion.aside>

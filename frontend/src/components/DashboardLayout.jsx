@@ -25,7 +25,7 @@ const DashboardLayout = ({ children }) => {
     <div className="min-h-screen bg-slate-50">
       {/* Top Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="w-full mx-auto px-7 py-4 flex items-center justify-between">
           <Link to="/dashboard" className="flex items-center space-x-3">
             <div className="bg-gradient-to-br from-blue-500 to-teal-500 p-2.5 rounded-xl shadow-lg">
               <Shield className="h-6 w-6 text-white" strokeWidth={2.5} />
