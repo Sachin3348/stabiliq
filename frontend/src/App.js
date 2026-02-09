@@ -14,6 +14,7 @@ import AIUpskill from "./pages/dashboard/AIUpskill";
 import ProfileAnalysis from "./pages/dashboard/ProfileAnalysis";
 import FinancialAssistance from "./pages/dashboard/FinancialAssistance";
 import { Toaster } from "./components/ui/sonner";
+import { Toaster as RadixToaster } from "./components/ui/toaster";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         <Toaster />
+        <RadixToaster />
       </AuthProvider>
     </div>
   );

@@ -38,7 +38,7 @@ const Login = () => {
       if (response.data.success) {
         toast({
           title: "OTP Sent!",
-          description: "Enter any 6-digit code to login (bypass mode)"
+          description: "Enter any 6-digit code to login"
         });
         setStep(2);
       }
@@ -162,7 +162,7 @@ const Login = () => {
                     Enter OTP
                   </label>
                   <div className="text-sm text-slate-600 mb-3">
-                    Enter any 6-digit code (bypass mode)
+                    Enter any 6-digit code
                   </div>
                   <div className="relative">
                     <KeyRound className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
