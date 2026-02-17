@@ -20,7 +20,7 @@ const Home = () => {
       <HowItWorks />
       <InteractiveBenefits />
       <Pricing />
-      <MemberLoginCTA />
+      {/* <MemberLoginCTA /> */}
       <Testimonials />
       <LeadForm />
       <FAQ />

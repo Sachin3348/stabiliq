@@ -67,7 +67,13 @@ const Header = () => {
   };
 
   const handleNavClick = (item) => {
-    scrollToSection(item.id);
+    setMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => scrollToSection(item.id), 100);
+    } else {
+      scrollToSection(item.id);
+    }
   };
 
   const handleLoginClick = () => {
@@ -112,7 +118,7 @@ const Header = () => {
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavClick(item)}
                 className="text-slate-300 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg transition-all text-sm font-medium"
               >
                 {item.label}

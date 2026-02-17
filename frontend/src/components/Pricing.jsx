@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Check, Shield, Sparkles, Zap } from 'lucide-react';
+import { Check, Sparkles } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
+import { PLANS } from '../constants/plans';
 
 const Pricing = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState({ basic: false, pro: false });
 
   const handleBecomeMember = async (plan) => {
-    setLoading({ ...loading, [plan]: true });
+    setLoading((prev) => ({ ...prev, [plan]: true }));
     try {
       const result = await processMembership({
         plan,
@@ -28,7 +29,7 @@ const Pricing = () => {
         variant: "destructive"
       });
     } finally {
-      setLoading({ ...loading, [plan]: false });
+      setLoading((prev) => ({ ...prev, [plan]: false }));
     }
   };
 
@@ -38,38 +39,6 @@ const Pricing = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const plans = [
-    {
-      id: 'basic',
-      name: 'Basic',
-      subtitle: 'Perfect for salaried professionals',
-      price: 999,
-      features: [
-        'Access to member support resources',
-        'AI upskilling course',
-        'Eligibility for support during involuntary job loss'
-      ],
-      icon: Shield,
-      gradient: 'from-slate-600 to-slate-700',
-      popular: false
-    },
-    {
-      id: 'pro',
-      name: 'Pro',
-      subtitle: 'For serious professionals',
-      price: 2499,
-      features: [
-        'AI upskilling course',
-        'Job transition KIT',
-        'Access to member support resources',
-        'Eligibility for support during involuntary job loss'
-      ],
-      icon: Zap,
-      gradient: 'from-blue-600 to-teal-600',
-      popular: true
-    }
-  ];
 
   return (
     <section id="pricing" className="py-24 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
@@ -99,7 +68,7 @@ const Pricing = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan) => {
+          {PLANS.map((plan) => {
             const Icon = plan.icon;
             return (
               <Card key={plan.id} className={`border-0 shadow-2xl bg-white relative overflow-hidden ${
@@ -122,7 +91,7 @@ const Pricing = () => {
                     <h3 className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.name}</h3>
                     <p className="text-slate-600 font-medium mb-6">{plan.subtitle}</p>
                     <div className="flex items-baseline mb-2">
-                      <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}" style={{ fontFamily: 'Sora, sans-serif' }}>₹{plan.price}</span>
+                      <span className={`text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}`} style={{ fontFamily: 'Sora, sans-serif' }}>₹{plan.price}</span>
                       <span className="text-2xl text-slate-600 ml-2 font-semibold">/year</span>
                     </div>
                   </div>

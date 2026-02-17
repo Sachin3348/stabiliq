@@ -3,11 +3,17 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Shield, LayoutDashboard, GraduationCap, FileText, Banknote, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Button } from './ui/button';
+import PlanSelectModal from './PlanSelectModal';
+
+const hasActivePlan = (user) => {
+  return user?.plan === 'basic' || user?.plan === 'pro';
+};
 
 const DashboardLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user, logout, updateUser } = useAuth();
+  const showPlanModal = user && !hasActivePlan(user);
 
   const handleLogout = () => {
     logout();
@@ -23,6 +29,9 @@ const DashboardLayout = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {showPlanModal && (
+        <PlanSelectModal onPlanSelected={(plan) => updateUser({ plan })} />
+      )}
       {/* Top Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div className="w-full mx-auto px-7 py-4 flex items-center justify-between">
@@ -36,7 +45,9 @@ const DashboardLayout = ({ children }) => {
           <div className="flex items-center gap-4">
             <div className="text-right">
               <div className="text-sm font-semibold text-slate-900">{user?.name}</div>
-              <div className="text-xs text-slate-600">{user?.plan === 'pro' ? 'Pro Member' : 'Basic Member'}</div>
+              <div className="text-xs text-slate-600">
+                {hasActivePlan(user) ? (user?.plan === 'pro' ? 'Pro Member' : 'Basic Member') : 'Choose a plan'}
+              </div>
             </div>
             <Button
               variant="outline"
