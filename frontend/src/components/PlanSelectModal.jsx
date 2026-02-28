@@ -21,11 +21,12 @@ const PlanSelectModal = ({ onPlanSelected }) => {
         plan: planId,
         timestamp: new Date().toISOString()
       });
-      toast({
-        title: 'Success!',
-        description: result.message
-      });
-      onPlanSelected(planId);
+      if(result.success && result.paymentUrl) {
+        window.location = result.paymentUrl;
+      }else {
+        throw new Error('Payment initiation failed, please try again.');
+      }
+
     } catch (error) {
       toast({
         title: 'Error',

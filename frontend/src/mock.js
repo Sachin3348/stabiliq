@@ -1,4 +1,6 @@
-// Mock data for STABILIQ website
+import { getmembershipPaymentLink } from "./apis/service";
+import { API_ENDPOINTS } from "./constant";
+
 
 export const membershipData = {
   price: 999,
@@ -91,12 +93,15 @@ export const submitLeadForm = async (formData) => {
 
 // Mock function to simulate membership purchase
 export const processMembership = async (memberData) => {
-  await new Promise(resolve => setTimeout(resolve, 1500));
-  
-  console.log('Membership processed:', memberData);
-  return { 
-    success: true, 
-    orderId: `ORD${Date.now()}`,
-    message: 'Membership activated successfully!' 
-  };
+  try {
+
+    const response = await getmembershipPaymentLink(API_ENDPOINTS.paymentApi, memberData)
+    return { 
+      success: true, 
+      paymentUrl: response?.data?.checkoutPageUrl
+    };
+  } catch (error) {
+    console.error('Error processing membership:', error);
+    throw new Error('Failed to process membership. Please try again.');
+  }
 };
