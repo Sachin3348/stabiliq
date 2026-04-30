@@ -92,16 +92,16 @@ export const submitLeadForm = async (formData) => {
 };
 
 // Mock function to simulate membership purchase
-export const processMembership = async (memberData) => {
+export const processMembership = async (memberData, token) => {
   try {
 
-    const response = await getmembershipPaymentLink(API_ENDPOINTS.paymentApi, memberData)
+    const response = await getmembershipPaymentLink(API_ENDPOINTS.paymentApi, memberData, token)
     return { 
       success: true, 
       paymentUrl: response?.data?.checkoutPageUrl
     };
   } catch (error) {
     console.error('Error processing membership:', error);
-    throw new Error('Failed to process membership. Please try again.');
+    throw new Error(error?.response?.data?.detail || 'Failed to process membership. Please try again.');
   }
 };

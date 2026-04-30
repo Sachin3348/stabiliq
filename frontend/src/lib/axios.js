@@ -7,7 +7,7 @@ class ApiHandler {
       (config) => {
         const token = "";
         if (token) {
-          config.headers.common["x-access-token"] = token;
+          config.headers.common["authorization"] = token;
         }
         return config;
       },

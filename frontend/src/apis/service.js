@@ -1,5 +1,6 @@
 import { API_BASE_URL } from "@/constant";
 import ApiHandler from "../lib/axios";
+import axios from "axios";
 
 
 const api = new ApiHandler({
@@ -9,11 +10,32 @@ const api = new ApiHandler({
   },
 });
 
-export function getmembershipPaymentLink(url, data){
-  return api.post({
-    url,
-    data,
-  })
+export function getmembershipPaymentLink(url, data, token){
+  localStorage.setItem("selectedPlan", data.plan);
+  return axios.post(`${API_BASE_URL}${url}`, data, {
+    headers: {
+      "content-type": "application/json",
+      "authorization": `Bearer ${token}`
+    },
+  });
+}
+
+export function getPaymentStatus(token) {
+  return axios.get(`${API_BASE_URL}/api/payment/payment-status`, {
+    headers: {
+      "content-type": "application/json",
+      "authorization": `Bearer ${token}`
+    },
+  });
+}
+
+export function initiatePayment(data, token) {
+  return axios.post(`${API_BASE_URL}/api/payment`, data, {
+    headers: {
+      "content-type": "application/json",
+      "authorization": `Bearer ${token}`
+    },
+  });
 }
 
 

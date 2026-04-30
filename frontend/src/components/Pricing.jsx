@@ -5,10 +5,12 @@ import { Card, CardContent } from './ui/card';
 import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
 import { PLANS } from '../constants/plans';
+import { useAuth } from '@/context/AuthContext';
 
 const Pricing = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState({ basic: false, pro: false });
+  const { token } = useAuth();
 
   const handleBecomeMember = async (plan) => {
     setLoading((prev) => ({ ...prev, [plan]: true }));
@@ -16,16 +18,14 @@ const Pricing = () => {
       const result = await processMembership({
         plan,
         timestamp: new Date().toISOString()
-      });
-      
-      toast({
-        title: "Success!",
-        description: result.message,
-      });
+      }, token);
+      if (result.success) {
+        window.location = result.paymentUrl;
+      }
     } catch (error) {
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: error.message || 'Something went wrong. Please try again.',
         variant: "destructive"
       });
     } finally {

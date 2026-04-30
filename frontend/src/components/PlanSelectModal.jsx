@@ -5,6 +5,7 @@ import { Check, Sparkles } from 'lucide-react';
 import { PLANS } from '../constants/plans';
 import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
+import { useAuth } from '@/context/AuthContext';
 
 /**
  * Non-dismissible modal shown when user is logged in but has no active plan.
@@ -13,6 +14,7 @@ import { useToast } from '../hooks/use-toast';
 const PlanSelectModal = ({ onPlanSelected }) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState({ basic: false, pro: false });
+  const { token } = useAuth()
 
   const handleSelectPlan = async (planId) => {
     setLoading((prev) => ({ ...prev, [planId]: true }));
@@ -20,7 +22,7 @@ const PlanSelectModal = ({ onPlanSelected }) => {
       const result = await processMembership({
         plan: planId,
         timestamp: new Date().toISOString()
-      });
+      }, token);
       if(result.success && result.paymentUrl) {
         window.location = result.paymentUrl;
       }else {

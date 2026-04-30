@@ -1,0 +1,43 @@
+.button{
+    height: calc(52rem/16);
+    color: #FFF;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background-color: #FF2231;
+    border-radius: 6px;
+    margin-top: calc(80rem/16);
+    width:calc(320rem/16);
+}
+.btnContentWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imageWrapper{
+    margin-left: 0.5rem;
+    height: 0.8rem;
+    width: 0.8rem;
+    display: flex;
+}
+.button:hover{
+    background-color: rgb(231, 4, 4);
+    cursor: pointer;
+}
+.feeAmount{
+    text-decoration: line-through;
+    margin-right: 0.2rem;
+}
+
+@media screen and (min-width:1024px) {
+    .button {
+        font-size: calc(16rem/20);
+        margin-top: calc(52rem/20);
+        height: calc(52rem/20);
+        width: calc(320rem/20);
+        line-height: normal;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
