@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Shield, LayoutDashboard, GraduationCap, FileText, Banknote, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Button } from './ui/button';
@@ -17,7 +17,7 @@ const DashboardLayout = ({ children }) => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/login', { replace: true });
   };
 
   const navigation = [
@@ -70,9 +70,10 @@ const DashboardLayout = ({ children }) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
               return (
-                <Link
+                <NavLink
                   key={item.name}
                   to={item.href}
+                  replace
                   className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                     isActive
                       ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white shadow-lg'
@@ -81,7 +82,7 @@ const DashboardLayout = ({ children }) => {
                 >
                   <Icon className={`h-5 w-5 ${isActive ? 'text-white' : 'text-slate-500'}`} strokeWidth={2} />
                   <span className="font-medium">{item.name}</span>
-                </Link>
+                </NavLink>
               );
             })}
           </nav>

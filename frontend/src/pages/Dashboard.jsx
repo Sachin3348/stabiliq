@@ -147,7 +147,7 @@ const Dashboard = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer group" onClick={() => navigate(action.href)}>
+                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer group" onClick={() => navigate(action.href, { replace: true })}>
                     <CardContent className="p-6">
                       <div className={`bg-gradient-to-br ${action.color} rounded-xl h-14 w-14 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
                         <Icon className="h-7 w-7 text-white" strokeWidth={2} />
