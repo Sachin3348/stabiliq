@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { Shield } from "lucide-react";
 import { PHONEPE_PAYMENT_FINAL_STATE, DEFAULT_TEST_ERROR } from "../constant";
 import { getPaymentStatus, initiatePayment } from "../apis/service";
 import { useAuth } from "../context/AuthContext";
@@ -150,7 +151,22 @@ const PaymentStatusPage = () => {
       : paymentWarningImage;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Header — logo only */}
+      <header className="w-full px-6 py-4 bg-white border-b border-gray-100 shadow-sm">
+        <div
+          className="flex items-center gap-2 cursor-pointer w-fit"
+          onClick={() => navigate("/")}
+        >
+          <Shield className="h-7 w-7 text-blue-600" />
+          <span className="text-xl font-bold text-gray-900 tracking-tight">
+            STABILIQ
+          </span>
+        </div>
+      </header>
+
+      {/* Main content */}
+      <div className="flex-1 flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <CardContent className="flex flex-col items-center text-center p-8 space-y-6">
           {isLoading ? (
@@ -209,6 +225,7 @@ const PaymentStatusPage = () => {
           )}
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 };

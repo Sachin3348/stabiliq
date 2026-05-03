@@ -66,7 +66,44 @@ const AIUpskill = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         data-testid="ai-upskill-page"
+        className="relative min-h-[600px]"
       >
+        {/* Coming Soon Overlay — scoped to this content area only */}
+        <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-auto rounded-2xl overflow-hidden">
+          {/* Glossy backdrop */}
+          <div className="absolute inset-0 bg-white/30 backdrop-blur-sm" />
+          {/* Modal card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="relative z-10 flex flex-col items-center gap-3 bg-white/50 backdrop-blur-lg border border-white/60 shadow-xl rounded-2xl px-10 py-8 text-center max-w-sm mx-4"
+          >
+            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-xl shadow-md">
+              <GraduationCap className="h-7 w-7 text-white" />
+            </div>
+            <h2
+              className="text-xl font-bold text-slate-900"
+              style={{ fontFamily: 'Sora, sans-serif' }}
+            >
+              Coming Soon
+            </h2>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              The AI Upskill &amp; Career Transition Hub is currently under development.
+              Stay tuned — it's going to be worth the wait!
+            </p>
+            <div className="flex gap-1.5 mt-1">
+              {[0, 0.15, 0.3].map((delay, i) => (
+                <motion.span
+                  key={i}
+                  className="w-2 h-2 rounded-full bg-indigo-500"
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{ duration: 1.2, repeat: Infinity, delay }}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">

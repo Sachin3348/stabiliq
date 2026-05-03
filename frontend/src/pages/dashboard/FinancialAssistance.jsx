@@ -76,7 +76,20 @@ const FinancialAssistance = () => {
   const daysRemaining = status?.daysRemaining || 0;
   const isUnlocked = status?.isUnlocked || false;
   const progressPercent = Math.min(100, ((45 - daysRemaining) / 45) * 100);
-
+  return (
+    <DashboardLayout>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        data-testid="financial-assistance-page"
+      >
+        <p className="text-black-600 text-lg ml-6">
+          Email to support@stabiliq.in from your registered email.
+        </p>
+      </motion.div>
+    </DashboardLayout>
+  )
   return (
     <DashboardLayout>
       <motion.div
