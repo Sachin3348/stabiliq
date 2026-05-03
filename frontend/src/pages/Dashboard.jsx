@@ -43,7 +43,7 @@ const Dashboard = () => {
       href: '/dashboard/courses'
     },
     {
-      title: 'Profile Analysis',
+      title: 'Job Transition Toolkit',
       description: 'Get AI-powered insights on your resume and LinkedIn',
       icon: FileText,
       color: 'from-teal-500 to-cyan-600',
@@ -85,7 +85,7 @@ const Dashboard = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        {/* <div className="grid md:grid-cols-3 gap-6 mb-8">
           <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
@@ -132,7 +132,7 @@ const Dashboard = () => {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </div> */}
 
         {/* Quick Actions */}
         <div className="mb-8">
@@ -177,9 +177,8 @@ const Dashboard = () => {
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>Financial Assistance Eligibility</h3>
                   <p className="text-slate-700 leading-relaxed">
-                    Financial assistance will be available after <strong>45 days</strong> of active membership. 
-                    You have <strong>{stats?.daysUntilFinancialAssistance} days</strong> remaining. During this time, 
-                    explore our AI courses and career transition toolkit to prepare for your next opportunity.
+                    Financial assistance will be available after <strong>45 days</strong> of active membership.
+                    Explore our AI courses and career transition toolkit to prepare for your next opportunity.
                   </p>
                 </div>
               </div>

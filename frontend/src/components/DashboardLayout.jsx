@@ -23,7 +23,7 @@ const DashboardLayout = ({ children }) => {
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'AI Upskill & Transition', href: '/dashboard/courses', icon: GraduationCap },
-    { name: 'Profile Analysis', href: '/dashboard/profile-analysis', icon: FileText },
+    { name: 'Job Transition Toolkit', href: '/dashboard/profile-analysis', icon: FileText },
     { name: 'Financial Assistance', href: '/dashboard/financial-assistance', icon: Banknote },
   ];
 
