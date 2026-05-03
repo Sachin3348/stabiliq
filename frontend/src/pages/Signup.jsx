@@ -8,13 +8,15 @@ import { Card, CardContent } from '../components/ui/card';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../hooks/use-toast';
 import axios from 'axios';
+import { getmembershipPaymentLink } from '@/apis/service';
+import { API_ENDPOINTS } from '@/constant';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const { toast } = useToast();
   const [step, setStep] = useState(1); // 1: Details, 2: OTP
   const [formData, setFormData] = useState({
@@ -82,9 +84,16 @@ const Signup = () => {
         name: formData.name,
         plan: formData.plan
       });
-
+      const plan = localStorage.getItem("selectedPlan");
       if (response.data.success) {
         login(response.data.token, response.data.user);
+        if(plan && !response.data?.user?.plan) {
+            const paymentResponse = await getmembershipPaymentLink(API_ENDPOINTS.paymentApi, {plan, timestamp: new Date().toISOString()}, response.data.token);
+            if (paymentResponse?.data?.checkoutPageUrl) {
+              window.location.href = paymentResponse.data.checkoutPageUrl;
+              return;
+            } 
+          }
         toast({
           title: "Welcome to STABILIQ!",
           description: "Your account has been created successfully"
@@ -102,6 +111,10 @@ const Signup = () => {
     }
   };
 
+  if(isAuthenticated){
+    navigate('/dashboard');
+    return null;
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 flex items-center justify-center p-6">
       {/* Background Pattern */}

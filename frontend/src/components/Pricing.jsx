@@ -6,15 +6,22 @@ import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
 import { PLANS } from '../constants/plans';
 import { useAuth } from '@/context/AuthContext';
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 
 const Pricing = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState({ basic: false, pro: false });
   const { token } = useAuth();
-
+  const navigate = useNavigate();
   const handleBecomeMember = async (plan) => {
     setLoading((prev) => ({ ...prev, [plan]: true }));
     try {
+      if(!token) {
+        localStorage.setItem("selectedPlan", plan);
+        navigate('/signup');
+        return;
+      }
       const result = await processMembership({
         plan,
         timestamp: new Date().toISOString()

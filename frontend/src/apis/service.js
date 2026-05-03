@@ -30,6 +30,7 @@ export function getPaymentStatus(token) {
 }
 
 export function initiatePayment(data, token) {
+  localStorage.setItem("selectedPlan", data.plan);
   return axios.post(`${API_BASE_URL}/api/payment`, data, {
     headers: {
       "content-type": "application/json",
