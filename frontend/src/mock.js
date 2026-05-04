@@ -4,6 +4,8 @@ import { API_ENDPOINTS } from "./constant";
 
 export const membershipData = {
   price: 999,
+  gst: 179.82,
+  totalPrice: 1178.82,
   currency: 'INR',
   duration: 'year',
   maxAssistance: 30000,
@@ -51,8 +53,8 @@ export const howItWorksSteps = [
   },
   {
     step: 2,
-    title: 'Request Support or Upskill',
-    description: 'If you face involuntary job loss, submit a verified support request — and access curated AI courses to strengthen your next career move.'
+    title: 'Upskill',
+    description: 'Explore curated AI-powered courses designed to sharpen your skills and give you an edge in your next role.'
   },
   {
     step: 3,

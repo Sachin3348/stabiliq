@@ -6,6 +6,8 @@ export const PLANS = [
     name: 'Basic',
     subtitle: 'Perfect for salaried professionals',
     price: 999,
+    gst: 179.82,
+    totalPrice: 1178.82,
     features: [
       'Access to member support resources',
       'AI upskilling course',
@@ -20,6 +22,8 @@ export const PLANS = [
     name: 'Pro',
     subtitle: 'For serious professionals',
     price: 2499,
+    gst: 449.82,
+    totalPrice: 2948.82,
     features: [
       'AI upskilling course',
       'Job transition KIT',

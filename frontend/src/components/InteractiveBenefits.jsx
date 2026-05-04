@@ -75,12 +75,16 @@ const InteractiveBenefits = () => {
       {
         name: 'Basic Plan',
         price: '₹999',
+        gst: '₹179.82',
+        total: '₹1,178.82',
         assistance: '₹20,000',
         color: 'from-slate-600 to-slate-700'
       },
       {
         name: 'Pro Plan',
         price: '₹2,499',
+        gst: '₹449.82',
+        total: '₹2,948.82',
         assistance: '₹40,000',
         color: 'from-blue-600 to-teal-600',
         popular: true
@@ -426,7 +430,8 @@ const InteractiveBenefits = () => {
                                 </motion.div>
                               )}
                               <h4 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.name}</h4>
-                              <div className="text-3xl md:text-4xl font-bold mb-1 break-words" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.price}<span className="text-lg">/year</span></div>
+                              <div className="text-3xl md:text-4xl font-bold mb-0.5 break-words" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.price}<span className="text-lg">/year</span></div>
+                              <div className="text-xs opacity-80 mb-1">+ {plan.gst} GST (18%) &nbsp;|&nbsp; Total {plan.total}</div>
                               <div className="border-t border-white/30 my-4"></div>
                               <div className="text-sm opacity-90 mb-2">Financial Assistance Up To</div>
                               <div className="text-4xl md:text-5xl font-bold flex items-center gap-2 min-w-0 flex-wrap" style={{ fontFamily: 'Sora, sans-serif' }}>

@@ -82,7 +82,7 @@ const PlanSelectModal = ({ onPlanSelected }) => {
                       {plan.name}
                     </h3>
                     <p className="text-slate-600 text-sm font-medium mb-4">{plan.subtitle}</p>
-                    <div className="flex items-baseline mb-2">
+                    <div className="flex items-baseline mb-1">
                       <span
                         className={`text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}`}
                         style={{ fontFamily: 'Sora, sans-serif' }}
@@ -90,6 +90,11 @@ const PlanSelectModal = ({ onPlanSelected }) => {
                         ₹{plan.price}
                       </span>
                       <span className="text-xl text-slate-600 ml-2 font-semibold">/year</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                      <span>+ ₹{plan.gst.toFixed(2)} GST (18%)</span>
+                      <span className="text-slate-300">|</span>
+                      <span className="font-semibold text-slate-600">Total ₹{plan.totalPrice.toFixed(2)}</span>
                     </div>
                   </div>
 

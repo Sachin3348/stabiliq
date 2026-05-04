@@ -97,9 +97,14 @@ const Pricing = () => {
                     </div>
                     <h3 className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.name}</h3>
                     <p className="text-slate-600 font-medium mb-6">{plan.subtitle}</p>
-                    <div className="flex items-baseline mb-2">
+                    <div className="flex items-baseline mb-1">
                       <span className={`text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}`} style={{ fontFamily: 'Sora, sans-serif' }}>₹{plan.price}</span>
                       <span className="text-2xl text-slate-600 ml-2 font-semibold">/year</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                      <span>+ ₹{plan.gst.toFixed(2)} GST (18%)</span>
+                      <span className="text-slate-300">|</span>
+                      <span className="font-semibold text-slate-700">Total ₹{plan.totalPrice.toFixed(2)}</span>
                     </div>
                   </div>
 
