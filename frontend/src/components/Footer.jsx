@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield } from 'lucide-react';
+import stabiliqLogo from '../assets/svgs/logo.svg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,9 +22,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <Shield className="h-8 w-8 text-blue-400" strokeWidth={2} />
-              <span className="text-2xl font-bold tracking-tight">STABILIQ</span>
+            <div className="flex items-center mb-4">
+              <img src={stabiliqLogo} alt="STABILIQ" className="h-8 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
             STABILIQ is a subscription based membership program for salaried professionals

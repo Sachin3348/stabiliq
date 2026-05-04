@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, Mail, Phone, User, KeyRound, ArrowRight } from 'lucide-react';
+import { Mail, Phone, User, KeyRound, ArrowRight } from 'lucide-react';
+import stabiliqLogo from '../assets/svgs/logo.svg';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Card, CardContent } from '../components/ui/card';
@@ -133,11 +134,8 @@ const Signup = () => {
       >
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center space-x-3 mb-6">
-            <div className="bg-gradient-to-br from-blue-500 to-teal-500 p-3 rounded-xl shadow-lg">
-              <Shield className="h-8 w-8 text-white" strokeWidth={2.5} />
-            </div>
-            <span className="text-3xl font-bold text-white" style={{ fontFamily: 'Sora, sans-serif' }}>STABILIQ</span>
+          <Link to="/" className="inline-flex items-center mb-6">
+            <img src={stabiliqLogo} alt="STABILIQ" className="h-10 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
           </Link>
           <h1 className="text-2xl font-bold text-white mb-2">Create Your Account</h1>
           <p className="text-slate-400">Join STABILIQ and secure your career journey</p>
