@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import stabiliqLogo from '../assets/svgs/logo.svg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -100,18 +101,16 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <motion.div
-            className="flex items-center space-x-3 cursor-pointer"
+            className="flex items-center cursor-pointer"
             whileHover={{ scale: 1.05 }}
             onClick={handleLogoClick}
           >
-            <div className={`bg-gradient-to-br from-blue-500 to-teal-500 p-2.5 rounded-xl shadow-lg transition-all duration-300 ${
-              scrolled ? 'shadow-blue-500/30' : 'shadow-blue-500/20'
-            }`}>
-              <Shield className="h-6 w-6 text-white" strokeWidth={2.5} />
-            </div>
-            <span className="text-2xl font-bold text-white" style={{ fontFamily: 'Sora, sans-serif' }}>
-              STABILIQ
-            </span>
+            <img
+              src={stabiliqLogo}
+              alt="STABILIQ"
+              className="h-10 w-auto"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
           </motion.div>
 
           <nav className="hidden md:flex items-center space-x-1">

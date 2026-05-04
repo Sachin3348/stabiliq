@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { Shield } from "lucide-react";
 import { PHONEPE_PAYMENT_FINAL_STATE, DEFAULT_TEST_ERROR } from "../constant";
+import stabiliqLogo from "@/assets/svgs/logo.svg";
 import { getPaymentStatus, initiatePayment } from "../apis/service";
 import { useAuth } from "../context/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -155,13 +155,10 @@ const PaymentStatusPage = () => {
       {/* Header — logo only */}
       <header className="w-full px-6 py-4 bg-white border-b border-gray-100 shadow-sm">
         <div
-          className="flex items-center gap-2 cursor-pointer w-fit"
+          className="flex items-center cursor-pointer w-fit"
           onClick={() => navigate("/")}
         >
-          <Shield className="h-7 w-7 text-blue-600" />
-          <span className="text-xl font-bold text-gray-900 tracking-tight">
-            STABILIQ
-          </span>
+          <img src={stabiliqLogo} alt="STABILIQ" className="h-9 w-auto" />
         </div>
       </header>
 

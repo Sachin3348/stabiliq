@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { Shield, LayoutDashboard, GraduationCap, FileText, Banknote, LogOut } from 'lucide-react';
+import { LayoutDashboard, GraduationCap, FileText, Banknote, LogOut } from 'lucide-react';
+import stabiliqLogo from '../assets/svgs/logo.svg';
 import { useAuth } from '../context/AuthContext';
 import { Button } from './ui/button';
 import PlanSelectModal from './PlanSelectModal';
@@ -35,11 +36,12 @@ const DashboardLayout = ({ children }) => {
       {/* Top Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div className="w-full mx-auto px-7 py-4 flex items-center justify-between">
-          <Link to="/dashboard" className="flex items-center space-x-3">
-            <div className="bg-gradient-to-br from-blue-500 to-teal-500 p-2.5 rounded-xl shadow-lg">
-              <Shield className="h-6 w-6 text-white" strokeWidth={2.5} />
-            </div>
-            <span className="text-2xl font-bold text-slate-900" style={{ fontFamily: 'Sora, sans-serif' }}>STABILIQ</span>
+          <Link to="/dashboard" className="flex items-center">
+            <img
+              src={stabiliqLogo}
+              alt="STABILIQ"
+              className="h-9 w-auto"
+            />
           </Link>
           
           <div className="flex items-center gap-4">
