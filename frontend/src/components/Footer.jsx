@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 import stabiliqLogo from '../assets/svgs/logo.svg';
+import instagramIcon from '../assets/svgs/instagramIcon.svg';
+import linkedInIcon from '../assets/svgs/linkedInIcon.svg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,7 +21,7 @@ const Footer = () => {
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Top Section */}
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div>
             <div className="flex items-center mb-4">
@@ -90,6 +92,39 @@ const Footer = () => {
               <li>
                 <a href="tel:+916239368517" className="text-slate-400 hover:text-white transition-colors text-sm">
                   Phone: <span className="text-white">+91 6239368517</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Follow Us */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="https://www.instagram.com/stabiliq.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors text-sm group"
+                >
+                  {/* <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-gradient-to-br group-hover:from-pink-500 group-hover:to-orange-400 transition-all duration-200"> */}
+                    <img src={instagramIcon} alt="Instagram" className="h-6 w-6" />
+                  {/* </span> */}
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/stabiliq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors text-sm group"
+                >
+                  {/* <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-blue-600 transition-all duration-200"> */}
+                    <img src={linkedInIcon} alt="LinkedIn" className="h-6 w-6" />
+                  {/* </span> */}
+                  LinkedIn
                 </a>
               </li>
             </ul>
