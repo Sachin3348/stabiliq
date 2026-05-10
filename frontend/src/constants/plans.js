@@ -10,7 +10,7 @@ export const PLANS = [
     totalPrice: 1178.82,
     features: [
       'Access to member support resources',
-      'AI upskilling course',
+      'Job transition KIT',
       'Eligibility for support during involuntary job loss'
     ],
     icon: Shield,
@@ -35,3 +35,8 @@ export const PLANS = [
     popular: true
   }
 ];
+
+export const PLAN_ACCESS_MAPPING = {
+  'basic': ['support_resources', 'job_transition_kit', 'involuntary_job_loss_support'],
+  'pro': ['job_transition_kit', 'support_resources', 'involuntary_job_loss_support']
+}

@@ -22,10 +22,10 @@ const DashboardLayout = ({ children }) => {
   };
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'AI Upskill & Transition', href: '/dashboard/courses', icon: GraduationCap },
-    { name: 'Job Transition Toolkit', href: '/dashboard/profile-analysis', icon: FileText },
-    { name: 'Financial Assistance', href: '/dashboard/financial-assistance', icon: Banknote },
+    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard, plans: ['basic', 'pro'] },
+    { name: 'AI Upskill & Transition', href: '/dashboard/courses', icon: GraduationCap, plans: ['pro'] },
+    { name: 'Job Transition Toolkit', href: '/dashboard/profile-analysis', icon: FileText, plans: ['basic', 'pro'] },
+    { name: 'Financial Assistance', href: '/dashboard/financial-assistance', icon: Banknote, plans: ['basic', 'pro'] },
   ];
 
   return (
@@ -68,7 +68,9 @@ const DashboardLayout = ({ children }) => {
         {/* Sidebar */}
         <aside className="w-64 bg-white border-r border-slate-200 min-h-[calc(100vh-73px)] sticky top-[73px]">
           <nav className="p-4 space-y-2">
-            {navigation.map((item) => {
+            {navigation
+              .filter((item) => item.plans.includes(user?.plan))
+              .map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
               return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { GraduationCap, FileText, Banknote, Calendar, Award, TrendingUp, ArrowRight } from 'lucide-react';
+import { GraduationCap, FileText, Banknote, ArrowRight, Lock } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import DashboardLayout from '../components/DashboardLayout';
@@ -34,30 +34,35 @@ const Dashboard = () => {
     fetchDashboardStats();
   }, [fetchDashboardStats]);
 
+  const userPlan = user?.plan; // 'basic' | 'pro'
+
   const quickActions = [
     {
       title: 'AI Upskilling Course',
       description: 'Continue your learning journey with AI-powered courses',
       icon: GraduationCap,
       color: 'from-indigo-500 to-purple-600',
-      href: '/dashboard/courses'
+      href: '/dashboard/courses',
+      plans: ['pro'], // only pro
     },
     {
       title: 'Job Transition Toolkit',
       description: 'Get AI-powered insights on your resume and LinkedIn',
       icon: FileText,
       color: 'from-teal-500 to-cyan-600',
-      href: '/dashboard/profile-analysis'
+      href: '/dashboard/profile-analysis',
+      plans: ['basic', 'pro'],
     },
     {
       title: 'Financial Assistance',
-      description: stats?.daysUntilFinancialAssistance > 0 
+      description: stats?.daysUntilFinancialAssistance > 0
         ? `Unlocks in ${stats?.daysUntilFinancialAssistance} days`
         : 'Request financial assistance now',
       icon: Banknote,
       color: 'from-blue-500 to-blue-600',
-      href: '/dashboard/financial-assistance'
-    }
+      href: '/dashboard/financial-assistance',
+      plans: ['basic', 'pro'],
+    },
   ];
 
   if (loading) {
@@ -140,6 +145,7 @@ const Dashboard = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {quickActions.map((action, index) => {
               const Icon = action.icon;
+              const hasAccess = action.plans.includes(userPlan);
               return (
                 <motion.div
                   key={action.title}
@@ -147,17 +153,38 @@ const Dashboard = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer group" onClick={() => navigate(action.href, { replace: true })}>
+                  <Card
+                    className={`border-0 shadow-lg transition-all relative overflow-hidden ${
+                      hasAccess
+                        ? 'hover:shadow-xl hover:-translate-y-1 cursor-pointer group'
+                        : 'opacity-60 cursor-not-allowed'
+                    }`}
+                    onClick={() => hasAccess && navigate(action.href, { replace: true })}
+                  >
+                    {/* Pro-only badge */}
+                    {!hasAccess && (
+                      <div className="absolute top-3 right-3 z-10 flex items-center gap-1 bg-slate-800 text-white text-xs font-semibold px-2 py-1 rounded-full">
+                        <Lock className="h-3 w-3" />
+                        Pro only
+                      </div>
+                    )}
                     <CardContent className="p-6">
-                      <div className={`bg-gradient-to-br ${action.color} rounded-xl h-14 w-14 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
+                      <div className={`bg-gradient-to-br ${action.color} rounded-xl h-14 w-14 flex items-center justify-center mb-4 shadow-lg ${hasAccess ? 'group-hover:scale-110' : ''} transition-transform`}>
                         <Icon className="h-7 w-7 text-white" strokeWidth={2} />
                       </div>
                       <h3 className="text-xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>{action.title}</h3>
                       <p className="text-slate-600 mb-4">{action.description}</p>
-                      <div className="flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
-                        Get Started
-                        <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </div>
+                      {hasAccess ? (
+                        <div className="flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
+                          Get Started
+                          <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      ) : (
+                        <div className="flex items-center text-slate-400 font-semibold text-sm">
+                          <Lock className="h-4 w-4 mr-1" />
+                          Upgrade to Pro to unlock
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 </motion.div>
