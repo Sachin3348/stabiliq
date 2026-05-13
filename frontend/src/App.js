@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import AIUpskill from "./pages/dashboard/AIUpskill";
 import ProfileAnalysis from "./pages/dashboard/ProfileAnalysis";
 import FinancialAssistance from "./pages/dashboard/FinancialAssistance";
+import CareerCounsellor from "./pages/dashboard/CareerCounsellor";
 import PaymentStatusPage from "./pages/payment-status";
 import { Toaster } from "./components/ui/sonner";
 import { Toaster as RadixToaster } from "./components/ui/toaster";
@@ -59,6 +60,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <FinancialAssistance />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/career-counsellor"
+              element={
+                <ProtectedRoute>
+                  <CareerCounsellor />
                 </ProtectedRoute>
               }
             />
