@@ -3,7 +3,8 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { 
   FileText, Upload, LinkIcon, Loader2, CheckCircle, AlertCircle,
   Clock, Search, Download, Edit3, Send, RefreshCw, Lock,
-  TrendingUp, Users, Timer, Target, Zap, ShieldCheck, ChevronDown, ChevronUp
+  TrendingUp, Users, Timer, Target, Zap, ShieldCheck, ChevronDown, ChevronUp,
+  Wand2
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -16,6 +17,7 @@ import { TEMPLATES, CATEGORIES } from '../../data/resumeTemplates';
 import FilterTabs from '../../components/resume-templates/FilterTabs';
 import TemplateGrid from '../../components/resume-templates/TemplateGrid';
 import TemplatePreviewModal from '../../components/resume-templates/TemplatePreviewModal';
+import MagicWriter from '../../components/MagicWriter';
 
 // ─── Animated Counter ─────────────────────────────────────────────────────────
 const useCountUp = (target, duration = 1800, start = false) => {
@@ -315,6 +317,9 @@ const ProfileAnalysis = () => {
   const [sortBy, setSortBy] = useState('popular');
   const [previewTemplate, setPreviewTemplate] = useState(null);
 
+  // ── Magic Writer ──────────────────────────────────────────────────────────
+  const [magicWriterOpen, setMagicWriterOpen] = useState(false);
+
   const filteredTemplates = useMemo(() => {
     let result = TEMPLATES;
     if (activeCategory !== 'all') result = result.filter(t => t.category === activeCategory);
@@ -387,19 +392,37 @@ const ProfileAnalysis = () => {
 
       const endpoint = isEditing
         ? `${API}/profile/submission`
-        : `${API}/profile/submit`;
+        : `${API}/profile/upload-resume`;
       const method = isEditing ? 'put' : 'post';
 
       const res = await axios[method](endpoint, formData, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
       });
 
-      setSubmission(res.data.submission);
+      // Handle the new response format from upload-resume endpoint
+      if (res.data.success && res.data.fileUrl) {
+        // Build submission object from upload response
+        const newSubmission = {
+          _id: res.data.submissionId || Date.now().toString(),
+          resumeUrl: res.data.fileUrl,
+          linkedinUrl: linkedinUrl.trim() || null,
+          jobDescription: jobDescription.trim(),
+          status: 'pending',
+          parsedResume: res.data.parsedResume || null,
+          createdAt: new Date().toISOString(),
+        };
+        setSubmission(newSubmission);
+      } else {
+        // Handle existing submission update format
+        setSubmission(res.data.submission || res.data);
+      }
+
       setIsEditing(false);
-      toast.success(isEditing ? 'Submission updated!' : 'Resume submitted for review!');
+      setResumeFile(null);
+      toast.success(isEditing ? 'Submission updated!' : 'Resume uploaded successfully!');
     } catch (err) {
       console.error(err);
-      toast.error(err.response?.data?.detail || 'Submission failed. Please try again.');
+      toast.error(err.response?.data?.detail || err.response?.data?.message || 'Submission failed. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -490,7 +513,22 @@ const ProfileAnalysis = () => {
         {submission && !isEditing && (
           <Card className="border-0 shadow-sm bg-slate-50">
             <CardContent className="p-6 space-y-4">
-              <h3 className="font-semibold text-slate-800 text-sm uppercase tracking-wide">Your Submission</h3>
+              <div className="flex items-center justify-between">
+                <h3 className="font-semibold text-slate-800 text-sm uppercase tracking-wide">Your Submission</h3>
+                {/* Magic Writer trigger — only when resume URL is available */}
+                {submission.resumeUrl && (
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => setMagicWriterOpen(true)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-white shadow"
+                    style={{ background: 'linear-gradient(135deg, #7c3aed, #6d28d9)' }}
+                  >
+                    <Wand2 className="h-3.5 w-3.5" />
+                    Magic Writer
+                  </motion.button>
+                )}
+              </div>
               <div className="grid md:grid-cols-2 gap-4 text-sm">
                 <div className="flex items-start gap-2">
                   <FileText className="h-4 w-4 text-teal-500 mt-0.5 flex-shrink-0" />
@@ -780,6 +818,16 @@ const ProfileAnalysis = () => {
           />
         )}
       </AnimatePresence>
+
+      {/* Magic Writer Modal */}
+      {magicWriterOpen && submission && (
+        <MagicWriter
+          resumeUrl={submission.resumeUrl}
+          parsedResume={submission.parsedResume}
+          token={token}
+          onClose={() => setMagicWriterOpen(false)}
+        />
+      )}
     </DashboardLayout>
   );
 };
