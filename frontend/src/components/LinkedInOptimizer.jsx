@@ -7,6 +7,7 @@ import {
   User, Briefcase, Award, MessageSquare, Search, BarChart2, ShieldCheck, Hash
 } from 'lucide-react';
 import axios from 'axios';
+import LinkedInReviewDashboard from './LinkedInReviewDashboard';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -685,7 +686,7 @@ const LinkedInOptimizer = ({ token, initialReview = null, reviewedAt = null }) =
   };
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className={phase === 'results' ? 'w-full' : 'max-w-3xl mx-auto'}>
       <AnimatePresence mode="wait">
         {phase === 'upload' && (
           <motion.div key="upload"
@@ -710,7 +711,11 @@ const LinkedInOptimizer = ({ token, initialReview = null, reviewedAt = null }) =
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }} transition={{ duration: 0.4 }}
           >
-            <ResultsPanel result={result} onReanalyze={handleReset} reviewedAt={reviewedAt} />
+            <LinkedInReviewDashboard
+              data={result}
+              onReanalyze={handleReset}
+              reviewedAt={reviewedAt}
+            />
           </motion.div>
         )}
       </AnimatePresence>
