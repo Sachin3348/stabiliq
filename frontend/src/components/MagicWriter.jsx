@@ -6,16 +6,13 @@ import {
   Briefcase, FolderOpen
 } from 'lucide-react';
 import axios from 'axios';
-import { usePdfRenderer } from '../hooks/usePdfRenderer';
 import BulletOptimizeModal from './BulletOptimizeModal';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// ─── PDF Preview (left panel) ─────────────────────────────────────────────────
+// ─── PDF Preview (left panel) - shows actual PDF ─────────────────────────────
 const PdfPreview = ({ pdfUrl }) => {
-  const { canvases, numPages, loading, error } = usePdfRenderer(pdfUrl);
-
   if (!pdfUrl) {
     return (
       <div className="flex flex-col items-center justify-center h-full text-slate-400 gap-3">
@@ -25,46 +22,26 @@ const PdfPreview = ({ pdfUrl }) => {
     );
   }
 
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center h-full gap-3 text-slate-500">
-        <Loader2 className="w-8 h-8 animate-spin text-teal-500" />
-        <p className="text-sm font-medium">Loading PDF preview…</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex flex-col items-center justify-center h-full gap-3 text-rose-500 px-6 text-center">
-        <AlertCircle className="w-8 h-8" />
-        <p className="text-sm">{error}</p>
-        <a
-          href={pdfUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-teal-600 underline hover:text-teal-800 mt-1"
-        >
-          Open PDF directly ↗
-        </a>
-      </div>
-    );
-  }
+  // Add parameters to hide PDF toolbar, side panels, and disable zoom
+  const cleanPdfUrl = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH&zoom=100`;
 
   return (
-    <div className="space-y-4 px-1">
-      {canvases.map((dataUrl, i) => (
-        <div key={i} className="rounded-xl overflow-hidden shadow-md border border-slate-200">
-          <img
-            src={dataUrl}
-            alt={`Resume page ${i + 1}`}
-            className="w-full h-auto block"
-          />
-        </div>
-      ))}
-      {numPages > 0 && (
-        <p className="text-xs text-slate-400 text-center pb-2">{numPages} page{numPages > 1 ? 's' : ''}</p>
-      )}
+    <div className="h-full w-full">
+      <iframe
+        src={cleanPdfUrl}
+        className="w-full h-full rounded-xl border border-slate-200 shadow-sm pointer-events-auto"
+        title="Resume PDF Preview"
+        style={{ 
+          minHeight: '600px',
+          pointerEvents: 'auto'
+        }}
+        onWheel={(e) => {
+          // Prevent zoom on Ctrl+Scroll
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+          }
+        }}
+      />
     </div>
   );
 };
@@ -566,16 +543,16 @@ const MagicWriter = ({ resumeUrl, parsedResume, token, onClose }) => {
         {/* Content — two-panel layout */}
         <div className="flex flex-1 overflow-hidden">
 
-          {/* LEFT — PDF Preview */}
-          <div className="flex-1 overflow-y-auto bg-slate-100 p-4 border-r border-slate-200">
+          {/* LEFT — PDF Preview (narrower width) */}
+          <div className="w-3/5 overflow-y-auto bg-slate-100 p-4 border-r border-slate-200">
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-1">
-              Resume Preview (read-only)
+              Resume Preview
             </p>
             <PdfPreview pdfUrl={resumeUrl} />
           </div>
 
-          {/* RIGHT — Magic Writer Panel */}
-          <div className="w-full max-w-sm flex-shrink-0 bg-white flex flex-col">
+          {/* RIGHT — Magic Writer Panel (wider width) */}
+          <div className="flex-1 bg-white flex flex-col">
             <MagicWriterPanel
               parsedResume={parsedResume}
               token={token}

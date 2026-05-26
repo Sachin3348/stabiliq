@@ -4,7 +4,7 @@ import {
   FileText, Upload, LinkIcon, Loader2, CheckCircle, AlertCircle,
   Clock, Search, Download, Edit3, Send, RefreshCw, Lock,
   TrendingUp, Users, Timer, Target, Zap, ShieldCheck, ChevronDown, ChevronUp,
-  Wand2
+  Wand2, FileCheck, Linkedin, FileEdit, Sparkles
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -18,6 +18,7 @@ import FilterTabs from '../../components/resume-templates/FilterTabs';
 import TemplateGrid from '../../components/resume-templates/TemplateGrid';
 import TemplatePreviewModal from '../../components/resume-templates/TemplatePreviewModal';
 import MagicWriter from '../../components/MagicWriter';
+import LinkedInOptimizer from '../../components/LinkedInOptimizer';
 
 // ─── Animated Counter ─────────────────────────────────────────────────────────
 const useCountUp = (target, duration = 1800, start = false) => {
@@ -320,6 +321,38 @@ const ProfileAnalysis = () => {
   // ── Magic Writer ──────────────────────────────────────────────────────────
   const [magicWriterOpen, setMagicWriterOpen] = useState(false);
 
+  // ── Toolkit Tabs ──────────────────────────────────────────────────────────
+  const [activeTab, setActiveTab] = useState('resume-optimizer');
+
+  const TOOLKIT_TABS = [
+    { 
+      id: 'resume-optimizer', 
+      label: 'Resume Optimizer', 
+      icon: FileCheck,
+      description: 'AI-powered resume analysis & improvement'
+    },
+    { 
+      id: 'linkedin-optimizer', 
+      label: 'LinkedIn Optimizer', 
+      icon: Linkedin,
+      description: 'Score & improve your LinkedIn profile with AI'
+    },
+    { 
+      id: 'targeted-resume', 
+      label: 'Targeted Resume', 
+      icon: Target,
+      description: 'Create job-specific resumes',
+      badge: 'Coming Soon'
+    },
+    { 
+      id: 'cover-letter', 
+      label: 'Cover Letter AI', 
+      icon: FileEdit,
+      description: 'Generate personalized cover letters',
+      badge: 'Coming Soon'
+    },
+  ];
+
   const filteredTemplates = useMemo(() => {
     let result = TEMPLATES;
     if (activeCategory !== 'all') result = result.filter(t => t.category === activeCategory);
@@ -468,12 +501,79 @@ const ProfileAnalysis = () => {
             <h1 className="text-3xl font-bold text-slate-900" style={{ fontFamily: 'Sora, sans-serif' }}>
               Job Transition Toolkit
             </h1>
-            <p className="text-slate-500 text-sm mt-0.5">Submit your resume for expert human review & feedback</p>
+            <p className="text-slate-500 text-sm mt-0.5">AI-powered tools to accelerate your job search</p>
           </div>
         </div>
 
-        {/* Why Resume Matters */}
-        <WhyResumeMatters />
+        {/* Toolkit Tabs */}
+        <div className="border-b border-slate-200">
+          <div className="flex gap-2 overflow-x-auto pb-px scrollbar-hide">
+            {TOOLKIT_TABS.map(tab => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              const isDisabled = tab.badge === 'Coming Soon';
+              
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => !isDisabled && setActiveTab(tab.id)}
+                  disabled={isDisabled}
+                  className={`relative flex items-center gap-2 px-4 py-3 rounded-t-xl font-semibold text-sm transition-all whitespace-nowrap ${
+                    isActive
+                      ? 'bg-white text-teal-600 border-t-2 border-x-2 border-teal-500 -mb-px'
+                      : isDisabled
+                      ? 'text-slate-400 hover:bg-slate-50 cursor-not-allowed'
+                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                  }`}
+                >
+                  <Icon className={`h-4 w-4 ${isActive ? 'text-teal-600' : ''}`} />
+                  <span>{tab.label}</span>
+                  {tab.badge && (
+                    <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">
+                      {tab.badge}
+                    </span>
+                  )}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-500"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Tab Description */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="flex items-center gap-2 text-sm text-slate-600 bg-teal-50 px-4 py-3 rounded-xl border border-teal-100"
+          >
+            <Sparkles className="h-4 w-4 text-teal-600" />
+            <span>{TOOLKIT_TABS.find(t => t.id === activeTab)?.description}</span>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Tab Content */}
+        <AnimatePresence mode="wait">
+          {activeTab === 'resume-optimizer' && (
+            <motion.div
+              key="resume-optimizer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-8"
+            >
+              {/* Why Resume Matters */}
+              <WhyResumeMatters />
 
         {/* Status Banner — shown when submitted & not editing */}
         <AnimatePresence>
@@ -785,7 +885,7 @@ const ProfileAnalysis = () => {
                 ATS-Friendly Resume Templates
               </h2>
               <p className="text-sm text-slate-500 mt-0.5">
-                {TEMPLATES.length} recruiter-tested templates — click to copy to Google Slides and customise.
+                {TEMPLATES.length} recruiter-tested templates - click to copy to Google Slides and customise.
               </p>
             </div>
           </div>
@@ -806,6 +906,48 @@ const ProfileAnalysis = () => {
             onUseTemplate={handleUseTemplate}
           />
         </div>
+              </motion.div>
+            )}
+
+            {/* Other tabs - Coming Soon placeholders */}
+            {activeTab !== 'resume-optimizer' && (
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                {activeTab === 'linkedin-optimizer' && (
+                  <LinkedInOptimizer
+                    token={token}
+                    initialReview={submission?.linkedInReview || null}
+                    reviewedAt={submission?.linkedInReviewedAt || null}
+                  />
+                )}
+
+                {(activeTab === 'targeted-resume' || activeTab === 'cover-letter') && (
+                  <div className="flex flex-col items-center justify-center py-20 px-6 text-center">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mb-6">
+                      {TOOLKIT_TABS.find(t => t.id === activeTab)?.icon &&
+                        React.createElement(TOOLKIT_TABS.find(t => t.id === activeTab).icon, {
+                          className: 'w-10 h-10 text-amber-600'
+                        })
+                      }
+                    </div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3">Coming Soon!</h3>
+                    <p className="text-slate-600 max-w-md mb-6">
+                      We're working hard to bring you this amazing feature. Stay tuned for updates!
+                    </p>
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200">
+                      <Clock className="w-4 h-4 text-amber-600" />
+                      <span className="text-sm font-semibold text-amber-700">In Development</span>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
       </motion.div>
 
       {/* Preview Modal */}
