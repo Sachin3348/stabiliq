@@ -18,6 +18,7 @@ import FilterTabs from '../../components/resume-templates/FilterTabs';
 import TemplateGrid from '../../components/resume-templates/TemplateGrid';
 import TemplatePreviewModal from '../../components/resume-templates/TemplatePreviewModal';
 import MagicWriter from '../../components/MagicWriter';
+import TargetedResume from '../../components/TargetedResume';
 import LinkedInOptimizer from '../../components/LinkedInOptimizer';
 
 // ─── Animated Counter ─────────────────────────────────────────────────────────
@@ -342,7 +343,6 @@ const ProfileAnalysis = () => {
       label: 'Targeted Resume', 
       icon: Target,
       description: 'Create job-specific resumes',
-      badge: 'Coming Soon'
     },
     { 
       id: 'cover-letter', 
@@ -926,7 +926,11 @@ const ProfileAnalysis = () => {
                   />
                 )}
 
-                {(activeTab === 'targeted-resume' || activeTab === 'cover-letter') && (
+                {activeTab === 'targeted-resume' && (
+                  <TargetedResume token={token} />
+                )}
+
+                {activeTab === 'cover-letter' && (
                   <div className="flex flex-col items-center justify-center py-20 px-6 text-center">
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mb-6">
                       {TOOLKIT_TABS.find(t => t.id === activeTab)?.icon &&
