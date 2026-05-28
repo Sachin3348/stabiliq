@@ -20,6 +20,7 @@ import TemplatePreviewModal from '../../components/resume-templates/TemplatePrev
 import MagicWriter from '../../components/MagicWriter';
 import TargetedResume from '../../components/TargetedResume';
 import LinkedInOptimizer from '../../components/LinkedInOptimizer';
+import ToolkitOverview from '../../components/ToolkitOverview';
 
 // ─── Animated Counter ─────────────────────────────────────────────────────────
 const useCountUp = (target, duration = 1800, start = false) => {
@@ -323,9 +324,23 @@ const ProfileAnalysis = () => {
   const [magicWriterOpen, setMagicWriterOpen] = useState(false);
 
   // ── Toolkit Tabs ──────────────────────────────────────────────────────────
-  const [activeTab, setActiveTab] = useState('resume-optimizer');
+  const [activeTab, setActiveTab] = useState('overview');
+  const toolkitRef = useRef(null);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setTimeout(() => {
+      toolkitRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
+  };
 
   const TOOLKIT_TABS = [
+    {
+      id: 'overview',
+      label: 'Overview',
+      icon: Sparkles,
+      description: 'Tips, insights & your complete career toolkit at a glance',
+    },
     { 
       id: 'resume-optimizer', 
       label: 'Resume Optimizer', 
@@ -506,7 +521,7 @@ const ProfileAnalysis = () => {
         </div>
 
         {/* Toolkit Tabs */}
-        <div className="border-b border-slate-200">
+        <div ref={toolkitRef} className="border-b border-slate-200" style={{ scrollMarginTop: '80px' }}>
           <div className="flex gap-2 overflow-x-auto pb-px scrollbar-hide">
             {TOOLKIT_TABS.map(tab => {
               const Icon = tab.icon;
@@ -516,7 +531,7 @@ const ProfileAnalysis = () => {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => !isDisabled && setActiveTab(tab.id)}
+                  onClick={() => !isDisabled && handleTabChange(tab.id)}
                   disabled={isDisabled}
                   className={`relative flex items-center gap-2 px-4 py-3 rounded-t-xl font-semibold text-sm transition-all whitespace-nowrap ${
                     isActive
@@ -563,15 +578,54 @@ const ProfileAnalysis = () => {
 
         {/* Tab Content */}
         <AnimatePresence mode="wait">
-          {activeTab === 'resume-optimizer' && (
-            <motion.div
-              key="resume-optimizer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-8"
-            >
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {activeTab === 'overview' && (
+              <div className="space-y-10">
+                <ToolkitOverview onNavigateTab={handleTabChange} submission={submission} />
+
+                {/* ── Resume Templates ───────────────────────────────────── */}
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="bg-gradient-to-br from-teal-50 to-cyan-50 p-3 rounded-xl border border-teal-100">
+                      <FileText className="h-5 w-5 text-teal-600" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-bold text-slate-900" style={{ fontFamily: 'Sora, sans-serif' }}>
+                        ATS-Friendly Resume Templates
+                      </h2>
+                      <p className="text-sm text-slate-500 mt-0.5">
+                        {TEMPLATES.length} recruiter-tested templates - click to copy to Google Slides and customise.
+                      </p>
+                    </div>
+                  </div>
+
+                  <FilterTabs
+                    active={activeCategory}
+                    onChange={handleCategoryChange}
+                    counts={categoryCounts}
+                  />
+
+                  <TemplateGrid
+                    templates={filteredTemplates}
+                    searchQuery={searchQuery}
+                    onSearchChange={setSearchQuery}
+                    sortBy={sortBy}
+                    onSortChange={setSortBy}
+                    onPreview={setPreviewTemplate}
+                    onUseTemplate={handleUseTemplate}
+                  />
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'resume-optimizer' && (
+              <div className="space-y-6">
               {/* Why Resume Matters */}
               <WhyResumeMatters />
 
@@ -874,84 +928,39 @@ const ProfileAnalysis = () => {
           )}
         </AnimatePresence>
 
-        {/* ── Resume Templates ─────────────────────────────────────────── */}
-        <div>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="bg-gradient-to-br from-teal-50 to-cyan-50 p-3 rounded-xl border border-teal-100">
-              <FileText className="h-5 w-5 text-teal-600" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-slate-900" style={{ fontFamily: 'Sora, sans-serif' }}>
-                ATS-Friendly Resume Templates
-              </h2>
-              <p className="text-sm text-slate-500 mt-0.5">
-                {TEMPLATES.length} recruiter-tested templates - click to copy to Google Slides and customise.
-              </p>
-            </div>
-          </div>
-
-          <FilterTabs
-            active={activeCategory}
-            onChange={handleCategoryChange}
-            counts={categoryCounts}
-          />
-
-          <TemplateGrid
-            templates={filteredTemplates}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-            onPreview={setPreviewTemplate}
-            onUseTemplate={handleUseTemplate}
-          />
-        </div>
-              </motion.div>
+        {/* ── Resume Templates removed — now lives in Overview tab ── */}
+              </div>
             )}
 
-            {/* Other tabs - Coming Soon placeholders */}
-            {activeTab !== 'resume-optimizer' && (
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                {activeTab === 'linkedin-optimizer' && (
-                  <LinkedInOptimizer
-                    token={token}
-                    initialReview={submission?.linkedInReview || null}
-                    reviewedAt={submission?.linkedInReviewedAt || null}
-                  />
-                )}
-
-                {activeTab === 'targeted-resume' && (
-                  <TargetedResume token={token} />
-                )}
-
-                {activeTab === 'cover-letter' && (
-                  <div className="flex flex-col items-center justify-center py-20 px-6 text-center">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mb-6">
-                      {TOOLKIT_TABS.find(t => t.id === activeTab)?.icon &&
-                        React.createElement(TOOLKIT_TABS.find(t => t.id === activeTab).icon, {
-                          className: 'w-10 h-10 text-amber-600'
-                        })
-                      }
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">Coming Soon!</h3>
-                    <p className="text-slate-600 max-w-md mb-6">
-                      We're working hard to bring you this amazing feature. Stay tuned for updates!
-                    </p>
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200">
-                      <Clock className="w-4 h-4 text-amber-600" />
-                      <span className="text-sm font-semibold text-amber-700">In Development</span>
-                    </div>
-                  </div>
-                )}
-              </motion.div>
+            {activeTab === 'linkedin-optimizer' && (
+              <LinkedInOptimizer
+                token={token}
+                initialReview={submission?.linkedInReview || null}
+                reviewedAt={submission?.linkedInReviewedAt || null}
+              />
             )}
-          </AnimatePresence>
+
+            {activeTab === 'targeted-resume' && (
+              <TargetedResume token={token} />
+            )}
+
+            {activeTab === 'cover-letter' && (
+              <div className="flex flex-col items-center justify-center py-20 px-6 text-center">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mb-6">
+                  <FileEdit className="w-10 h-10 text-amber-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">Coming Soon!</h3>
+                <p className="text-slate-600 max-w-md mb-6">
+                  We're working hard to bring you this amazing feature. Stay tuned for updates!
+                </p>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200">
+                  <Clock className="w-4 h-4 text-amber-600" />
+                  <span className="text-sm font-semibold text-amber-700">In Development</span>
+                </div>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
 
       {/* Preview Modal */}
