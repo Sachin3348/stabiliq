@@ -55,7 +55,7 @@ const CTASection = ({ onBrowse, onUpload }) => (
         </div>
 
         <p className="text-slate-600 text-sm mt-8">
-          Free templates available · No credit card required · Instant PDF export
+          Free templates available · Instant PDF export
         </p>
       </motion.div>
     </div>

@@ -118,7 +118,7 @@ const TemplatePreviewModal = ({ template, onClose, onUseTemplate }) => {
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <p className="text-xs text-slate-400 text-center mt-2">
-                  {template.isFree ? 'Free — no credit card required' : 'Available with Pro membership'}
+                  {template.isFree ? 'Free — included in your membership' : 'Available with Pro membership'}
                 </p>
               </div>
 

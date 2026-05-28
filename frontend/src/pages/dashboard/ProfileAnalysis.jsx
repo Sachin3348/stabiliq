@@ -155,7 +155,7 @@ const InsightCard = ({ insight, index, inView }) => (
 const WhyResumeMatters = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <div ref={ref} className="space-y-4">
@@ -224,7 +224,7 @@ const WhyResumeMatters = () => {
               </div>
 
               {/* CTA nudge */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 }}
@@ -238,7 +238,7 @@ const WhyResumeMatters = () => {
                   <CheckCircle className="w-4 h-4" />
                   Included in your plan
                 </div>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
         )}
@@ -589,6 +589,9 @@ const ProfileAnalysis = () => {
               <div className="space-y-10">
                 <ToolkitOverview onNavigateTab={handleTabChange} submission={submission} />
 
+                {/* Why Resume Matters — collapsed by default to keep the page clean */}
+                <WhyResumeMatters />
+
                 {/* ── Resume Templates ───────────────────────────────────── */}
                 <div>
                   <div className="flex items-center gap-3 mb-6">
@@ -626,9 +629,6 @@ const ProfileAnalysis = () => {
 
             {activeTab === 'resume-optimizer' && (
               <div className="space-y-6">
-              {/* Why Resume Matters */}
-              <WhyResumeMatters />
-
         {/* Status Banner — shown when submitted & not editing */}
         <AnimatePresence>
           {submission && !isEditing && statusCfg && (

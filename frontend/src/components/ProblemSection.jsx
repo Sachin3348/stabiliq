@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, TrendingDown, Clock, CreditCard } from 'lucide-react';
+import { AlertTriangle, TrendingDown, Clock, Wallet } from 'lucide-react';
 
 const ProblemSection = () => {
   const problems = [
@@ -14,8 +14,8 @@ const ProblemSection = () => {
       description: 'Job loss strikes without warning, leaving no time to prepare financially'
     },
     {
-      icon: CreditCard,
-      title: 'Immediate Stress',
+      icon: Wallet,
+      title: 'Immediate Financial Stress',
       description: '1-2 months without salary can create serious crisis for most families'
     }
   ];
