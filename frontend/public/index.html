@@ -107,6 +107,23 @@
                 Contact Us
             </p>
         </a>
+        <script>
+            (function () {
+                function updateContactBtn() {
+                    var btn = document.getElementById('contact-us-button');
+                    if (!btn) return;btn.style.display = window.location
+                    .pathname.startsWith('/dashboard') ? 'none' : 'inline-flex';
+                }
+                updateContactBtn();
+                // Also re-check on client-side navigation (React Router)
+                var _pushState = history.pushState;
+                history.pushState = function () {
+                    _pushState.apply(history, arguments);
+                    updateContactBtn();
+                };
+                window.addEventListener('popstate', updateContactBtn);
+            })();
+        </script>
         <!-- <script>
             !(function (t, e) {
                 var o, n, p, r;
