@@ -39,6 +39,15 @@ export function initiatePayment(data, token) {
   });
 }
 
+export function validateCoupon(code, amount, token, context="subscription") {
+  return axios.post(`${API_BASE_URL}/api/coupons/validate`, { code, amount, context }, {
+    headers: {
+      "content-type": "application/json",
+      "authorization": `Bearer ${token}`
+    },
+  });
+}
+
 
 // export function loginAPI(url, data) {
 //   return api.post({

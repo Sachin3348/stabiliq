@@ -7,24 +7,34 @@ import { useToast } from '../hooks/use-toast';
 import { PLANS } from '../constants/plans';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate, useSearchParams } from "react-router-dom";
+import CheckoutModal from './CheckoutModal';
 
 
 const Pricing = () => {
   const { toast } = useToast();
-  const [loading, setLoading] = useState({ basic: false, pro: false });
+  const [checkoutPlan, setCheckoutPlan] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { token } = useAuth();
   const navigate = useNavigate();
-  const handleBecomeMember = async (plan) => {
-    setLoading((prev) => ({ ...prev, [plan]: true }));
+
+  const handleBecomeMember = (planId) => {
+    if (!token) {
+      localStorage.setItem("selectedPlan", planId);
+      navigate('/signup');
+      return;
+    }
+    const plan = PLANS.find((p) => p.id === planId);
+    setCheckoutPlan(plan);
+  };
+
+  const handleConfirmPayment = async (couponCode) => {
+    if (!checkoutPlan) return;
+    setLoading(true);
     try {
-      if(!token) {
-        localStorage.setItem("selectedPlan", plan);
-        navigate('/signup');
-        return;
-      }
       const result = await processMembership({
-        plan,
-        timestamp: new Date().toISOString()
+        plan: checkoutPlan.id,
+        timestamp: new Date().toISOString(),
+        ...(couponCode ? { couponCode } : {})
       }, token);
       if (result.success) {
         window.location = result.paymentUrl;
@@ -32,11 +42,11 @@ const Pricing = () => {
     } catch (error) {
       toast({
         title: "Error",
-        description: error.message || 'Something went wrong. Please try again.',
+        description: error.message || 'Something went wrong. Please try again.', //  kar di 
         variant: "destructive"
       });
     } finally {
-      setLoading((prev) => ({ ...prev, [plan]: false }));
+      setLoading(false);
     }
   };
 
@@ -48,6 +58,15 @@ const Pricing = () => {
   };
 
   return (
+    <>
+    {checkoutPlan && (
+      <CheckoutModal
+        plan={checkoutPlan}
+        onConfirm={handleConfirmPayment}
+        onClose={() => !loading && setCheckoutPlan(null)}
+        loading={loading}
+      />
+    )}
     <section id="pricing" className="py-24 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -119,13 +138,12 @@ const Pricing = () => {
                     ))}
                   </div>
 
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className={`w-full bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white text-lg py-7 font-bold rounded-xl shadow-xl transition-all hover:scale-105`}
                     onClick={() => handleBecomeMember(plan.id)}
-                    disabled={loading[plan.id]}
                   >
-                    {loading[plan.id] ? 'Processing...' : 'Get Started'}
+                    Get Started
                   </Button>
                 </CardContent>
               </Card>
@@ -147,6 +165,7 @@ const Pricing = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

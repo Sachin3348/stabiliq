@@ -6,29 +6,33 @@ import { PLANS } from '../constants/plans';
 import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
 import { useAuth } from '@/context/AuthContext';
+import CheckoutModal from './CheckoutModal';
 
-/**
- * Non-dismissible modal shown when user is logged in but has no active plan.
- * User must select a plan to use the dashboard.
- */
 const PlanSelectModal = ({ onPlanSelected }) => {
   const { toast } = useToast();
-  const [loading, setLoading] = useState({ basic: false, pro: false });
-  const { token } = useAuth()
+  const [checkoutPlan, setCheckoutPlan] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { token } = useAuth();
 
-  const handleSelectPlan = async (planId) => {
-    setLoading((prev) => ({ ...prev, [planId]: true }));
+  const handleSelectPlan = (planId) => {
+    const plan = PLANS.find((p) => p.id === planId);
+    setCheckoutPlan(plan);
+  };
+
+  const handleConfirmPayment = async (couponCode) => {
+    if (!checkoutPlan) return;
+    setLoading(true);
     try {
       const result = await processMembership({
-        plan: planId,
-        timestamp: new Date().toISOString()
+        plan: checkoutPlan.id,
+        timestamp: new Date().toISOString(),
+        ...(couponCode ? { couponCode } : {})
       }, token);
-      if(result.success && result.paymentUrl) {
+      if (result.success && result.paymentUrl) {
         window.location = result.paymentUrl;
-      }else {
+      } else {
         throw new Error('Payment initiation failed, please try again.');
       }
-
     } catch (error) {
       toast({
         title: 'Error',
@@ -36,11 +40,20 @@ const PlanSelectModal = ({ onPlanSelected }) => {
         variant: 'destructive'
       });
     } finally {
-      setLoading((prev) => ({ ...prev, [planId]: false }));
+      setLoading(false);
     }
   };
 
   return (
+    <>
+    {checkoutPlan && (
+      <CheckoutModal
+        plan={checkoutPlan}
+        onConfirm={handleConfirmPayment}
+        onClose={() => !loading && setCheckoutPlan(null)}
+        loading={loading}
+      />
+    )}
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-sm p-4 overflow-y-auto">
       <div className="relative w-full max-w-5xl my-8">
         <div className="text-center mb-10">
@@ -113,9 +126,8 @@ const PlanSelectModal = ({ onPlanSelected }) => {
                     size="lg"
                     className={`w-full bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white text-base py-6 font-bold rounded-xl shadow-xl transition-all hover:scale-[1.02]`}
                     onClick={() => handleSelectPlan(plan.id)}
-                    disabled={loading[plan.id]}
                   >
-                    {loading[plan.id] ? 'Processing...' : 'Get Started'}
+                    Get Started
                   </Button>
                 </CardContent>
               </Card>
@@ -124,6 +136,7 @@ const PlanSelectModal = ({ onPlanSelected }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
