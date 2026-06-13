@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { redirectToPayment } from '../utils/payment';
 import { Button } from './ui/button';
 import { Check, Sparkles } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
@@ -37,7 +38,7 @@ const Pricing = () => {
         ...(couponCode ? { couponCode } : {})
       }, token);
       if (result.success) {
-        window.location = result.paymentUrl;
+        await redirectToPayment(result);
       }
     } catch (error) {
       toast({

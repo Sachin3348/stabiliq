@@ -98,9 +98,11 @@ export const processMembership = async (memberData, token) => {
   try {
 
     const response = await getmembershipPaymentLink(API_ENDPOINTS.paymentApi, memberData, token)
-    return { 
-      success: true, 
-      paymentUrl: response?.data?.checkoutPageUrl
+    return {
+      success: true,
+      pgGateway: response?.data?.pgGateway,
+      paymentUrl: response?.data?.checkoutPageUrl,
+      paymentSessionId: response?.data?.paymentSessionId
     };
   } catch (error) {
     console.error('Error processing membership:', error);

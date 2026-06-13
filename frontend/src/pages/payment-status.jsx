@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { PHONEPE_PAYMENT_FINAL_STATE, DEFAULT_TEST_ERROR } from "../constant";
 import stabiliqLogo from "@/assets/svgs/logo.svg";
 import { getPaymentStatus, initiatePayment } from "../apis/service";
+import { redirectToPayment } from "../utils/payment";
 import { useAuth } from "../context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -113,11 +114,11 @@ const PaymentStatusPage = () => {
       );
       const data = response.data;
 
-      if (data?.checkoutPageUrl) {
-        window.location.href = data.checkoutPageUrl;
-      } else {
-        setErrorMsg("Unable to initiate payment. Please try again.");
-      }
+      await redirectToPayment({
+        pgGateway: data?.pgGateway,
+        paymentUrl: data?.checkoutPageUrl,
+        paymentSessionId: data?.paymentSessionId
+      });
     } catch (error) {
       console.error("Error initiating payment:", error);
       setErrorMsg(

@@ -6,6 +6,7 @@ import { PLANS } from '../constants/plans';
 import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
 import { useAuth } from '@/context/AuthContext';
+import { redirectToPayment } from '../utils/payment';
 import CheckoutModal from './CheckoutModal';
 
 const PlanSelectModal = ({ onPlanSelected }) => {
@@ -28,8 +29,8 @@ const PlanSelectModal = ({ onPlanSelected }) => {
         timestamp: new Date().toISOString(),
         ...(couponCode ? { couponCode } : {})
       }, token);
-      if (result.success && result.paymentUrl) {
-        window.location = result.paymentUrl;
+      if (result.success) {
+        await redirectToPayment(result);
       } else {
         throw new Error('Payment initiation failed, please try again.');
       }

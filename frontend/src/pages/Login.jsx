@@ -11,6 +11,7 @@ import { useToast } from '../hooks/use-toast';
 import axios from 'axios';
 import { getmembershipPaymentLink } from '@/apis/service';
 import { API_ENDPOINTS } from '@/constant';
+import { redirectToPayment } from '../utils/payment';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -82,10 +83,12 @@ const Login = () => {
        if(plan && !response.data?.user?.plan) {
           const paymentResponse = await getmembershipPaymentLink(API_ENDPOINTS.paymentApi, {plan, timestamp: new Date().toISOString()}, response.data.token);
           localStorage.removeItem("selectedPlan");
-          if (paymentResponse?.data?.checkoutPageUrl) {
-            window.location.href = paymentResponse.data.checkoutPageUrl;
-            return;
-          } 
+          await redirectToPayment({
+            pgGateway: paymentResponse?.data?.pgGateway,
+            paymentUrl: paymentResponse?.data?.checkoutPageUrl,
+            paymentSessionId: paymentResponse?.data?.paymentSessionId
+          });
+          return;
         }
         toast({
           title: "Welcome back!",
