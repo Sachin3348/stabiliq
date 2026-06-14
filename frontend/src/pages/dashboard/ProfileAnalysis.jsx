@@ -4,7 +4,8 @@ import {
   FileText, Upload, Loader2, CheckCircle,
   Clock, RefreshCw,
   TrendingUp, Users, Timer, Target, Zap, ShieldCheck, ChevronDown, ChevronUp,
-  Wand2, FileCheck, Linkedin, FileEdit, Sparkles, Briefcase, FolderOpen
+  Wand2, FileCheck, Linkedin, FileEdit, Sparkles, Briefcase, FolderOpen,
+  AlignLeft, PenLine, Star, LayoutList, AlertCircle, CheckCircle2
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -269,6 +270,60 @@ const buildCounts = (templates) => {
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+// ─── Resume Score Row (expandable sub-score) ─────────────────────────────────
+const ResumeScoreRow = ({ label, Icon, section, pct, barColor, textColor, bgColor, borderColor, delay }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }}
+      transition={{ delay, duration: 0.3 }}
+    >
+      <button
+        onClick={() => section.feedback && setOpen(v => !v)}
+        className={`w-full flex items-center gap-3 px-5 py-3.5 ${bgColor} ${section.feedback ? 'cursor-pointer' : 'cursor-default'} transition-colors`}
+      >
+        <div className={`w-8 h-8 rounded-lg border ${borderColor} ${bgColor} flex items-center justify-center flex-shrink-0`}>
+          <Icon className={`w-3.5 h-3.5 ${textColor}`} />
+        </div>
+        <div className="flex-1 text-left">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-sm font-semibold text-slate-800">{label}</span>
+            <span className={`text-sm font-extrabold ${textColor}`}>
+              {section.score}<span className="text-xs font-normal text-slate-400">/{section.maxScore}</span>
+            </span>
+          </div>
+          <div className="h-1.5 bg-white/70 rounded-full overflow-hidden">
+            <motion.div
+              className={`h-full rounded-full ${barColor}`}
+              initial={{ width: 0 }}
+              animate={{ width: `${pct}%` }}
+              transition={{ delay: delay + 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </div>
+        </div>
+        {section.feedback && (
+          open
+            ? <ChevronUp className="w-4 h-4 text-slate-400 flex-shrink-0" />
+            : <ChevronDown className="w-4 h-4 text-slate-400 flex-shrink-0" />
+        )}
+      </button>
+      <AnimatePresence>
+        {open && section.feedback && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.22 }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 py-3 bg-white border-t border-slate-50">
+              <p className="text-xs text-slate-600 leading-relaxed">{section.feedback}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
 const ProfileAnalysis = () => {
   const { token } = useAuth();
   const fileInputRef = useRef(null);
@@ -376,6 +431,7 @@ const ProfileAnalysis = () => {
           setResumeData({
             resumeUrl: data.resumeUrl,
             parsedResume: data.parsedResume || null,
+            resumeScore: data.resumeScore || null,
           });
           setOptimizerPhase('results');
         }
@@ -422,6 +478,7 @@ const ProfileAnalysis = () => {
         setResumeData({
           resumeUrl: res.data.fileUrl,
           parsedResume: res.data.parsedResume || null,
+          resumeScore: res.data.resumeScore || null,
         });
         setOptimizerPhase('results');
         setResumeFile(null);
@@ -778,6 +835,124 @@ const ProfileAnalysis = () => {
                               Open Magic Writer
                             </motion.button>
                           </div>
+                        </div>
+                      );
+                    })()}
+
+                    {/* ── Resume Score Panel ───────────────────────── */}
+                    {resumeData.resumeScore && (() => {
+                      const rs = resumeData.resumeScore;
+                      const SCORE_META = [
+                        { key: 'impactScore',   label: 'Impact',   icon: TrendingUp },
+                        { key: 'brevityScore',  label: 'Brevity',  icon: AlignLeft },
+                        { key: 'styleScore',    label: 'Style',    icon: PenLine },
+                        { key: 'skillsScore',   label: 'Skills',   icon: Star },
+                        { key: 'sectionsScore', label: 'Sections', icon: LayoutList },
+                      ];
+                      const ringColor = rs.overallScore >= 70 ? '#10b981' : rs.overallScore >= 45 ? '#f59e0b' : '#ef4444';
+                      const ringSize = 96;
+                      const strokeWidth = 8;
+                      const radius = (ringSize - strokeWidth) / 2;
+                      const circumference = 2 * Math.PI * radius;
+
+                      return (
+                        <div className="bg-white border border-slate-100 rounded-2xl shadow-sm overflow-hidden">
+                          {/* Header row */}
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-5 px-6 py-5 border-b border-slate-50">
+                            {/* Score ring */}
+                            <div className="relative flex-shrink-0" style={{ width: ringSize, height: ringSize }}>
+                              <svg width={ringSize} height={ringSize} className="-rotate-90">
+                                <circle cx={ringSize/2} cy={ringSize/2} r={radius} fill="none" stroke="#e2e8f0" strokeWidth={strokeWidth} />
+                                <motion.circle
+                                  cx={ringSize/2} cy={ringSize/2} r={radius} fill="none" stroke={ringColor}
+                                  strokeWidth={strokeWidth} strokeLinecap="round" strokeDasharray={circumference}
+                                  initial={{ strokeDashoffset: circumference }}
+                                  animate={{ strokeDashoffset: circumference - (rs.overallScore / 100) * circumference }}
+                                  transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                                />
+                              </svg>
+                              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                <motion.span
+                                  initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
+                                  transition={{ delay: 0.5, duration: 0.4 }}
+                                  className="text-2xl font-extrabold text-slate-900 leading-none"
+                                >{rs.overallScore}</motion.span>
+                                <span className="text-xs text-slate-400 font-medium">/100</span>
+                              </div>
+                            </div>
+                            {/* Meta */}
+                            <div className="flex-1">
+                              <p className="text-base font-bold text-slate-900">Resume Score</p>
+                              {rs.detectedRole && <p className="text-sm text-slate-600 mt-0.5">{rs.detectedRole}</p>}
+                              {rs.detectedDomain && <p className="text-xs text-slate-400 mt-0.5">{rs.detectedDomain}</p>}
+                            </div>
+                          </div>
+
+                          {/* Sub-score rows */}
+                          <div className="divide-y divide-slate-50">
+                            {SCORE_META.map(({ key, label, icon: Icon }, idx) => {
+                              const section = rs[key];
+                              if (!section) return null;
+                              const pct = Math.round((section.score / section.maxScore) * 100);
+                              const barColor   = pct >= 70 ? 'bg-green-500'    : pct >= 40 ? 'bg-amber-500'    : 'bg-rose-500';
+                              const textColor  = pct >= 70 ? 'text-green-700'  : pct >= 40 ? 'text-amber-700'  : 'text-rose-700';
+                              const bgColor    = pct >= 70 ? 'bg-green-50'     : pct >= 40 ? 'bg-amber-50'     : 'bg-rose-50';
+                              const borderColor= pct >= 70 ? 'border-green-100': pct >= 40 ? 'border-amber-100': 'border-rose-100';
+
+                              return (
+                                <ResumeScoreRow
+                                  key={key}
+                                  label={label}
+                                  Icon={Icon}
+                                  section={section}
+                                  pct={pct}
+                                  barColor={barColor}
+                                  textColor={textColor}
+                                  bgColor={bgColor}
+                                  borderColor={borderColor}
+                                  delay={idx * 0.08}
+                                />
+                              );
+                            })}
+                          </div>
+
+                          {/* Issues & Strengths */}
+                          {(rs.topIssues?.length > 0 || rs.strengths?.length > 0) && (
+                            <div className="grid sm:grid-cols-2 gap-0 border-t border-slate-50">
+                              {rs.topIssues?.length > 0 && (
+                                <div className="px-5 py-4 sm:border-r border-slate-50">
+                                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                                    <AlertCircle className="w-3.5 h-3.5 text-amber-500" />
+                                    Top Issues
+                                  </p>
+                                  <ul className="space-y-2">
+                                    {rs.topIssues.map((issue, i) => (
+                                      <li key={i} className="text-xs text-slate-700 leading-relaxed flex items-start gap-2">
+                                        <span className="mt-1 w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" />
+                                        {issue}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                              {rs.strengths?.length > 0 && (
+                                <div className="px-5 py-4">
+                                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />
+                                    Strengths
+                                  </p>
+                                  <ul className="space-y-2">
+                                    {rs.strengths.map((s, i) => (
+                                      <li key={i} className="text-xs text-slate-700 leading-relaxed flex items-start gap-2">
+                                        <span className="mt-1 w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0" />
+                                        {s}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </div>
                       );
                     })()}

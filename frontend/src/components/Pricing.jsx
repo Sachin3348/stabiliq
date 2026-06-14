@@ -68,7 +68,7 @@ const Pricing = () => {
         loading={loading}
       />
     )}
-    <section id="pricing" className="py-24 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
+    <section id="pricing" className="py-12 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -82,14 +82,14 @@ const Pricing = () => {
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
-          <div className="inline-block bg-blue-500/20 backdrop-blur-sm text-blue-200 px-5 py-2.5 rounded-full text-sm font-bold mb-6 border border-blue-400/30">
+        <div className="text-center mb-8">
+          <div className="inline-block bg-blue-500/20 backdrop-blur-sm text-blue-200 px-4 py-1.5 rounded-full text-xs font-bold mb-3 border border-blue-400/30">
             SIMPLE PRICING
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'Sora, sans-serif' }}>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>
             Simple, transparent pricing
           </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-base text-slate-300 max-w-2xl mx-auto">
             Choose the plan that's right for you. No hidden fees.
           </p>
         </div>
@@ -110,16 +110,16 @@ const Pricing = () => {
                   </div>
                 )}
                 
-                <CardContent className="p-10">
-                  <div className="mb-8">
-                    <div className={`bg-gradient-to-br ${plan.gradient} p-4 rounded-2xl inline-flex shadow-xl mb-6`}>
-                      <Icon className="h-10 w-10 text-white" strokeWidth={2.5} />
+                <CardContent className="p-6">
+                  <div className="mb-4">
+                    <div className={`bg-gradient-to-br ${plan.gradient} p-3 rounded-2xl inline-flex shadow-xl mb-3`}>
+                      <Icon className="h-7 w-7 text-white" strokeWidth={2.5} />
                     </div>
-                    <h3 className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.name}</h3>
-                    <p className="text-slate-600 font-medium mb-6">{plan.subtitle}</p>
+                    <h3 className="text-xl font-bold text-slate-900 mb-1" style={{ fontFamily: 'Sora, sans-serif' }}>{plan.name}</h3>
+                    <p className="text-slate-600 font-medium mb-2 text-sm">{plan.subtitle}</p>
                     <div className="flex items-baseline mb-1">
-                      <span className={`text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}`} style={{ fontFamily: 'Sora, sans-serif' }}>₹{plan.price}</span>
-                      <span className="text-2xl text-slate-600 ml-2 font-semibold">/year</span>
+                      <span className={`text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}`} style={{ fontFamily: 'Sora, sans-serif' }}>₹{plan.price}</span>
+                      <span className="text-lg text-slate-600 ml-2 font-semibold">/year</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-slate-500">
                       <span>+ ₹{plan.gst.toFixed(2)} GST (18%)</span>
@@ -128,7 +128,7 @@ const Pricing = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-4 mb-8 bg-slate-50 rounded-2xl p-6">
+                  <div className="space-y-2 mb-4 bg-slate-50 rounded-2xl p-4">
                     {plan.features.map((feature, index) => (
                       <div key={index} className="flex items-start">
                         <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-2 mr-3 flex-shrink-0 shadow-md">
@@ -141,7 +141,7 @@ const Pricing = () => {
 
                   <Button
                     size="lg"
-                    className={`w-full bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white text-lg py-7 font-bold rounded-xl shadow-xl transition-all hover:scale-105`}
+                    className={`w-full bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white text-base py-4 font-bold rounded-xl shadow-xl transition-all hover:scale-105`}
                     onClick={() => handleBecomeMember(plan.id)}
                   >
                     Get Started
@@ -153,12 +153,12 @@ const Pricing = () => {
         </div>
 
         {/* Questions CTA */}
-        <div className="mt-16 text-center">
+        <div className="mt-8 text-center">
           <p className="text-slate-300 mb-4 text-lg">Have questions about which plan is right for you?</p>
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 hover:border-white/50 px-10 py-6 text-lg font-bold rounded-xl transition-all"
+            className="border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 hover:border-white/50 px-8 py-3 text-base font-bold rounded-xl transition-all"
             onClick={scrollToLeadForm}
           >
             Talk to Us
