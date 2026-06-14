@@ -147,8 +147,9 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="text-center text-slate-500 text-sm">
+          <div className="text-center text-slate-500 text-sm space-y-1">
             <p>&copy; {currentYear} STABILIQ. All rights reserved.</p>
+            <p>Made with ❤️ in India 🇮🇳</p>
           </div>
         </div>
       </div>

@@ -3,9 +3,9 @@ import { API_ENDPOINTS } from "./constant";
 
 
 export const membershipData = {
-  price: 999,
-  gst: 179.82,
-  totalPrice: 1178.82,
+  price: 1999,
+  gst: 359.82,
+  totalPrice: 2358.82,
   currency: 'INR',
   duration: 'year',
   maxAssistance: 30000,
