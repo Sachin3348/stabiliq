@@ -33,7 +33,7 @@ const Dashboard = () => {
       if (plan) setCheckoutPlan(plan);
       window.history.replaceState({}, '', location.pathname);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleConfirmPayment = async (couponCode) => {
     if (!checkoutPlan) return;
