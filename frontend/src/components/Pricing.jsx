@@ -7,7 +7,7 @@ import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
 import { PLANS } from '../constants/plans';
 import { useAuth } from '@/context/AuthContext';
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CheckoutModal from './CheckoutModal';
 
 

@@ -1,11 +1,16 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { GraduationCap, FileText, Banknote, ArrowRight, Lock } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import DashboardLayout from '../components/DashboardLayout';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../hooks/use-toast';
+import { PLANS } from '../constants/plans';
+import { processMembership } from '../mock';
+import { redirectToPayment } from '../utils/payment';
+import CheckoutModal from '../components/CheckoutModal';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -13,9 +18,45 @@ const API = `${BACKEND_URL}/api`;
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { token, user } = useAuth();
+  const { toast } = useToast();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [checkoutPlan, setCheckoutPlan] = useState(null);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+
+  useEffect(() => {
+    const pendingPlanId = location.state?.pendingPlan;
+    if (pendingPlanId) {
+      const plan = PLANS.find((p) => p.id === pendingPlanId);
+      if (plan) setCheckoutPlan(plan);
+      window.history.replaceState({}, '', location.pathname);
+    }
+  }, []);
+
+  const handleConfirmPayment = async (couponCode) => {
+    if (!checkoutPlan) return;
+    setPaymentLoading(true);
+    try {
+      const result = await processMembership({
+        plan: checkoutPlan.id,
+        timestamp: new Date().toISOString(),
+        ...(couponCode ? { couponCode } : {})
+      }, token);
+      if (result.success) {
+        await redirectToPayment(result);
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error.message || 'Something went wrong. Please try again.',
+        variant: "destructive"
+      });
+    } finally {
+      setPaymentLoading(false);
+    }
+  };
 
   const fetchDashboardStats = useCallback(async () => {
     try {
@@ -68,6 +109,14 @@ const Dashboard = () => {
   if (loading) {
     return (
       <DashboardLayout>
+        {checkoutPlan && (
+          <CheckoutModal
+            plan={checkoutPlan}
+            onConfirm={handleConfirmPayment}
+            onClose={() => !paymentLoading && setCheckoutPlan(null)}
+            loading={paymentLoading}
+          />
+        )}
         <div className="flex items-center justify-center h-96">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
         </div>
@@ -77,6 +126,14 @@ const Dashboard = () => {
 
   return (
     <DashboardLayout>
+      {checkoutPlan && (
+        <CheckoutModal
+          plan={checkoutPlan}
+          onConfirm={handleConfirmPayment}
+          onClose={() => !paymentLoading && setCheckoutPlan(null)}
+          loading={paymentLoading}
+        />
+      )}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

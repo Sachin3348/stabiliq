@@ -9,9 +9,6 @@ import { Card, CardContent } from '../components/ui/card';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../hooks/use-toast';
 import axios from 'axios';
-import { getmembershipPaymentLink } from '@/apis/service';
-import { API_ENDPOINTS } from '@/constant';
-import { redirectToPayment } from '../utils/payment';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -80,14 +77,9 @@ const Login = () => {
       if (response.data.success) {
         login(response.data.token, response.data.user);
         const plan = localStorage.getItem("selectedPlan");
-       if(plan && !response.data?.user?.plan) {
-          const paymentResponse = await getmembershipPaymentLink(API_ENDPOINTS.paymentApi, {plan, timestamp: new Date().toISOString()}, response.data.token);
+        if (plan && !response.data?.user?.plan) {
           localStorage.removeItem("selectedPlan");
-          await redirectToPayment({
-            pgGateway: paymentResponse?.data?.pgGateway,
-            paymentUrl: paymentResponse?.data?.checkoutPageUrl,
-            paymentSessionId: paymentResponse?.data?.paymentSessionId
-          });
+          navigate('/dashboard', { state: { pendingPlan: plan } });
           return;
         }
         toast({
