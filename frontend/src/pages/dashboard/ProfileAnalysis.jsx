@@ -22,6 +22,139 @@ import TargetedResume from '../../components/TargetedResume';
 import LinkedInOptimizer from '../../components/LinkedInOptimizer';
 import ToolkitOverview from '../../components/ToolkitOverview';
 
+// ─── Resume Processing Animation ──────────────────────────────────────────────
+const RESUME_PROCESSING_MESSAGES = [
+  'Reading your resume…',
+  'Extracting experience & projects…',
+  'Identifying skills & keywords…',
+  'Scoring ATS compatibility…',
+  'Almost done…',
+];
+
+const RESUME_STEPS = [
+  { label: 'Resume parsed', delay: 0.4 },
+  { label: 'Content extracted', delay: 1.2 },
+  { label: 'AI scoring in progress…', delay: 2.0, pending: true },
+];
+
+const ResumeProcessingView = () => {
+  const [msgIndex, setMsgIndex] = useState(0);
+  const [stepVisible, setStepVisible] = useState([false, false, false]);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setMsgIndex(i => (i + 1) % RESUME_PROCESSING_MESSAGES.length);
+    }, 2500);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    RESUME_STEPS.forEach((step, i) => {
+      const t = setTimeout(() => {
+        setStepVisible(prev => { const next = [...prev]; next[i] = true; return next; });
+      }, step.delay * 1000);
+      return () => clearTimeout(t);
+    });
+  }, []);
+
+  return (
+    <motion.div
+      key="processing"
+      initial={{ opacity: 0, scale: 0.97 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.97 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center justify-center py-16 gap-8"
+    >
+      {/* Pulsing document icon */}
+      <div className="relative flex items-center justify-center">
+        <motion.div
+          animate={{ scale: [1, 1.18, 1], opacity: [0.25, 0.55, 0.25] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute w-24 h-24 rounded-full bg-teal-400/30"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.35, 0.15] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+          className="absolute w-36 h-36 rounded-full bg-teal-300/15"
+        />
+        <motion.div
+          animate={{ rotate: [0, 8, -8, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center shadow-xl shadow-teal-500/30"
+        >
+          <FileText className="w-8 h-8 text-white" />
+        </motion.div>
+      </div>
+
+      {/* Rotating message */}
+      <div className="flex flex-col items-center gap-1 min-h-[52px]">
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={msgIndex}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.35 }}
+            className="font-bold text-slate-900 text-lg text-center"
+          >
+            {RESUME_PROCESSING_MESSAGES[msgIndex]}
+          </motion.p>
+        </AnimatePresence>
+        <p className="text-slate-400 text-sm">This usually takes 10–20 seconds</p>
+      </div>
+
+      {/* Progress bar */}
+      <div className="w-full max-w-xs">
+        <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full rounded-full bg-gradient-to-r from-teal-500 to-cyan-500"
+            initial={{ width: '4%' }}
+            animate={{ width: '90%' }}
+            transition={{ duration: 20, ease: 'linear' }}
+          />
+        </div>
+      </div>
+
+      {/* Step checklist */}
+      <div className="flex flex-col gap-2.5 w-full max-w-xs">
+        {RESUME_STEPS.map((step, i) => (
+          <AnimatePresence key={step.label}>
+            {stepVisible[i] && (
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center gap-2.5"
+              >
+                {step.pending ? (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}
+                    className="w-4 h-4 rounded-full border-2 border-teal-500 border-t-transparent flex-shrink-0"
+                  />
+                ) : (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+                    className="w-4 h-4 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0"
+                  >
+                    <CheckCircle2 className="w-3 h-3 text-white" />
+                  </motion.div>
+                )}
+                <span className={`text-sm ${step.pending ? 'text-slate-500' : 'text-slate-700 font-medium'}`}>
+                  {step.label}
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 // ─── Animated Counter ─────────────────────────────────────────────────────────
 const useCountUp = (target, duration = 1800, start = false) => {
   const [count, setCount] = useState(0);
@@ -727,25 +860,7 @@ const ProfileAnalysis = () => {
 
                 {/* ── Processing phase ─────────────────────────── */}
                 {!loadingResume && optimizerPhase === 'processing' && (
-                  <motion.div
-                    key="processing"
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex flex-col items-center justify-center py-28 gap-5"
-                  >
-                    <div className="relative w-20 h-20">
-                      <div className="absolute inset-0 rounded-full border-4 border-teal-100" />
-                      <div className="absolute inset-0 rounded-full border-4 border-teal-500 border-t-transparent animate-spin" />
-                      <div className="absolute inset-3 rounded-full bg-teal-50 flex items-center justify-center">
-                        <FileCheck className="w-6 h-6 text-teal-600" />
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <p className="font-bold text-slate-900 text-lg">Analysing your resume…</p>
-                      <p className="text-slate-500 text-sm mt-1">Extracting experience, projects & skills</p>
-                    </div>
-                  </motion.div>
+                  <ResumeProcessingView />
                 )}
 
                 {/* ── Results phase ────────────────────────────── */}
