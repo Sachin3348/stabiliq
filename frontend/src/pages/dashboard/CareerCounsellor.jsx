@@ -22,7 +22,7 @@ const CareerCounsellor = () => {
       <div className="relative">
 
         {/* ── Coming Soon overlay ──────────────────────────────────────────── */}
-        <div className="absolute inset-0 z-20 flex items-center justify-center backdrop-blur-sm bg-white/60 rounded-3xl">
+        <div className="absolute inset-0 z-20 flex items-start md:items-center justify-center pt-8 md:pt-0 overflow-y-auto backdrop-blur-sm bg-white/60 rounded-3xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
