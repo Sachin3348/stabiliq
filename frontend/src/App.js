@@ -17,6 +17,7 @@ import CareerCounsellor from "./pages/dashboard/CareerCounsellor";
 import PaymentStatusPage from "./pages/payment-status";
 import { Toaster } from "./components/ui/sonner";
 import { Toaster as RadixToaster } from "./components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -83,6 +84,7 @@ function App() {
         </BrowserRouter>
         <Toaster />
         <RadixToaster />
+        <Analytics />
       </AuthProvider>
     </div>
   );
