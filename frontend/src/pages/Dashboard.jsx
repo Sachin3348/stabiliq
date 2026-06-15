@@ -117,7 +117,7 @@ const Dashboard = () => {
             loading={paymentLoading}
           />
         )}
-        <div className="flex items-center justify-center h-96">
+        <div className="flex items-center justify-center h-64 md:h-96">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
         </div>
       </DashboardLayout>
@@ -140,7 +140,7 @@ const Dashboard = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>
             Welcome back, {user?.name}! 👋
           </h1>
           <p className="text-slate-600 text-lg">Here's your STABILIQ membership overview</p>
@@ -198,8 +198,8 @@ const Dashboard = () => {
 
         {/* Quick Actions */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6" style={{ fontFamily: 'Sora, sans-serif' }}>Quick Actions</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-6" style={{ fontFamily: 'Sora, sans-serif' }}>Quick Actions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {quickActions.map((action, index) => {
               const Icon = action.icon;
               const hasAccess = action.plans.includes(userPlan);

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, GraduationCap, FileText, Banknote, LogOut, UserCheck } from 'lucide-react';
+import { LayoutDashboard, GraduationCap, FileText, Banknote, LogOut, UserCheck, Menu, X } from 'lucide-react';
 import stabiliqLogo from '../assets/svgs/logo.svg';
 import { useAuth } from '../context/AuthContext';
 import { Button } from './ui/button';
@@ -15,6 +15,7 @@ const DashboardLayout = ({ children }) => {
   const navigate = useNavigate();
   const { user, logout, updateUser } = useAuth();
   const showPlanModal = user && !hasActivePlan(user);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -36,17 +37,25 @@ const DashboardLayout = ({ children }) => {
       )}
       {/* Top Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div className="w-full mx-auto px-7 py-4 flex items-center justify-between">
-          <Link to="/dashboard" className="flex items-center">
-            <img
-              src={stabiliqLogo}
-              alt="STABILIQ"
-              className="h-9 w-auto"
-            />
-          </Link>
-          
-          <div className="flex items-center gap-4">
-            <div className="text-right">
+        <div className="w-full mx-auto px-4 md:px-7 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <button
+              className="md:hidden p-1 rounded-lg text-slate-600 hover:bg-slate-100"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+            <Link to="/dashboard" className="flex items-center">
+              <img
+                src={stabiliqLogo}
+                alt="STABILIQ"
+                className="h-9 w-auto"
+              />
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="text-right hidden sm:block">
               <div className="text-sm font-semibold text-slate-900">{user?.name}</div>
               <div className="text-xs text-slate-600">
                 {hasActivePlan(user) ? (user?.plan === 'pro' ? 'Pro Member' : 'Basic Member') : 'Choose a plan'}
@@ -59,15 +68,36 @@ const DashboardLayout = ({ children }) => {
               className="flex items-center gap-2"
             >
               <LogOut className="h-4 w-4" />
-              Logout
+              <span className="hidden sm:inline">Logout</span>
             </Button>
           </div>
         </div>
       </header>
 
       <div className="flex">
+        {/* Mobile backdrop */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 z-30 bg-black/40 md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
         {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-slate-200 min-h-[calc(100vh-73px)] sticky top-[73px]">
+        <aside className={`
+          fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-200 transform transition-transform duration-300
+          md:sticky md:top-[73px] md:translate-x-0 md:min-h-[calc(100vh-73px)] md:z-auto
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}>
+          <div className="flex items-center justify-between p-4 border-b border-slate-100 md:hidden">
+            <img src={stabiliqLogo} alt="STABILIQ" className="h-8 w-auto" />
+            <button
+              className="p-1 rounded-lg text-slate-600 hover:bg-slate-100"
+              onClick={() => setSidebarOpen(false)}
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
           <nav className="p-4 space-y-2">
             {navigation
               .filter((item) => item.plans.includes(user?.plan))
@@ -79,6 +109,7 @@ const DashboardLayout = ({ children }) => {
                   key={item.name}
                   to={item.href}
                   replace
+                  onClick={() => setSidebarOpen(false)}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
                     isActive
                       ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white shadow-lg'
@@ -94,7 +125,7 @@ const DashboardLayout = ({ children }) => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-4 md:p-8 min-w-0">
           <div className="max-w-6xl mx-auto">
             {children}
           </div>
