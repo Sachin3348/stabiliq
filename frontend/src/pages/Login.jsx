@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, KeyRound, ArrowRight } from 'lucide-react';
+import { Phone, KeyRound, ArrowRight } from 'lucide-react';
 import stabiliqLogo from '../assets/svgs/logo.svg';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -17,17 +17,17 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, isAuthenticated } = useAuth();
   const { toast } = useToast();
-  const [step, setStep] = useState(1); // 1: Email, 2: OTP
-  const [email, setEmail] = useState('');
+  const [step, setStep] = useState(1); // 1: Phone, 2: OTP
+  const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSendOTP = async (e) => {
     e.preventDefault();
-    if (!email) {
+    if (!phone || phone.length !== 10) {
       toast({
-        title: "Email required",
-        description: "Please enter your email address",
+        title: "Phone number required",
+        description: "Please enter a valid 10-digit mobile number",
         variant: "destructive"
       });
       return;
@@ -35,11 +35,11 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(`${API}/auth/login`, { email });
+      const response = await axios.post(`${API}/auth/login`, { phone });
       if (response.data.success) {
         toast({
           title: "OTP Sent!",
-          description: "Enter any 6-digit code to login"
+          description: `OTP sent to +91 ${phone}`
         });
         setStep(2);
       }
@@ -68,10 +68,8 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(`${API}/auth/verify-otp`, {
-        email,
-        phone: "0000000000", // Dummy for login
+        phone,
         otp,
-        name: "User" // Will use existing name
       });
 
       if (response.data.success) {
@@ -133,16 +131,17 @@ const Login = () => {
               <form onSubmit={handleSendOTP} className="space-y-6">
                 <div>
                   <label className="block text-sm font-bold text-slate-700 mb-2">
-                    Email Address
+                    Mobile Number
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
                     <Input
-                      type="email"
-                      placeholder="your.email@example.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      type="tel"
+                      placeholder="9876543210"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
                       className="pl-10 h-12 text-lg border-2"
+                      maxLength={10}
                       required
                     />
                   </div>
@@ -169,7 +168,7 @@ const Login = () => {
                     Enter OTP
                   </label>
                   <div className="text-sm text-slate-600 mb-3">
-                    Enter any 6-digit code
+                    OTP sent to +91 {phone}
                   </div>
                   <div className="relative">
                     <KeyRound className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
@@ -199,7 +198,7 @@ const Login = () => {
                   onClick={() => setStep(1)}
                   className="w-full text-center text-sm text-slate-600 hover:text-slate-900"
                 >
-                  Change email address
+                  Change mobile number
                 </button>
               </form>
             )}
