@@ -74,17 +74,17 @@ const InteractiveBenefits = () => {
     plans: [
       {
         name: 'Basic Plan',
-        price: '₹999',
-        gst: '₹179.82',
-        total: '₹1,178.82',
+        price: '₹1,999',
+        gst: '₹359.82',
+        total: '₹2,358.82',
         assistance: '₹20,000',
         color: 'from-slate-600 to-slate-700'
       },
       {
         name: 'Pro Plan',
-        price: '₹2,499',
-        gst: '₹449.82',
-        total: '₹2,948.82',
+        price: '₹4,999',
+        gst: '₹899.82',
+        total: '₹5,898.82',
         assistance: '₹40,000',
         color: 'from-blue-600 to-teal-600',
         popular: true
