@@ -656,7 +656,7 @@ const ProfileAnalysis = () => {
 
         {/* Toolkit Tabs */}
         <div ref={toolkitRef} className="border-b border-slate-200" style={{ scrollMarginTop: '80px' }}>
-          <div className="flex gap-2 overflow-x-auto pb-px scrollbar-hide">
+          <div className="flex gap-2 overflow-x-auto pb-px scrollbar-hide px-1">
             {TOOLKIT_TABS.map(tab => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -786,7 +786,7 @@ const ProfileAnalysis = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -16 }}
                     transition={{ duration: 0.3 }}
-                    className="max-w-xl mx-auto py-10 space-y-6"
+                    className="max-w-xl mx-auto px-4 py-10 space-y-6"
                   >
                     {/* Hero */}
                     <div className="text-center space-y-2">
@@ -804,7 +804,7 @@ const ProfileAnalysis = () => {
                     {/* Drop zone */}
                     <div
                       onClick={() => !resumeFile && fileInputRef.current?.click()}
-                      className={`border-2 border-dashed rounded-2xl p-10 text-center transition-all ${
+                      className={`border-2 border-dashed rounded-2xl p-6 sm:p-10 text-center transition-all ${
                         resumeFile
                           ? 'border-teal-500 bg-teal-50'
                           : 'border-slate-300 hover:border-teal-400 hover:bg-slate-50 cursor-pointer'
@@ -885,7 +885,7 @@ const ProfileAnalysis = () => {
                           <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-teal-500/10 translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
                           {/* Stats */}
-                          <div className="flex items-center gap-6 flex-1 flex-wrap">
+                          <div className="flex items-center gap-3 sm:gap-6 flex-1 flex-wrap">
                             <div className="flex items-center gap-2.5">
                               <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
                                 <CheckCircle className="w-4 h-4 text-teal-400" />
@@ -1073,14 +1073,14 @@ const ProfileAnalysis = () => {
                     })()}
 
                     {/* ── Two-panel layout ──────────────────────────── */}
-                    <div className="grid lg:grid-cols-[3fr_2fr] gap-5 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-5 items-start">
 
                       {/* LEFT — PDF Preview */}
                       <div className="bg-slate-100 rounded-2xl p-3">
                         <iframe
                           src={`${resumeData.resumeUrl}#toolbar=0&navpanes=0&scrollbar=0`}
                           className="w-full rounded-xl border border-slate-200 shadow-sm"
-                          style={{ minHeight: '680px' }}
+                          style={{ minHeight: 'min(680px, 60vh)' }}
                           title="Resume PDF"
                         />
                       </div>

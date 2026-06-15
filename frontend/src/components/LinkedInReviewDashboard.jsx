@@ -209,7 +209,7 @@ const IssueItem = ({ text, index }) => (
 
 // ─── Before/After comparison ──────────────────────────────────────────────────
 const BeforeAfter = ({ before, after }) => (
-  <div className="grid md:grid-cols-2 gap-3">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
     <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4">
       <div className="flex items-center gap-2 mb-3">
         <div className="w-5 h-5 rounded-full bg-rose-200 flex items-center justify-center">
@@ -333,7 +333,7 @@ const OverviewTab = ({ data, onNavigate }) => {
         <div className="absolute top-0 right-0 w-72 h-72 bg-violet-500/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl pointer-events-none" />
 
-        <div className="relative flex flex-col lg:flex-row gap-8 items-start lg:items-center">
+        <div className="relative flex flex-col lg:flex-row gap-4 lg:gap-8 items-start lg:items-center">
           {/* Score ring */}
           <div className="flex-shrink-0 flex flex-col items-center gap-3">
             <ScoreRing score={overall_score} size={160} stroke={14}>
@@ -402,7 +402,7 @@ const OverviewTab = ({ data, onNavigate }) => {
           <h2 className="text-lg font-black text-slate-900">AI Strategic Insights</h2>
           <AIPulseBadge />
         </div>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             {
               icon: AlertCircle, label: 'Biggest Problem', color: 'rose',
@@ -482,7 +482,7 @@ const OverviewTab = ({ data, onNavigate }) => {
           <h2 className="text-lg font-black text-slate-900">Section Breakdown</h2>
           <span className="text-sm font-normal text-slate-400 ml-1">Click any section to dive deep</span>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {sections.map(([key, val], i) => {
             const meta = NAV_ITEMS.find(n => n.sectionKey === key);
             const c = scoreColor(val.score);
@@ -528,7 +528,7 @@ const OverviewTab = ({ data, onNavigate }) => {
       </div>
 
       {/* ── Educational: How ATS works ── */}
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <DidYouKnow icon={Eye} title="Recruiter Behavior" color="indigo">
           Recruiters spend an average of <strong>7.4 seconds</strong> scanning a LinkedIn profile before deciding to engage or move on.
         </DidYouKnow>
@@ -595,7 +595,7 @@ const SectionDetailTab = ({ sectionKey, sectionData }) => {
 
       {/* Why this matters */}
       {edu.why && (
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <DidYouKnow icon={Lightbulb} title="Why This Matters" color="indigo">
             {edu.why}
           </DidYouKnow>
@@ -854,7 +854,7 @@ const RecruiterInsightsTab = ({ data }) => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {insights.map(({ icon: Icon, color, title, status, body }, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.07 }}
             className="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm">
@@ -1023,7 +1023,7 @@ const LearningCenterTab = () => {
         <p className="text-sm text-white/60">Research-backed guides from top career coaches, recruiters, and hiring managers.</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {lessons.map((lesson, i) => (
           <LessonCard key={i} {...lesson} colors={colors} delay={i * 0.07} />
         ))}
@@ -1036,6 +1036,7 @@ const LearningCenterTab = () => {
 const LinkedInReviewDashboard = ({ data, onReanalyze, reviewedAt }) => {
   const [activeNav, setActiveNav] = useState('overview');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const sections = data.section_scores || {};
 
   const navTo = (id) => setActiveNav(id);
@@ -1055,10 +1056,32 @@ const LinkedInReviewDashboard = ({ data, onReanalyze, reviewedAt }) => {
   };
 
   return (
-    <div className="flex gap-0 min-h-full bg-slate-50/50 rounded-2xl overflow-hidden border border-slate-200">
+    <div className="relative flex gap-0 min-h-full bg-slate-50/50 rounded-2xl overflow-hidden border border-slate-200">
+
+      {/* Mobile sidebar backdrop */}
+      {mobileSidebarOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/40 md:hidden"
+          onClick={() => setMobileSidebarOpen(false)}
+        />
+      )}
+
+      {/* Mobile open button */}
+      <button
+        className="fixed bottom-4 left-4 z-30 md:hidden flex items-center gap-2 px-3 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold shadow-lg"
+        onClick={() => setMobileSidebarOpen(true)}
+      >
+        <LayoutDashboard className="w-4 h-4" />
+        Menu
+      </button>
 
       {/* ── Sidebar ── */}
-      <aside className={`flex-shrink-0 bg-white border-r border-slate-200 flex flex-col transition-all duration-300 ${sidebarCollapsed ? 'w-16' : 'w-60'}`}>
+      <aside className={`
+        fixed inset-y-0 left-0 z-40 flex flex-col bg-white border-r border-slate-200 transition-all duration-300
+        md:relative md:inset-auto md:z-auto md:flex
+        ${mobileSidebarOpen ? 'flex' : 'hidden md:flex'}
+        ${sidebarCollapsed ? 'w-16' : 'w-60'}
+      `}>
         {/* Sidebar header */}
         <div className="flex items-center justify-between px-4 py-4 border-b border-slate-100">
           {!sidebarCollapsed && (
@@ -1088,7 +1111,7 @@ const LinkedInReviewDashboard = ({ data, onReanalyze, reviewedAt }) => {
             return (
               <button
                 key={item.id}
-                onClick={() => navTo(item.id)}
+                onClick={() => { navTo(item.id); setMobileSidebarOpen(false); }}
                 title={sidebarCollapsed ? item.label : undefined}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all group relative ${
                   isActive

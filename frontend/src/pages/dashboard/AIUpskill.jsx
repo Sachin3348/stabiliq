@@ -77,7 +77,7 @@ const AIUpskill = () => {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="relative z-10 flex flex-col items-center gap-3 bg-white/50 backdrop-blur-lg border border-white/60 shadow-xl rounded-2xl px-10 py-8 text-center max-w-sm mx-4"
+            className="relative z-10 flex flex-col items-center gap-3 bg-white/50 backdrop-blur-lg border border-white/60 shadow-xl rounded-2xl px-4 sm:px-10 py-6 sm:py-8 text-center max-w-sm mx-4"
           >
             <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-xl shadow-md">
               <GraduationCap className="h-7 w-7 text-white" />
@@ -128,12 +128,12 @@ const AIUpskill = () => {
                   <div className="text-3xl font-bold text-indigo-600" style={{ fontFamily: 'Sora, sans-serif' }}>6</div>
                   <div className="text-sm text-slate-600">Modules</div>
                 </div>
-                <div className="h-12 w-px bg-slate-300"></div>
+                <div className="hidden sm:block h-12 w-px bg-slate-300"></div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-purple-600" style={{ fontFamily: 'Sora, sans-serif' }}>26</div>
                   <div className="text-sm text-slate-600">Video Lessons</div>
                 </div>
-                <div className="h-12 w-px bg-slate-300"></div>
+                <div className="hidden sm:block h-12 w-px bg-slate-300"></div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-teal-600" style={{ fontFamily: 'Sora, sans-serif' }}>15</div>
                   <div className="text-sm text-slate-600">Downloadable PDFs</div>
@@ -263,7 +263,7 @@ const AIUpskill = () => {
                             <FileText className="h-5 w-5 text-teal-600" />
                             Downloadable Resources
                           </h4>
-                          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                             {module.pdfs.map((pdf) => (
                               <div
                                 key={pdf.id}

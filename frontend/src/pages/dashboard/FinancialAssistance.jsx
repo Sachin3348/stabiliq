@@ -89,7 +89,7 @@ const FinancialAssistance = () => {
             {/* Blurred background glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-200 via-indigo-100 to-blue-300 rounded-3xl blur-2xl opacity-60 -z-10 scale-105" />
             {/* Card */}
-            <div className="bg-white/70 backdrop-blur-md border border-white/80 shadow-2xl rounded-2xl p-10 flex flex-col items-center text-center gap-6">
+            <div className="bg-white/70 backdrop-blur-md border border-white/80 shadow-2xl rounded-2xl p-6 sm:p-10 flex flex-col items-center text-center gap-6">
               <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-4 rounded-2xl shadow-lg">
                 <Mail className="h-8 w-8 text-white" />
               </div>
@@ -152,14 +152,14 @@ const FinancialAssistance = () => {
           <div className="space-y-6" data-testid="locked-state">
             {/* Countdown Card */}
             <Card className="border-0 shadow-lg overflow-hidden">
-              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-8 text-white">
+              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-5 sm:p-8 text-white">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                   <div className="text-center md:text-left">
                     <div className="flex items-center gap-2 mb-2 justify-center md:justify-start">
                       <Clock className="h-5 w-5" />
                       <span className="text-blue-100">Time Until Unlock</span>
                     </div>
-                    <div className="text-6xl font-bold mb-2" style={{ fontFamily: 'Sora, sans-serif' }} data-testid="days-remaining">
+                    <div className="text-4xl sm:text-6xl font-bold mb-2" style={{ fontFamily: 'Sora, sans-serif' }} data-testid="days-remaining">
                       {daysRemaining}
                     </div>
                     <div className="text-xl text-blue-100">days remaining</div>
@@ -214,7 +214,7 @@ const FinancialAssistance = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {[
                     {
                       title: 'Complete AI Courses',
@@ -252,7 +252,7 @@ const FinancialAssistance = () => {
                 <Lock className="h-5 w-5 text-slate-400" />
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {documents?.documents?.slice(0, 4).map((doc, index) => (
                     <div key={index} className="flex items-center gap-3 p-3 bg-slate-100 rounded-lg">
                       <div className="w-8 h-8 bg-slate-200 rounded-lg flex items-center justify-center text-slate-400">
@@ -273,7 +273,7 @@ const FinancialAssistance = () => {
           <div className="space-y-6" data-testid="unlocked-state">
             {/* Success Banner */}
             <Card className="border-0 shadow-lg overflow-hidden bg-gradient-to-r from-green-500 to-emerald-600">
-              <CardContent className="p-8 text-white">
+              <CardContent className="p-5 sm:p-8 text-white">
                 <div className="flex items-center gap-4">
                   <div className="bg-white/20 p-4 rounded-2xl">
                     <CheckCircle className="h-10 w-10" />
@@ -293,7 +293,7 @@ const FinancialAssistance = () => {
             {!showDocuments ? (
               /* Request Button */
               <Card className="border-0 shadow-lg" data-testid="request-card">
-                <CardContent className="p-8 text-center">
+                <CardContent className="p-5 sm:p-8 text-center">
                   <div className="max-w-lg mx-auto">
                     <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                       <Banknote className="h-10 w-10 text-white" />
