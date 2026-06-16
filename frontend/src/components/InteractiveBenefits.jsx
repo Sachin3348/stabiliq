@@ -171,7 +171,7 @@ const InteractiveBenefits = () => {
   };
 
   return (
-    <section id="benefits" className="py-24 bg-gradient-to-b from-white to-slate-50 relative">
+    <section id="benefits" className="py-12 md:py-24 bg-gradient-to-b from-white to-slate-50 relative">
       {/* Animated Background Orbs - wrapped so section can use sticky without overflow-hidden */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div 
@@ -343,14 +343,14 @@ const InteractiveBenefits = () => {
                         className="min-w-0"
                       >
                         <motion.div variants={itemVariants} className="mb-8">
-                          <h3 className="text-3xl font-bold text-slate-900 mb-3 flex items-center gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
-                            <Briefcase className="h-8 w-8 text-teal-600" />
-                            {toolkitContent.title}
+                          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 flex items-start gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
+                            <Briefcase className="h-7 w-7 md:h-8 md:w-8 text-teal-600 flex-shrink-0 mt-0.5" />
+                            <span>{toolkitContent.title}</span>
                           </h3>
-                          <p className="text-lg text-slate-600">{toolkitContent.subtitle}</p>
+                          <p className="text-base md:text-lg text-slate-600">{toolkitContent.subtitle}</p>
                         </motion.div>
 
-                        <div className="grid md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                           {toolkitContent.tools.map((tool, index) => {
                             const ToolIcon = tool.icon;
                             return (
@@ -398,15 +398,15 @@ const InteractiveBenefits = () => {
                         className="min-w-0"
                       >
                         <motion.div variants={itemVariants} className="mb-8">
-                          <h3 className="text-3xl font-bold text-slate-900 mb-3 flex items-center gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
-                            <Banknote className="h-8 w-8 text-blue-600" />
-                            Financial Assistance Plans
+                          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 flex items-start gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
+                            <Banknote className="h-7 w-7 md:h-8 md:w-8 text-blue-600 flex-shrink-0 mt-0.5" />
+                            <span>Financial Assistance Plans</span>
                           </h3>
-                          <p className="text-lg text-slate-600">Structured support during involuntary job loss</p>
+                          <p className="text-base md:text-lg text-slate-600">Structured support during involuntary job loss</p>
                         </motion.div>
 
                         {/* Plan Comparison */}
-                        <div className="grid md:grid-cols-2 gap-6 mb-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-10">
                           {financialContent.plans.map((plan, index) => (
                             <motion.div
                               key={index}
@@ -444,7 +444,7 @@ const InteractiveBenefits = () => {
                         </div>
 
                         {/* Eligibility Criteria */}
-                        <div className="grid md:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                           <motion.div variants={itemVariants}>
                             <div className="flex items-center gap-3 mb-6">
                               <div className="bg-green-500 rounded-xl p-3 shadow-lg">
@@ -514,56 +514,58 @@ const InteractiveBenefits = () => {
                         className="min-w-0"
                       >
                         <motion.div variants={itemVariants} className="mb-8">
-                          <h3 className="text-3xl font-bold text-slate-900 mb-3 flex items-center gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
-                            <GraduationCap className="h-8 w-8 text-indigo-600" />
-                            {aiCourseContent.title}
+                          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 flex items-start gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
+                            <GraduationCap className="h-7 w-7 md:h-8 md:w-8 text-indigo-600 flex-shrink-0 mt-0.5" />
+                            <span>{aiCourseContent.title}</span>
                           </h3>
-                          <p className="text-lg text-slate-600">{aiCourseContent.subtitle}</p>
+                          <p className="text-base md:text-lg text-slate-600">{aiCourseContent.subtitle}</p>
                         </motion.div>
 
                         {/* Course Features */}
-                        <div className="grid md:grid-cols-3 gap-6 mb-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                           {aiCourseContent.features.map((feature, index) => {
                             const FeatureIcon = feature.icon;
                             return (
                               <motion.div
                                 key={index}
                                 variants={itemVariants}
-                                whileHover={{ scale: 1.08, y: -5 }}
-                                className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow border-2 border-indigo-100 hover:border-indigo-300"
+                                whileHover={{ scale: 1.05, y: -5 }}
+                                className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-4 sm:p-6 text-center shadow-lg hover:shadow-xl transition-shadow border-2 border-indigo-100 hover:border-indigo-300 flex sm:flex-col items-center sm:items-center gap-4 sm:gap-0"
                               >
-                                <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                  <FeatureIcon className="h-8 w-8 text-white" strokeWidth={2} />
+                                <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl h-12 w-12 sm:h-16 sm:w-16 flex items-center justify-center sm:mx-auto sm:mb-4 shadow-lg flex-shrink-0">
+                                  <FeatureIcon className="h-6 w-6 sm:h-8 sm:w-8 text-white" strokeWidth={2} />
                                 </div>
-                                <h4 className="text-lg font-bold text-slate-900 mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>
-                                  {feature.title}
-                                </h4>
-                                <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
+                                <div className="text-left sm:text-center">
+                                  <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2" style={{ fontFamily: 'Sora, sans-serif' }}>
+                                    {feature.title}
+                                  </h4>
+                                  <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
+                                </div>
                               </motion.div>
                             );
                           })}
                         </div>
 
                         {/* Course Modules */}
-                        <motion.div variants={itemVariants} className="bg-gradient-to-br from-slate-900 to-indigo-900 rounded-2xl p-8 shadow-2xl">
-                          <h4 className="text-2xl font-bold text-white mb-6 flex items-center gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
-                            <FileCheck className="h-7 w-7 text-indigo-400" />
+                        <motion.div variants={itemVariants} className="bg-gradient-to-br from-slate-900 to-indigo-900 rounded-2xl p-5 md:p-8 shadow-2xl">
+                          <h4 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center gap-3" style={{ fontFamily: 'Sora, sans-serif' }}>
+                            <FileCheck className="h-6 w-6 md:h-7 md:w-7 text-indigo-400 flex-shrink-0" />
                             Course Curriculum
                           </h4>
-                          <div className="grid md:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {aiCourseContent.modules.map((module, index) => (
                               <motion.div
                                 key={index}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.05 * index }}
-                                whileHover={{ scale: 1.03, x: 5 }}
-                                className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer"
+                                whileHover={{ scale: 1.02, x: 4 }}
+                                className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-3 md:p-4 hover:bg-white/20 transition-all cursor-pointer"
                               >
-                                <div className="bg-indigo-500 rounded-lg h-8 w-8 flex items-center justify-center flex-shrink-0 shadow-md">
-                                  <span className="text-white font-bold text-sm">{index + 1}</span>
+                                <div className="bg-indigo-500 rounded-lg h-7 w-7 md:h-8 md:w-8 flex items-center justify-center flex-shrink-0 shadow-md">
+                                  <span className="text-white font-bold text-xs md:text-sm">{index + 1}</span>
                                 </div>
-                                <span className="text-white font-medium leading-relaxed">{module}</span>
+                                <span className="text-white font-medium leading-relaxed text-sm md:text-base">{module}</span>
                               </motion.div>
                             ))}
                           </div>
@@ -572,14 +574,14 @@ const InteractiveBenefits = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="mt-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl p-6 flex items-center gap-4 shadow-xl min-w-0"
+                            className="mt-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl p-4 md:p-6 flex items-center gap-3 md:gap-4 shadow-xl min-w-0"
                           >
-                            <Award className="h-12 w-12 text-white flex-shrink-0" />
+                            <Award className="h-9 w-9 md:h-12 md:w-12 text-white flex-shrink-0" />
                             <div className="min-w-0">
-                              <div className="text-white font-bold text-lg mb-1" style={{ fontFamily: 'Sora, sans-serif' }}>
+                              <div className="text-white font-bold text-base md:text-lg mb-1" style={{ fontFamily: 'Sora, sans-serif' }}>
                                 Certificate of Completion
                               </div>
-                              <p className="text-white/90 text-sm">
+                              <p className="text-white/90 text-xs md:text-sm leading-relaxed">
                                 Earn an official STABILIQ certification upon course completion to showcase your AI proficiency to potential employers
                               </p>
                             </div>

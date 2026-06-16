@@ -16,7 +16,7 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
   const totalAmount = plan.totalPrice;
 
   const discountedBase = couponState?.valid && couponState.discountAmount != null
-    ? basePrice - (couponState.discountAmount / 100)
+    ? basePrice - couponState.discountAmount
     : basePrice;
   const recalculatedGst = discountedBase * 0.18;
   const finalPayable = couponState?.valid ? discountedBase + recalculatedGst : totalAmount;
@@ -88,7 +88,7 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
             {couponApplied && (
               <div className="flex justify-between text-green-600 font-medium">
                 <span>Coupon discount</span>
-                <span>- ₹{(couponState.discountAmount / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+                <span>- ₹{couponState.discountAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
               </div>
             )}
             {couponApplied && (
