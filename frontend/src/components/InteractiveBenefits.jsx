@@ -372,15 +372,15 @@ const InteractiveBenefits = () => {
                           })}
                         </div>
 
-                        <motion.div 
+                        {/* <motion.div 
                           variants={itemVariants}
                           className="mt-8 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl p-6 text-white shadow-xl"
                         >
-                          {/* <p className="text-lg font-semibold flex items-center gap-2">
+                          <p className="text-lg font-semibold flex items-center gap-2">
                             <Sparkles className="h-5 w-5" />
                             All resources included with your membership - downloadable templates, checklists, and expert guidance
-                          </p> */}
-                        </motion.div>
+                          </p>
+                        </motion.div> */}
                       </motion.div>
                     )}
 

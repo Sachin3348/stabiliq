@@ -66,10 +66,10 @@ const CareerCounsellor = () => {
 
               <div className="w-full h-px bg-white/10" />
 
-              <div className="flex items-center gap-2 text-indigo-300 text-xs">
+              {/* <div className="flex items-center gap-2 text-indigo-300 text-xs">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                {/* <span>Included in your membership - no extra cost</span> */}
-              </div>
+                <span>Included in your membership - no extra cost</span>
+              </div> */}
             </div>
           </motion.div>
         </div>
