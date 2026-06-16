@@ -26,9 +26,7 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
     setCouponState('validating');
     setCouponError('');
     try {
-      // totalAmount in rupees → convert to paise
-      const amountInPaise = Math.round(basePrice * 100);
-      const res = await validateCoupon(couponCode.trim(), amountInPaise, token);
+      const res = await validateCoupon(couponCode.trim(), plan.id, token);
       const data = res.data;
       if (data.valid) {
         setCouponState(data);
