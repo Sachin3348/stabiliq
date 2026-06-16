@@ -68,7 +68,7 @@ const CareerCounsellor = () => {
 
               <div className="flex items-center gap-2 text-indigo-300 text-xs">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>Included in your membership — no extra cost</span>
+                {/* <span>Included in your membership — no extra cost</span> */}
               </div>
             </div>
           </motion.div>
