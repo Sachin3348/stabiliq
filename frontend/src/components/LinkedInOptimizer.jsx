@@ -55,7 +55,7 @@ const getErrorMessage = (err) => {
   if (!err.response) return 'Could not reach the server. Check your connection.';
   const { status, data } = err.response;
   if (status === 502) return 'AI evaluation failed. Please try again.';
-  if (status === 504) return 'Request timed out. The AI is taking too long — please try again.';
+  if (status === 504) return 'Request timed out. The AI is taking too long - please try again.';
   if (status === 400 || status === 413 || status === 422) return data?.error || 'Invalid request.';
   return data?.error || 'Something went wrong. Please try again.';
 };
@@ -128,7 +128,7 @@ const ProcessingAnimation = () => {
 
   useEffect(() => {
     const msgInterval = setInterval(() => setMsgIdx(p => (p + 1) % PROCESSING_MESSAGES.length), 2500);
-    // Slow crawl: reaches ~80% in ~40s, then barely moves — API resolves it
+    // Slow crawl: reaches ~80% in ~40s, then barely moves - API resolves it
     const progressInterval = setInterval(() => setProgress(p => p < 80 ? p + 0.33 : p < 93 ? p + 0.05 : p), 150);
     return () => { clearInterval(msgInterval); clearInterval(progressInterval); };
   }, []);
@@ -167,7 +167,7 @@ const ProcessingAnimation = () => {
           {current.text}
         </motion.p>
       </AnimatePresence>
-      <p className="text-sm text-slate-500 mb-8 text-center">Deep analysis in progress — this can take up to 60 seconds</p>
+      <p className="text-sm text-slate-500 mb-8 text-center">Deep analysis in progress - this can take up to 60 seconds</p>
 
       <div className="w-80 space-y-2">
         <div className="flex justify-between text-xs text-slate-500 font-medium">
@@ -662,7 +662,7 @@ const LinkedInOptimizer = ({ token, initialReview = null, reviewedAt = null }) =
             Authorization: `Bearer ${token}`,
             'Content-Type': 'multipart/form-data',
           },
-          timeout: 90000, // 90s client timeout — backend can take up to 60s
+          timeout: 90000, // 90s client timeout - backend can take up to 60s
         }
       );
 

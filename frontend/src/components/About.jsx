@@ -21,7 +21,7 @@ const About = () => {
               </p>
               
               <p>
-                STABILIQ was created to offer structured, transparent support during uncertain career moments — 
+                STABILIQ was created to offer structured, transparent support during uncertain career moments - 
                 without overpromising and without complexity.
               </p>
               

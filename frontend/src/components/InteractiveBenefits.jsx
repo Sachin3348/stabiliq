@@ -29,7 +29,7 @@ const InteractiveBenefits = () => {
       icon: Banknote,
       color: 'from-blue-500 to-blue-600',
       bgGradient: 'from-blue-50 to-indigo-50',
-      description: 'Up to ₹40,000 support'
+      description: 'Financial Support: Discretionary assistance up to ₹40,000 (based on eligibility)'
     }
   ];
 
@@ -376,10 +376,10 @@ const InteractiveBenefits = () => {
                           variants={itemVariants}
                           className="mt-8 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl p-6 text-white shadow-xl"
                         >
-                          <p className="text-lg font-semibold flex items-center gap-2">
+                          {/* <p className="text-lg font-semibold flex items-center gap-2">
                             <Sparkles className="h-5 w-5" />
                             All resources included with your membership - downloadable templates, checklists, and expert guidance
-                          </p>
+                          </p> */}
                         </motion.div>
                       </motion.div>
                     )}
@@ -402,7 +402,7 @@ const InteractiveBenefits = () => {
                             <Banknote className="h-7 w-7 md:h-8 md:w-8 text-blue-600 flex-shrink-0 mt-0.5" />
                             <span>Financial Assistance Plans</span>
                           </h3>
-                          <p className="text-base md:text-lg text-slate-600">Structured support during involuntary job loss</p>
+                          <p className="text-base md:text-lg text-slate-600">Structured support during unexpected career transitions</p>
                         </motion.div>
 
                         {/* Plan Comparison */}
@@ -494,7 +494,7 @@ const InteractiveBenefits = () => {
 
                         <motion.div variants={itemVariants} className="mt-8 bg-amber-50 border-2 border-amber-300 rounded-2xl p-6 shadow-lg">
                           <p className="text-slate-800 font-medium">
-                            <strong>Important:</strong> All requests are reviewed on a case-by-case basis. Discretionary approval process ensures responsible support for genuine cases of involuntary job loss.
+                            <strong>Important:</strong> All requests are reviewed on a case-by-case basis. Discretionary approval process ensures responsible support for genuine cases of unexpected career transitions.
                           </p>
                         </motion.div>
                       </motion.div>

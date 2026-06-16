@@ -8,7 +8,7 @@ import { useAuth } from '../../context/AuthContext';
 
 const benefits = [
   { icon: Video, title: '1-on-1 Video Call', description: 'Face-to-face session with an expert career counsellor tailored to your goals.' },
-  { icon: Clock, title: 'Flexible Scheduling', description: 'Pick a time that works for you — mornings, evenings, or weekends.' },
+  { icon: Clock, title: 'Flexible Scheduling', description: 'Pick a time that works for you - mornings, evenings, or weekends.' },
   { icon: MessageSquare, title: 'Personalised Guidance', description: 'Get advice on job search strategy, resume review, and interview prep.' },
   { icon: Star, title: 'Industry Experts', description: 'Our counsellors have 10+ years of experience across tech, finance, and ops.' },
 ];
@@ -68,7 +68,7 @@ const CareerCounsellor = () => {
 
               <div className="flex items-center gap-2 text-indigo-300 text-xs">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                {/* <span>Included in your membership — no extra cost</span> */}
+                {/* <span>Included in your membership - no extra cost</span> */}
               </div>
             </div>
           </motion.div>

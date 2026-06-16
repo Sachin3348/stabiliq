@@ -262,7 +262,7 @@ const INSIGHTS = [
     color: 'text-indigo-500',
     bg: 'bg-indigo-50',
     title: 'Tailoring is everything',
-    body: 'A resume tailored to the exact job description scores 40–60% higher in ATS ranking — even with identical experience.',
+    body: 'A resume tailored to the exact job description scores 40–60% higher in ATS ranking - even with identical experience.',
   },
 ];
 
@@ -343,7 +343,7 @@ const WhyResumeMatters = () => {
                   <div className="flex items-center gap-2 mb-5">
                     <div className="w-2 h-2 rounded-full bg-teal-500" />
                     <h3 className="text-sm font-bold text-slate-900">The Hiring Funnel</h3>
-                    <span className="text-xs text-slate-400">— where candidates drop off</span>
+                    <span className="text-xs text-slate-400">- where candidates drop off</span>
                   </div>
                   <ATSFunnel inView={inView} />
                 </motion.div>
@@ -365,7 +365,7 @@ const WhyResumeMatters = () => {
               >
                 <div>
                   <p className="text-sm font-bold text-teal-900">Ready to fix your resume?</p>
-                  <p className="text-xs text-teal-700 mt-0.5">Submit below and get a human expert review tailored to your target role — included in your membership.</p>
+                  <p className="text-xs text-teal-700 mt-0.5">Submit below and get a human expert review tailored to your target role - included in your membership.</p>
                 </div>
                 <div className="flex items-center gap-1.5 text-teal-600 text-xs font-semibold flex-shrink-0">
                   <CheckCircle className="w-4 h-4" />
@@ -575,7 +575,7 @@ const ProfileAnalysis = () => {
           });
         }
       } catch (err) {
-        // 404 = no submission yet — stay on upload phase
+        // 404 = no submission yet - stay on upload phase
         if (err.response?.status !== 404) {
           console.error('Failed to fetch submission:', err);
         }
@@ -723,7 +723,7 @@ const ProfileAnalysis = () => {
               <div className="space-y-10">
                 <ToolkitOverview onNavigateTab={handleTabChange} />
 
-                {/* Why Resume Matters — collapsed by default to keep the page clean */}
+                {/* Why Resume Matters - collapsed by default to keep the page clean */}
                 <WhyResumeMatters />
 
                 {/* ── Resume Templates ───────────────────────────────────── */}
@@ -1075,7 +1075,7 @@ const ProfileAnalysis = () => {
                     {/* ── Two-panel layout ──────────────────────────── */}
                     <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-5 items-start">
 
-                      {/* LEFT — PDF Preview */}
+                      {/* LEFT - PDF Preview */}
                       <div className="bg-slate-100 rounded-2xl p-3">
                         <iframe
                           src={`${resumeData.resumeUrl}#toolbar=0&navpanes=0&scrollbar=0`}
@@ -1085,7 +1085,7 @@ const ProfileAnalysis = () => {
                         />
                       </div>
 
-                      {/* RIGHT — Extracted sections */}
+                      {/* RIGHT - Extracted sections */}
                       <div className="space-y-3 lg:sticky lg:top-24">
 
                         {/* Experience */}
@@ -1178,7 +1178,7 @@ const ProfileAnalysis = () => {
                               <div>
                                 <p className="text-white font-bold text-sm">Magic Writer</p>
                                 <p className="text-violet-200 text-xs mt-0.5 leading-relaxed">
-                                  AI rewrites every bullet point — stronger verbs, better impact, ATS-optimised.
+                                  AI rewrites every bullet point - stronger verbs, better impact, ATS-optimised.
                                 </p>
                               </div>
                               <div className="ml-auto flex-shrink-0 text-violet-300 mt-1">

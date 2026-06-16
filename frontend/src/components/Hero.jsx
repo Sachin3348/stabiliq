@@ -66,7 +66,7 @@ const Hero = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400">work stops</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto font-medium">
-              STABILIQ is a subscription based membership program for salaried professionals that provides <span className="text-white font-bold">upskilling courses</span>, <span className="text-white font-bold">job transition support</span> and <span className="text-white font-bold">financial assistance</span> in case of involuntary job loss.
+              STABILIQ is a subscription based membership program for salaried professionals that provides <span className="text-white font-bold">upskilling courses</span>, <span className="text-white font-bold">job transition support</span> and <span className="text-white font-bold">financial assistance</span> during unexpected career transitions.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-10">

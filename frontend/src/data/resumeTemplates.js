@@ -33,7 +33,7 @@ export const SORT_OPTIONS = [
 //     description: 'Engineered to pass the strictest ATS filters used by Fortune 500 companies. Single-column, keyword-dense, zero parsing issues.',
 //     overview: 'The highest ATS-scoring template in our library. Designed to pass automated filters at enterprises like Goldman Sachs, McKinsey, Google, and Accenture.',
 //     tips: [
-//       'Pure single-column layout — zero parsing issues across all major ATS systems',
+//       'Pure single-column layout - zero parsing issues across all major ATS systems',
 //       'Standard section headers maximise keyword detection accuracy',
 //       'No tables, graphics, or columns that legacy ATS systems struggle to parse',
 //     ],
@@ -54,7 +54,7 @@ export const SORT_OPTIONS = [
 //     description: 'Built for fresh graduates and career starters. Education-first layout with strong projects and skills sections to compensate for limited work history.',
 //     overview: 'Structured for candidates with 0–2 years of experience. Education-first layout with achievements that make entry-level candidates stand out.',
 //     tips: [
-//       'Education leads — maximises impact for fresh graduates and campus hires',
+//       'Education leads - maximises impact for fresh graduates and campus hires',
 //       'Achievements and volunteer sections bridge the work experience gap credibly',
 //       'Skills grid is ATS-optimised for keyword matching in entry-level job descriptions',
 //     ],
@@ -97,7 +97,7 @@ export const SORT_OPTIONS = [
 //     overview: 'The go-to template for professionals who want a modern look without sacrificing ATS compatibility. Works across all industries and experience levels.',
 //     tips: [
 //       'Clean visual hierarchy guides recruiter attention naturally down the page',
-//       'Minimal design removes distractions — your content is always the focus',
+//       'Minimal design removes distractions - your content is always the focus',
 //       'Optimised for both ATS parsing and human review simultaneously',
 //     ],
 //   },
@@ -117,7 +117,7 @@ export const SORT_OPTIONS = [
 //     description: 'Built for APMs, PMs, and Senior PMs targeting product roles at tech companies. Heavy emphasis on metrics, roadmap ownership, and user impact.',
 //     overview: 'Product-role optimised template with a strong professional summary and certifications section. Preferred format by PM hiring managers at top-tier tech companies.',
 //     tips: [
-//       'OKR and metric framing is immediately visible — what hiring managers look for',
+//       'OKR and metric framing is immediately visible - what hiring managers look for',
 //       'Summary section leads with your biggest product wins before anything else',
 //       'Certifications and publications sections add credibility for senior PM roles',
 //     ],
@@ -177,10 +177,10 @@ export const SORT_OPTIONS = [
 //     atsScore: 97,
 //     isPopular: false,
 //     isFree: true,
-//     description: 'Clean and simple layout built for IT professionals. No clutter — just your technical skills, experience, and impact laid out for maximum readability.',
+//     description: 'Clean and simple layout built for IT professionals. No clutter - just your technical skills, experience, and impact laid out for maximum readability.',
 //     overview: 'The minimalist choice for IT professionals who want their technical depth to speak for itself. Every element has a reason to be there.',
 //     tips: [
-//       'Technical skills are immediately visible in the first scan — no digging required',
+//       'Technical skills are immediately visible in the first scan - no digging required',
 //       'Minimal design eliminates visual noise that slows down recruiter decision-making',
 //       'Clean formatting ensures zero issues across all ATS and PDF readers',
 //     ],
@@ -198,7 +198,7 @@ export const SORT_OPTIONS = [
 //     atsScore: 95,
 //     isPopular: false,
 //     isFree: true,
-//     description: 'Designed to highlight async communication, remote collaboration, and distributed team experience — keywords that remote-first companies actively scan for.',
+//     description: 'Designed to highlight async communication, remote collaboration, and distributed team experience - keywords that remote-first companies actively scan for.',
 //     overview: 'Optimised for candidates targeting fully remote or hybrid roles. Signals remote readiness through its structure and the keywords it naturally accommodates.',
 //     tips: [
 //       'Remote-specific skills and tools section is prominently structured',
@@ -219,7 +219,7 @@ export const SORT_OPTIONS = [
 //     atsScore: 96,
 //     isPopular: false,
 //     isFree: true,
-//     description: 'A clean, traditional format with a projects section — ideal for IT professionals and developers who want to show their work without complex layouts.',
+//     description: 'A clean, traditional format with a projects section - ideal for IT professionals and developers who want to show their work without complex layouts.',
 //     overview: 'Traditional structure trusted by hiring managers across all IT roles. The added projects section makes it effective for developers showcasing real-world work.',
 //     tips: [
 //       'Traditional format is universally accepted across all ATS systems globally',
@@ -247,7 +247,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for finance and business professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for finance and business professionals who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Finance & Business roles. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
@@ -277,7 +277,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for healthcare professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for healthcare professionals who want to make a strong, lasting first impression.",
     "overview": "Clean clinical format structured to meet the expectations of healthcare recruiters. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -312,7 +312,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a compelling professional summary — ideal for legal professionals and law students who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format with a compelling professional summary - ideal for legal professionals and law students who want to make a strong, lasting first impression.",
     "overview": "Formal layout aligned with the professional expectations of law firms and legal departments. The professional summary section gives recruiters an immediate, compelling overview of your value.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -344,7 +344,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal traditional format — ideal for professionals across all industries who want to pass ATS screening and impress hiring managers.",
+    "description": "A clean, minimal traditional format - ideal for professionals across all industries who want to pass ATS screening and impress hiring managers.",
     "overview": "Traditional structure trusted by hiring managers across all Professional roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Traditional format is universally accepted across all major ATS systems globally",
@@ -375,7 +375,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a dedicated projects section — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format with a dedicated projects section - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -403,10 +403,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to pass ATS screening and impress hiring managers.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to pass ATS screening and impress hiring managers.",
     "overview": "Purpose-built for ATS compatibility, ensuring your resume reaches human reviewers every time. The clean structure ensures readability across both digital and print formats.",
     "tips": [
-      "Purpose-built for ATS — zero formatting elements that could block automated parsing",
+      "Purpose-built for ATS - zero formatting elements that could block automated parsing",
       "High ATS score means your resume passes automated screening without formatting interference",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility"
     ],
@@ -431,10 +431,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to pass ATS screening and impress hiring managers.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to pass ATS screening and impress hiring managers.",
     "overview": "Purpose-built for ATS compatibility, ensuring your resume reaches human reviewers every time. The clean structure ensures readability across both digital and print formats.",
     "tips": [
-      "Purpose-built for ATS — zero formatting elements that could block automated parsing",
+      "Purpose-built for ATS - zero formatting elements that could block automated parsing",
       "High ATS score means your resume passes automated screening without formatting interference",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility"
     ],
@@ -459,10 +459,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The clean structure ensures readability across both digital and print formats.",
     "tips": [
-      "Layout optimized for remote-first job listings — highlights independent work capabilities",
+      "Layout optimized for remote-first job listings - highlights independent work capabilities",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
       "Keep margins between 0.5–1 inch to ensure the layout is preserved across all systems"
     ],
@@ -492,7 +492,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for recent graduates and entry-level candidates who want to land their first role with confidence.",
+    "description": "A clean, structured professional format - ideal for recent graduates and entry-level candidates who want to land their first role with confidence.",
     "overview": "Entry-level optimized structure that compensates for limited work history with strong section design. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -520,7 +520,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Structure designed to highlight leadership trajectory, strategic roles, and career progression",
@@ -549,10 +549,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal modern format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, minimal modern format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The minimal design keeps the focus entirely on your experience and qualifications.",
     "tips": [
-      "Minimal design philosophy reduces visual noise — all recruiter attention stays on your content",
+      "Minimal design philosophy reduces visual noise - all recruiter attention stays on your content",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
       "Keep margins between 0.5–1 inch to ensure the layout is preserved across all systems"
     ],
@@ -576,7 +576,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
@@ -603,10 +603,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for academics and researchers who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for academics and researchers who want to make a strong, lasting first impression.",
     "overview": "Academic layout structured to highlight research, publications, and scholarly achievements. The clean structure ensures readability across both digital and print formats.",
     "tips": [
-      "Academic CV format accommodates publications, grants, and research — far beyond a standard resume",
+      "Academic CV format accommodates publications, grants, and research - far beyond a standard resume",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
       "Keep margins between 0.5–1 inch to ensure the layout is preserved across all systems"
     ],
@@ -631,10 +631,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, minimal professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The minimal design keeps the focus entirely on your experience and qualifications.",
     "tips": [
-      "Minimal design philosophy reduces visual noise — all recruiter attention stays on your content",
+      "Minimal design philosophy reduces visual noise - all recruiter attention stays on your content",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
       "Keep margins between 0.5–1 inch to ensure the layout is preserved across all systems"
     ],
@@ -663,7 +663,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a compelling professional summary — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format with a compelling professional summary - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The professional summary section gives recruiters an immediate, compelling overview of your value.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -692,7 +692,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for finance and business professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for finance and business professionals who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Finance & Business roles. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -721,10 +721,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for healthcare professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for healthcare professionals who want to make a strong, lasting first impression.",
     "overview": "Clean clinical format structured to meet the expectations of healthcare recruiters. The clean structure ensures readability across both digital and print formats.",
     "tips": [
-      "Volunteer section adds character and demonstrates community engagement — valued by modern employers",
+      "Volunteer section adds character and demonstrates community engagement - valued by modern employers",
       "Structure designed to highlight leadership trajectory, strategic roles, and career progression",
       "Clinical format meets the specific expectations of hospital HR systems and healthcare recruiters"
     ],
@@ -751,7 +751,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a dedicated projects section — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format with a dedicated projects section - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -780,7 +780,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured functional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured functional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Skills-focused functional format that highlights competencies over job history. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Structure designed to highlight leadership trajectory, strategic roles, and career progression",
@@ -810,12 +810,12 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
       "Skills section helps recruiters quickly identify your core competencies at a glance",
-      "Optimized for recent graduates — structure compensates for limited professional work history"
+      "Optimized for recent graduates - structure compensates for limited professional work history"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABQAwCdASoUABwAPzmQvVgvKaYjqAqp4CcJaQAAPk/6RlRLoAD+7jcJIV8Qzx9nwPMnEH9C8Lk6ayyXwtD+LcC8AAA=",
     "importedAt": "2026-06-07T15:42:54.262Z"
@@ -842,7 +842,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal traditional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, minimal traditional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Traditional structure trusted by hiring managers across all Professional roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Traditional format is universally accepted across all major ATS systems globally",
@@ -869,7 +869,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
@@ -898,10 +898,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with an integrated photo section — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format with an integrated photo section - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The integrated photo section adds a personal dimension, ideal for client-facing and creative roles.",
     "tips": [
-      "Professional photo section adds a personal dimension — ideal for client-facing and international roles",
+      "Professional photo section adds a personal dimension - ideal for client-facing and international roles",
       "Dedicated certifications section ensures professional credentials get the visibility they deserve",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility"
     ],
@@ -930,7 +930,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a compelling professional summary — ideal for academics and researchers who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format with a compelling professional summary - ideal for academics and researchers who want to make a strong, lasting first impression.",
     "overview": "Academic layout structured to highlight research, publications, and scholarly achievements. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -962,7 +962,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking professional format with an integrated photo section — ideal for creative professionals and designers who want to stand out in competitive creative fields.",
+    "description": "A visually striking professional format with an integrated photo section - ideal for creative professionals and designers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Creative & Design applicant pools. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -991,7 +991,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -1019,7 +1019,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A structured, chronological chronological format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A structured, chronological chronological format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Chronological format that clearly communicates career progression and growth over time. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Chronological format is preferred by 90%+ of recruiters for clearly showing career progression",
@@ -1047,11 +1047,11 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a dedicated projects section — ideal for recent graduates and entry-level candidates who want to land their first role with confidence.",
+    "description": "A clean, structured professional format with a dedicated projects section - ideal for recent graduates and entry-level candidates who want to land their first role with confidence.",
     "overview": "Entry-level optimized structure that compensates for limited work history with strong section design. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
-      "Optimized for recent graduates — structure compensates for limited professional work history",
+      "Optimized for recent graduates - structure compensates for limited professional work history",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABwAwCdASoUABwAPzmUwlmvKicjqAgB4CcJaWhNABto3/m25IAA/u5ZdjR+x9ftHMEYxookTVqKrMzhQdq6AAAA",
@@ -1074,7 +1074,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
@@ -1105,7 +1105,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking professional format with a unique visual layout — ideal for professionals across all industries who want to stand out in competitive creative fields.",
+    "description": "A visually striking professional format with a unique visual layout - ideal for professionals across all industries who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Professional applicant pools. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -1132,10 +1132,10 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for senior executives and C-suite professionals who want to command attention at the executive level.",
+    "description": "A clean, structured professional format - ideal for senior executives and C-suite professionals who want to command attention at the executive level.",
     "overview": "Executive-grade layout designed to reflect authority, leadership, and strategic impact. The clean structure ensures readability across both digital and print formats.",
     "tips": [
-      "Executive format commands respect — clean hierarchy reflects leadership and strategic thinking",
+      "Executive format commands respect - clean hierarchy reflects leadership and strategic thinking",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
       "Keep margins between 0.5–1 inch to ensure the layout is preserved across all systems"
     ],
@@ -1161,7 +1161,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a compelling professional summary — ideal for marketing and sales professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format with a compelling professional summary - ideal for marketing and sales professionals who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Marketing & Sales roles. The professional summary section gives recruiters an immediate, compelling overview of your value.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -1193,12 +1193,12 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking professional format with an integrated photo section — ideal for creative professionals and designers who want to stand out in competitive creative fields.",
+    "description": "A visually striking professional format with an integrated photo section - ideal for creative professionals and designers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Creative & Design applicant pools. The integrated photo section adds a personal dimension, ideal for client-facing and creative roles.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
       "Multilingual-ready structure broadens your applicability to international job markets",
-      "Professional photo section adds a personal dimension — ideal for client-facing and international roles"
+      "Professional photo section adds a personal dimension - ideal for client-facing and international roles"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABwBACdASoUABwAPzmMulYvKSWjqA1R4CcJZQDMWBEdrBtB96yfYw3cc6TsQAD8juqBjKSG5buUAhiz6CkHbEOcvz25NKrOODsIvdrdprwNLDKUW3FgySRQ5/n9jXj7fdIHZnBy7gquLYQAAAA=",
     "importedAt": "2026-06-07T15:44:10.589Z"
@@ -1224,7 +1224,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking creative format with a compelling professional summary — ideal for IT professionals and developers who want to stand out in competitive creative fields.",
+    "description": "A visually striking creative format with a compelling professional summary - ideal for IT professionals and developers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive IT & Tech applicant pools. The professional summary section gives recruiters an immediate, compelling overview of your value.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -1256,7 +1256,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a compelling professional summary — ideal for healthcare professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format with a compelling professional summary - ideal for healthcare professionals who want to make a strong, lasting first impression.",
     "overview": "Clean clinical format structured to meet the expectations of healthcare recruiters. The professional summary section gives recruiters an immediate, compelling overview of your value.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -1288,7 +1288,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking professional format with a compelling professional summary — ideal for creative professionals and designers who want to stand out in competitive creative fields.",
+    "description": "A visually striking professional format with a compelling professional summary - ideal for creative professionals and designers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Creative & Design applicant pools. The professional summary section gives recruiters an immediate, compelling overview of your value.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -1317,7 +1317,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for healthcare professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for healthcare professionals who want to make a strong, lasting first impression.",
     "overview": "Clean clinical format structured to meet the expectations of healthcare recruiters. Dedicated certifications space ensures professional credentials are prominently displayed.",
     "tips": [
       "Dedicated certifications section ensures professional credentials get the visibility they deserve",
@@ -1349,12 +1349,12 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking professional format with an integrated photo section — ideal for creative professionals and designers who want to stand out in competitive creative fields.",
+    "description": "A visually striking professional format with an integrated photo section - ideal for creative professionals and designers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Creative & Design applicant pools. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
       "Skills section helps recruiters quickly identify your core competencies at a glance",
-      "Professional photo section adds a personal dimension — ideal for client-facing and international roles"
+      "Professional photo section adds a personal dimension - ideal for client-facing and international roles"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAwCdASoUABwAPzmGvVQvKKajKA1R4CcJZwDL4A0ke8+dSkVSjY4AAP6e7OWDszHzmyfPbbbTxLDeogHhpSqDhEYRbd5saTKADjCw5Us00ACJvKbL82r3B/8btIIfJ/FU6umkM4AAAA==",
     "importedAt": "2026-06-07T15:44:45.993Z"
@@ -1381,7 +1381,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking professional format with an integrated photo section — ideal for creative professionals and designers who want to stand out in competitive creative fields.",
+    "description": "A visually striking professional format with an integrated photo section - ideal for creative professionals and designers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Creative & Design applicant pools. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1411,7 +1411,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking professional format with a dedicated projects section — ideal for recent graduates and entry-level candidates who want to stand out in competitive creative fields.",
+    "description": "A visually striking professional format with a dedicated projects section - ideal for recent graduates and entry-level candidates who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Entry Level applicant pools. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1439,11 +1439,11 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, minimal professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The minimal design keeps the focus entirely on your experience and qualifications.",
     "tips": [
       "Traditional format is universally accepted across all major ATS systems globally",
-      "Minimal design philosophy reduces visual noise — all recruiter attention stays on your content",
+      "Minimal design philosophy reduces visual noise - all recruiter attention stays on your content",
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoUABwAPzmOv1evKaajqAqp4CcJQAAEsvrVHUDv4NXGwWOysBAA8DPsKGBzCy2IyqhOIn9oVCqukR2s46T6tGY71rv/LvPTKyViZDeWltarcXrdJgBQgC5bRViiYrytK/3DhbbNdv/9f5SITmcmhmIEAAA=",
@@ -1469,12 +1469,12 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking modern format with a unique visual layout — ideal for creative professionals and designers who want to stand out in competitive creative fields.",
+    "description": "A visually striking modern format with a unique visual layout - ideal for creative professionals and designers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Creative & Design applicant pools. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Unique visual layout helps you immediately stand out in competitive creative applicant pools",
-      "Volunteer section adds character and demonstrates community engagement — valued by modern employers",
-      "Optimized for recent graduates — structure compensates for limited professional work history"
+      "Volunteer section adds character and demonstrates community engagement - valued by modern employers",
+      "Optimized for recent graduates - structure compensates for limited professional work history"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoUABwAPzmIu1YvKKYjsBgIAeAnCWkAAC3P3EwdPxA8PDcVwAAA/geBTkdLsqywIoVIx2L6DJl0LjJ0SjHEI7V4zwxI6UeNdv+858c9jk33hi8Uhu6YAAAA",
     "importedAt": "2026-06-07T15:45:12.215Z"
@@ -1497,7 +1497,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The clean structure ensures readability across both digital and print formats.",
     "tips": [
       "Use a standard font like Calibri, Arial, or Garamond for maximum ATS compatibility",
@@ -1527,7 +1527,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for healthcare professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for healthcare professionals who want to make a strong, lasting first impression.",
     "overview": "Clean clinical format structured to meet the expectations of healthcare recruiters. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -1558,7 +1558,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a dedicated projects section — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format with a dedicated projects section - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1587,12 +1587,12 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for academics and researchers who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for academics and researchers who want to make a strong, lasting first impression.",
     "overview": "Academic layout structured to highlight research, publications, and scholarly achievements. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
       "Skills section helps recruiters quickly identify your core competencies at a glance",
-      "Optimized for recent graduates — structure compensates for limited professional work history"
+      "Optimized for recent graduates - structure compensates for limited professional work history"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAwCdASoUABwAPzmKt1OvKiUisBgMAeAnCWkAADzYlUUGT+0m2AAA/u4BRNM7rXLgdZ7ehQU5hMherRJcFq94ILaZja+2JbgAAA==",
     "importedAt": "2026-06-07T15:45:37.891Z"
@@ -1617,12 +1617,12 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a compelling professional summary — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format with a compelling professional summary - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The professional summary section gives recruiters an immediate, compelling overview of your value.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
       "Professional summary gives recruiters a compelling 5-second overview of your career value",
-      "Publications section adds academic credibility — particularly valuable in research and academia"
+      "Publications section adds academic credibility - particularly valuable in research and academia"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACQAwCdASoUABwAPzmUwFovKiakKAgB4CcJaQAALk8H/F+W2BhAAP7fHVD3APih20K6gWOSg864vgI9MEFrGs4BzAAAAA==",
     "importedAt": "2026-06-07T16:15:10.641Z"
@@ -1648,7 +1648,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a dedicated projects section — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format with a dedicated projects section - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1679,12 +1679,12 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, minimal professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
       "Dedicated certifications section ensures professional credentials get the visibility they deserve",
-      "Optimized for recent graduates — structure compensates for limited professional work history"
+      "Optimized for recent graduates - structure compensates for limited professional work history"
     ],
     "blurDataUrl": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADwAgCdASoUABwAPzmWwlmvKqcjqAgB4CcJaQAAPaUIAAD+7mFyIMK/LWNJ3BAHIn/ZewwAAAA=",
     "importedAt": "2026-06-07T16:15:17.655Z"
@@ -1714,7 +1714,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal modern format with a dedicated projects section — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, minimal modern format with a dedicated projects section - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Traditional format is universally accepted across all major ATS systems globally",
@@ -1747,7 +1747,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a dedicated projects section — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, structured professional format with a dedicated projects section - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1781,7 +1781,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A visually striking professional format with a unique visual layout — ideal for creative professionals and designers who want to stand out in competitive creative fields.",
+    "description": "A visually striking professional format with a unique visual layout - ideal for creative professionals and designers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive Creative & Design applicant pools. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1813,7 +1813,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal professional format with a dedicated projects section — ideal for IT professionals and developers who want to showcase technical expertise clearly.",
+    "description": "A clean, minimal professional format with a dedicated projects section - ideal for IT professionals and developers who want to showcase technical expertise clearly.",
     "overview": "Professionally structured layout trusted by recruiters across IT & Tech roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1847,7 +1847,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, minimal professional format with a dedicated projects section — ideal for IT professionals and developers who want to stand out in competitive creative fields.",
+    "description": "A clean, minimal professional format with a dedicated projects section - ideal for IT professionals and developers who want to stand out in competitive creative fields.",
     "overview": "Distinctive layout designed to help you stand out in competitive IT & Tech applicant pools. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1880,7 +1880,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for finance and business professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for finance and business professionals who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Finance & Business roles. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",
@@ -1912,7 +1912,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1946,7 +1946,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format with a compelling professional summary — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format with a compelling professional summary - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -1978,7 +1978,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for healthcare professionals who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for healthcare professionals who want to make a strong, lasting first impression.",
     "overview": "Clean clinical format structured to meet the expectations of healthcare recruiters. The dedicated projects section makes it effective for showcasing real-world work and problem-solving ability.",
     "tips": [
       "Projects section compensates for limited professional experience in junior and entry-level roles",
@@ -2012,7 +2012,7 @@ export const TEMPLATES = [
     "isPopular": false,
     "isFree": true,
     "featured": false,
-    "description": "A clean, structured professional format — ideal for professionals across all industries who want to make a strong, lasting first impression.",
+    "description": "A clean, structured professional format - ideal for professionals across all industries who want to make a strong, lasting first impression.",
     "overview": "Professionally structured layout trusted by recruiters across Professional roles. The skills section allows recruiters to instantly verify technical and professional competencies.",
     "tips": [
       "Skills section helps recruiters quickly identify your core competencies at a glance",

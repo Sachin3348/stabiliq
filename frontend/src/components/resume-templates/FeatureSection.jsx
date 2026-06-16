@@ -69,7 +69,7 @@ const FeatureSection = () => {
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            Our templates aren't just pretty — they're precision-engineered for the modern hiring funnel.
+            Our templates aren't just pretty - they're precision-engineered for the modern hiring funnel.
           </p>
         </motion.div>
 

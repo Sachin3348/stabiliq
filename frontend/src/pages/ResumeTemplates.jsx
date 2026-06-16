@@ -97,7 +97,7 @@ const ResumeTemplates = () => {
       {/* Hero */}
       <HeroSection onBrowse={handleBrowse} onUpload={handleUpload} />
 
-      {/* Filter Tabs — sticky below navbar */}
+      {/* Filter Tabs - sticky below navbar */}
       <div ref={gridRef}>
         <FilterTabs
           active={activeCategory}

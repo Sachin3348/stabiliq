@@ -9,7 +9,7 @@ const FAQS = [
   },
   {
     q: 'What format can I export my resume in?',
-    a: 'All templates export as PDF — the most universally accepted format by both ATS systems and human reviewers. The PDFs are machine-parseable while remaining visually polished for when a human eventually reads them.',
+    a: 'All templates export as PDF - the most universally accepted format by both ATS systems and human reviewers. The PDFs are machine-parseable while remaining visually polished for when a human eventually reads them.',
   },
   {
     q: 'Can I customise colours, fonts, and section order?',
@@ -25,11 +25,11 @@ const FAQS = [
   },
   {
     q: 'Can I use the same template for multiple jobs?',
-    a: 'Absolutely — and we encourage it. You can save multiple versions of your resume with different keyword optimisations for different roles. Tailoring your resume per application is the most effective way to increase your callback rate.',
+    a: 'Absolutely - and we encourage it. You can save multiple versions of your resume with different keyword optimisations for different roles. Tailoring your resume per application is the most effective way to increase your callback rate.',
   },
   {
     q: 'Are templates based on Word or Google Docs?',
-    a: 'Our templates are built natively in our web editor — no Word or Google Docs required. This ensures consistent formatting across all devices. You can also download and convert to Google Docs format if needed.',
+    a: 'Our templates are built natively in our web editor - no Word or Google Docs required. This ensures consistent formatting across all devices. You can also download and convert to Google Docs format if needed.',
   },
 ];
 

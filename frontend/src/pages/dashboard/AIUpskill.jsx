@@ -68,7 +68,7 @@ const AIUpskill = () => {
         data-testid="ai-upskill-page"
         className="relative min-h-[600px]"
       >
-        {/* Coming Soon Overlay — scoped to this content area only */}
+        {/* Coming Soon Overlay - scoped to this content area only */}
         <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-auto rounded-2xl overflow-hidden">
           {/* Glossy backdrop */}
           <div className="absolute inset-0 bg-white/30 backdrop-blur-sm" />
@@ -90,7 +90,7 @@ const AIUpskill = () => {
             </h2>
             <p className="text-slate-500 text-sm leading-relaxed">
               The AI Upskill &amp; Career Transition Hub is currently under development.
-              Stay tuned — it's going to be worth the wait!
+              Stay tuned - it's going to be worth the wait!
             </p>
             <div className="flex gap-1.5 mt-1">
               {[0, 0.15, 0.3].map((delay, i) => (

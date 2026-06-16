@@ -11,7 +11,7 @@ export const PLANS = [
     features: [
       'Access to member support resources',
       'Job transition KIT',
-      'Eligibility for support during involuntary job loss'
+      'Access to financial support program during job transition (subject to verification)'
     ],
     icon: Shield,
     gradient: 'from-slate-600 to-slate-700',
@@ -28,7 +28,7 @@ export const PLANS = [
       'AI upskilling course',
       'Job transition KIT',
       'Access to member support resources',
-      'Eligibility for support during involuntary job loss'
+      'Access to financial support program during job transition (subject to verification)'
     ],
     icon: Zap,
     gradient: 'from-blue-600 to-teal-600',

@@ -24,11 +24,6 @@ export const faqData = [
     answer: 'No. Support is discretionary and subject to eligibility and verification.'
   },
   {
-    id: 2,
-    question: 'Is STABILIQ an insurance product?',
-    answer: 'No. STABILIQ is a membership-based assistance program.'
-  },
-  {
     id: 3,
     question: 'How much assistance can I receive?',
     answer: 'Up to predefined limits, depending on review outcome.'

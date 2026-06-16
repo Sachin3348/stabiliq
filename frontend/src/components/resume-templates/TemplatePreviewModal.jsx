@@ -45,7 +45,7 @@ const TemplatePreviewModal = ({ template, onClose, onUseTemplate }) => {
               <div className="flex items-center justify-between px-5 py-3 bg-slate-800 text-white">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-semibold tracking-widest uppercase text-slate-400">Resume Preview</span>
-                  <span className="text-xs text-white font-medium">— {template.title}</span>
+                  <span className="text-xs text-white font-medium">- {template.title}</span>
                 </div>
                 <button
                   onClick={onClose}
@@ -117,9 +117,9 @@ const TemplatePreviewModal = ({ template, onClose, onUseTemplate }) => {
                   Use This Template
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <p className="text-xs text-slate-400 text-center mt-2">
-                  {template.isFree ? 'Free — included in your membership' : 'Available with Pro membership'}
-                </p>
+                {/* <p className="text-xs text-slate-400 text-center mt-2">
+                  {template.isFree ? 'Free - included in your membership' : 'Available with Pro membership'}
+                </p> */}
               </div>
 
               {/* Overview */}

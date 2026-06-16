@@ -36,7 +36,7 @@ const testimonialsData = [
     name: 'Kunal Iyer',
     role: 'Finance Analyst',
     initials: 'KI',
-    quote: 'Access to curated referrals and guidance was valuable. It didn\'t feel like a job portal — more like thoughtful direction during a transition.',
+    quote: 'Access to curated referrals and guidance was valuable. It didn\'t feel like a job portal - more like thoughtful direction during a transition.',
     gradient: 'from-orange-500 to-orange-600'
   },
   {

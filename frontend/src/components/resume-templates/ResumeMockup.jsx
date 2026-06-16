@@ -120,7 +120,7 @@ const TwoColumnMockup = ({ accent = '#2563eb' }) => (
 
       <SectionHeader label="Projects" color={accent} />
       <div style={{ marginBottom: 6 }}>
-        <div style={{ fontSize: 7, fontWeight: 700, color: '#0f172a' }}>OpenMetrics — Open Source Monitoring Tool</div>
+        <div style={{ fontSize: 7, fontWeight: 700, color: '#0f172a' }}>OpenMetrics - Open Source Monitoring Tool</div>
         <div style={{ fontSize: 6, color: '#64748b', marginTop: 2, lineHeight: 1.5 }}>
           Built a Prometheus-alternative with 2,400+ GitHub stars. React frontend + Go backend. 
           Featured in Hacker News and adopted by 12 companies.
@@ -343,7 +343,7 @@ const AtsProMockup = ({ accent = '#059669' }) => (
     <div style={{ fontSize: 7.5, fontWeight: 700, borderBottom: '1.5px solid #000', paddingBottom: 1, marginBottom: 5 }}>WORK EXPERIENCE</div>
     <JobEntry
       title="Senior Data Engineer"
-      company="Infosys — Client: HSBC"
+      company="Infosys - Client: HSBC"
       location="Pune"
       date="Feb 2021 – Present"
       accent="#000"
@@ -404,13 +404,13 @@ const FresherMockup = ({ accent = '#0891b2' }) => (
     <SectionHeader label="Projects" color={accent} />
     <div style={{ marginTop: 4, marginBottom: 8 }}>
       <div style={{ marginBottom: 7 }}>
-        <div style={{ fontSize: 7, fontWeight: 700, color: '#0f172a' }}>StudyBuddy — AI Study Planner</div>
+        <div style={{ fontSize: 7, fontWeight: 700, color: '#0f172a' }}>StudyBuddy - AI Study Planner</div>
         <div style={{ fontSize: 5.5, color: accent, marginBottom: 2 }}>React · Node.js · MongoDB · OpenAI API</div>
         <Bullet text="Built AI-powered study scheduler adopted by 800+ students at DTU with 4.6/5 rating" />
         <Bullet text="Implemented spaced repetition algorithm improving retention scores by 34% in user trials" />
       </div>
       <div>
-        <div style={{ fontSize: 7, fontWeight: 700, color: '#0f172a' }}>CampusCart — College Marketplace</div>
+        <div style={{ fontSize: 7, fontWeight: 700, color: '#0f172a' }}>CampusCart - College Marketplace</div>
         <div style={{ fontSize: 5.5, color: accent, marginBottom: 2 }}>React Native · Firebase · Stripe</div>
         <Bullet text="Peer-to-peer marketplace with 2,000+ active users and ₹12L in transaction volume in 3 months" />
       </div>

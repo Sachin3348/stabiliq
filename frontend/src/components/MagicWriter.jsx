@@ -487,9 +487,9 @@ const MagicWriterPanel = ({ parsedResume, token }) => {
 // ─── Main MagicWriter component ───────────────────────────────────────────────
 /**
  * Props:
- *  - resumeUrl     : string — direct URL to the PDF file
- *  - parsedResume  : object — the already-parsed resume data with experience & projects
- *  - token         : string — auth JWT
+ *  - resumeUrl     : string - direct URL to the PDF file
+ *  - parsedResume  : object - the already-parsed resume data with experience & projects
+ *  - token         : string - auth JWT
  *  - onClose       : () => void
  */
 const MagicWriter = ({ resumeUrl, parsedResume, token, onClose }) => {
@@ -540,10 +540,10 @@ const MagicWriter = ({ resumeUrl, parsedResume, token, onClose }) => {
           </button>
         </div>
 
-        {/* Content — two-panel layout */}
+        {/* Content - two-panel layout */}
         <div className="flex flex-1 overflow-hidden">
 
-          {/* LEFT — PDF Preview (narrower width) */}
+          {/* LEFT - PDF Preview (narrower width) */}
           <div className="w-3/5 overflow-y-auto bg-slate-100 p-4 border-r border-slate-200">
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-1">
               Resume Preview
@@ -551,7 +551,7 @@ const MagicWriter = ({ resumeUrl, parsedResume, token, onClose }) => {
             <PdfPreview pdfUrl={resumeUrl} />
           </div>
 
-          {/* RIGHT — Magic Writer Panel (wider width) */}
+          {/* RIGHT - Magic Writer Panel (wider width) */}
           <div className="flex-1 bg-white flex flex-col">
             <MagicWriterPanel
               parsedResume={parsedResume}

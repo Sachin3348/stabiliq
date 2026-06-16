@@ -8,7 +8,7 @@ import linkedInIcon from '../assets/svgs/linkedInIcon.svg';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const whatsappUrl = 'https://wa.me/916239368517?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20STABILIQ%20membership.%20Can%20you%20help%20me%3F';
+  const whatsappUrl = 'https://wa.me/918796463563?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20STABILIQ%20membership.%20Can%20you%20help%20me%3F';
 
   const footerLinks = [
     { name: 'Terms & Conditions', to: '/terms' },
@@ -30,7 +30,7 @@ const Footer = () => {
             <p className="text-slate-400 text-sm leading-relaxed">
             STABILIQ is a subscription based membership program for salaried professionals
             that provides upskilling courses, job transition support and financial assistance
-            in case of involuntary job loss.
+            during unexpected career transitions.
             </p>
           </div>
 
@@ -90,8 +90,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:+916239368517" className="text-slate-400 hover:text-white transition-colors text-sm">
-                  Phone: <span className="text-white">+91 6239368517</span>
+                <a href="tel:+918796463563" className="text-slate-400 hover:text-white transition-colors text-sm">
+                  Phone: <span className="text-white">+91 8796463563</span>
                 </a>
               </li>
             </ul>

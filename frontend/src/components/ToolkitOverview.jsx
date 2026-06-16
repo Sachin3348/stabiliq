@@ -184,7 +184,7 @@ const ToolkitOverview = ({ onNavigateTab, submission }) => {
             </div>
           </div>
 
-          {/* Progress tracker — only when a submission exists */}
+          {/* Progress tracker - only when a submission exists */}
           {hasSubmission && (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -227,7 +227,7 @@ const ToolkitOverview = ({ onNavigateTab, submission }) => {
         <div className="flex items-center gap-2 mb-6">
           <Rocket className="w-5 h-5 text-teal-600" />
           <h2 className="text-xl font-bold text-slate-900" style={{ fontFamily: 'Sora, sans-serif' }}>Your Toolkit</h2>
-          <span className="text-xs text-slate-400 ml-1">— click any tool to get started</span>
+          <span className="text-xs text-slate-400 ml-1">- click any tool to get started</span>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -287,16 +287,16 @@ const ToolkitOverview = ({ onNavigateTab, submission }) => {
           </div>
           <div>
             <h2 className="text-xl font-bold text-slate-900" style={{ fontFamily: 'Sora, sans-serif' }}>Anatomy of a Perfect Resume</h2>
-            <p className="text-xs text-slate-500 mt-0.5">Every section matters — here's what recruiters look for</p>
+            <p className="text-xs text-slate-500 mt-0.5">Every section matters - here's what recruiters look for</p>
           </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-1">
-          <AnatomySection icon={Type}      title="Professional Header"     importance="Critical" colorClass="bg-rose-500"   tip="Name, title, contact info, LinkedIn URL. No photo, no full address — city/state only. Match your title to the role you're targeting." delay={0}    inView={anatomyInView} />
+          <AnatomySection icon={Type}      title="Professional Header"     importance="Critical" colorClass="bg-rose-500"   tip="Name, title, contact info, LinkedIn URL. No photo, no full address - city/state only. Match your title to the role you're targeting." delay={0}    inView={anatomyInView} />
           <AnatomySection icon={AlignLeft} title="Professional Summary"    importance="High"     colorClass="bg-amber-500"  tip="3–4 lines max. Lead with years of experience + domain, then 2–3 quantified achievements. End with what you're seeking." delay={0.05} inView={anatomyInView} />
           <AnatomySection icon={Briefcase} title="Work Experience"         importance="Critical" colorClass="bg-teal-500"   tip="Reverse chronological. 3–5 bullet points per role using CAR format (Context → Action → Result). Every bullet needs a number." delay={0.1}  inView={anatomyInView} />
           <AnatomySection icon={Layers}    title="Projects"                importance="High"     colorClass="bg-blue-500"   tip="2–3 relevant projects with tech stack, your role, and quantified impact. Link to GitHub or live demos. Mirror JD keywords." delay={0.15} inView={anatomyInView} />
-          <AnatomySection icon={Hash}      title="Skills Section"          importance="High"     colorClass="bg-indigo-500" tip="Group by category (Languages, Frameworks, Tools, Cloud). Match exact JD keywords. Don't self-rate — no 'proficient / expert'." delay={0.2}  inView={anatomyInView} />
+          <AnatomySection icon={Hash}      title="Skills Section"          importance="High"     colorClass="bg-indigo-500" tip="Group by category (Languages, Frameworks, Tools, Cloud). Match exact JD keywords. Don't self-rate - no 'proficient / expert'." delay={0.2}  inView={anatomyInView} />
           <AnatomySection icon={Award}     title="Education & Certs"       importance="Medium"   colorClass="bg-violet-500" tip="Degree, university, graduation year. Add relevant coursework only if < 2 yrs experience. Certs add credibility for specific domains." delay={0.25} inView={anatomyInView} />
         </div>
       </div>
@@ -319,14 +319,14 @@ const ToolkitOverview = ({ onNavigateTab, submission }) => {
               <ThumbsUp className="w-5 h-5 text-green-600" />
               <h3 className="font-bold text-green-900">Do This</h3>
             </div>
-            <DoItem text="Use quantified achievements — 'Increased revenue by 40%' beats 'Helped increase revenue'" />
-            <DoItem text="Tailor your resume to each job description — match their exact keywords" />
+            <DoItem text="Use quantified achievements - 'Increased revenue by 40%' beats 'Helped increase revenue'" />
+            <DoItem text="Tailor your resume to each job description - match their exact keywords" />
             <DoItem text="Start every bullet with a strong action verb (Built, Led, Reduced, Designed)" />
             <DoItem text="Keep it to 1 page (early career) or 2 pages max (senior). Recruiters won't read more." />
-            <DoItem text="Use a clean single-column layout with standard fonts — ATS can't parse fancy designs" />
+            <DoItem text="Use a clean single-column layout with standard fonts - ATS can't parse fancy designs" />
             <DoItem text="Include links: GitHub, Portfolio, LinkedIn. Proof of work beats claims about skills." />
             <DoItem text="Match your header title to the exact job title you're applying for" />
-            <DoItem text="Put your most impactful experience first — order by relevance, not just chronology" />
+            <DoItem text="Put your most impactful experience first - order by relevance, not just chronology" />
           </motion.div>
 
           <motion.div
@@ -339,13 +339,13 @@ const ToolkitOverview = ({ onNavigateTab, submission }) => {
               <ThumbsDown className="w-5 h-5 text-rose-600" />
               <h3 className="font-bold text-rose-900">Don't Do This</h3>
             </div>
-            <DontItem text="Don't use generic phrases like 'Hard-working team player' — they say nothing" />
+            <DontItem text="Don't use generic phrases like 'Hard-working team player' - they say nothing" />
             <DontItem text="Don't include a photo, date of birth, marital status, or full home address" />
-            <DontItem text="Don't use tables, columns, headers/footers, or text boxes — ATS can't parse them" />
-            <DontItem text="Don't list every technology you've ever touched — focus on what's relevant to the role" />
-            <DontItem text="Don't write 'References available upon request' — it's implied and wastes precious space" />
-            <DontItem text="Don't write in first person ('I developed…') — use implied first person ('Developed…')" />
-            <DontItem text="Don't submit the same resume to every job — one-size-fits-all means ATS rejection" />
+            <DontItem text="Don't use tables, columns, headers/footers, or text boxes - ATS can't parse them" />
+            <DontItem text="Don't list every technology you've ever touched - focus on what's relevant to the role" />
+            <DontItem text="Don't write 'References available upon request' - it's implied and wastes precious space" />
+            <DontItem text="Don't write in first person ('I developed…') - use implied first person ('Developed…')" />
+            <DontItem text="Don't submit the same resume to every job - one-size-fits-all means ATS rejection" />
             <DontItem text="Don't use creative file names. Format: FirstName_LastName_Resume.pdf" />
           </motion.div>
         </div>
@@ -395,7 +395,7 @@ const ToolkitOverview = ({ onNavigateTab, submission }) => {
             },
             {
               title: 'Mirror the Job Description',
-              tip: "If the JD says 'React.js' don't write 'ReactJS'. If they say 'CI/CD pipelines' don't write 'continuous integration'. ATS does exact string matching — copy their exact wording.",
+              tip: "If the JD says 'React.js' don't write 'ReactJS'. If they say 'CI/CD pipelines' don't write 'continuous integration'. ATS does exact string matching - copy their exact wording.",
               icon: Target,
               badge: 'bg-teal-100 text-teal-700',
             },
@@ -407,7 +407,7 @@ const ToolkitOverview = ({ onNavigateTab, submission }) => {
             },
             {
               title: 'Show, Don\'t Tell',
-              tip: "Nobody believes 'self-motivated problem solver'. Show it instead: 'Identified and fixed a memory leak costing $12K/month in AWS spend — without being asked.' Proof beats claims every time.",
+              tip: "Nobody believes 'self-motivated problem solver'. Show it instead: 'Identified and fixed a memory leak costing $12K/month in AWS spend - without being asked.' Proof beats claims every time.",
               icon: Award,
               badge: 'bg-violet-100 text-violet-700',
             },

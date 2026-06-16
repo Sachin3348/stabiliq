@@ -153,7 +153,7 @@ const PaymentStatusPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      {/* Header — logo only */}
+      {/* Header - logo only */}
       <header className="w-full px-6 py-4 bg-white border-b border-gray-100 shadow-sm">
         <div
           className="flex items-center cursor-pointer w-fit"

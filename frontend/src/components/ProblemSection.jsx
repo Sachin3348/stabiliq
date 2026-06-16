@@ -43,7 +43,7 @@ const ProblemSection = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">low-frequency, high-impact</span> event
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            For most salaried professionals in India, the real problem isn't unemployment—it's the <strong>sudden break in income</strong> after losing a job.
+            For most salaried professionals in India, the real problem isn't unemployment-it's the <strong>sudden break in income</strong> after losing a job.
           </p>
         </div>
 

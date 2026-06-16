@@ -233,7 +233,7 @@ const ProcessingView = () => {
 
   useEffect(() => {
     const m = setInterval(() => setMsgIdx(p => (p + 1) % PROCESSING_MESSAGES.length), 3500);
-    // Slowly crawls to 85% over ~100s — resolves when API responds
+    // Slowly crawls to 85% over ~100s - resolves when API responds
     const p = setInterval(() => setProgress(prev => prev < 85 ? prev + 0.25 : prev < 94 ? prev + 0.04 : prev), 200);
     return () => { clearInterval(m); clearInterval(p); };
   }, []);
@@ -266,7 +266,7 @@ const ProcessingView = () => {
           className="text-xl font-bold text-slate-800 text-center mb-2"
         >{text}</motion.p>
       </AnimatePresence>
-      <p className="text-sm text-slate-500 text-center mb-8">Deep AI analysis in progress — this can take up to 2 minutes</p>
+      <p className="text-sm text-slate-500 text-center mb-8">Deep AI analysis in progress - this can take up to 2 minutes</p>
 
       <div className="w-72 space-y-1.5">
         <div className="flex justify-between text-xs text-slate-500 font-medium">
@@ -1051,7 +1051,7 @@ const TargetedResume = ({ token }) => {
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },
-          timeout: 130000, // 130s — API can take up to 2 min
+          timeout: 130000, // 130s - API can take up to 2 min
         }
       );
 

@@ -22,7 +22,7 @@ const Home = () => {
       <Pricing />
       {/* <MemberLoginCTA /> */}
       <Testimonials />
-      <LeadForm />
+      {/* <LeadForm /> */}
       <FAQ />
       <Footer />
     </div>

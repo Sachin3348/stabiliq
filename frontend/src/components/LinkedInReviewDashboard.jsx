@@ -48,7 +48,7 @@ const NAV_ITEMS = [
 
 const SECTION_WHY = {
   headline: {
-    why: 'Your headline is the first thing recruiters see in search results — before your name. LinkedIn uses it heavily in its search algorithm. A weak headline means you won\'t even appear in recruiter searches.',
+    why: 'Your headline is the first thing recruiters see in search results - before your name. LinkedIn uses it heavily in its search algorithm. A weak headline means you won\'t even appear in recruiter searches.',
     recruiterNote: 'Recruiters scan hundreds of profiles in seconds. Your headline is your billboard. Top candidates use keyword-rich, role-specific headlines that immediately communicate value.',
     impact: 'Improving your headline can increase profile views by up to 3×.',
   },
@@ -59,7 +59,7 @@ const SECTION_WHY = {
   },
   experience: {
     why: 'Experience is the highest-weighted section for both ATS systems and human recruiters. Lack of measurable achievements signals junior thinking, regardless of seniority.',
-    recruiterNote: 'The #1 thing recruiters look for is quantifiable proof of impact — numbers, percentages, users affected. Without these, your profile blends into the noise.',
+    recruiterNote: 'The #1 thing recruiters look for is quantifiable proof of impact - numbers, percentages, users affected. Without these, your profile blends into the noise.',
     impact: 'Experience with metrics gets 5× more recruiter engagement than generic descriptions.',
   },
   keywords: {
@@ -74,7 +74,7 @@ const SECTION_WHY = {
   },
   completeness: {
     why: 'LinkedIn\'s algorithm boosts "All-Star" profiles in search results. Incomplete profiles get deprioritized. Missing sections (Projects, Certifications, Featured) signal lack of effort.',
-    recruiterNote: 'A complete profile signals professionalism and effort — two qualities every recruiter values. Incomplete profiles are often skipped.',
+    recruiterNote: 'A complete profile signals professionalism and effort - two qualities every recruiter values. Incomplete profiles are often skipped.',
     impact: 'Complete profiles receive 21× more profile views.',
   },
   searchability: {
@@ -88,7 +88,7 @@ const MISSING_SECTIONS_INFO = {
   'Projects (with links to GitHub/live demos)': { icon: Github, impact: 'High', desc: 'Projects with links increase recruiter trust and showcase practical skills beyond job titles.' },
   'Certifications': { icon: Award, impact: 'Medium', desc: 'Certifications signal commitment to learning and validate technical skills independently.' },
   'Portfolio links (if any)': { icon: Globe, impact: 'High', desc: 'Portfolio links let recruiters verify your work quality instantly.' },
-  'Featured section': { icon: Star, impact: 'High', desc: 'The Featured section is premium real estate — top candidates use it to showcase their best work.' },
+  'Featured section': { icon: Star, impact: 'High', desc: 'The Featured section is premium real estate - top candidates use it to showcase their best work.' },
   'Recommendations': { icon: Users, impact: 'Medium', desc: 'Peer recommendations are social proof that dramatically increases recruiter trust.' },
   'Volunteer Experience (if applicable)': { icon: Heart, impact: 'Low', desc: 'Volunteer experience humanizes your profile and signals cultural values.' },
 };
@@ -533,7 +533,7 @@ const OverviewTab = ({ data, onNavigate }) => {
           Recruiters spend an average of <strong>7.4 seconds</strong> scanning a LinkedIn profile before deciding to engage or move on.
         </DidYouKnow>
         <DidYouKnow icon={Search} title="LinkedIn Algorithm" color="violet">
-          LinkedIn's algorithm promotes profiles with rich content, keyword diversity, and engagement signals — your score directly affects your discoverability.
+          LinkedIn's algorithm promotes profiles with rich content, keyword diversity, and engagement signals - your score directly affects your discoverability.
         </DidYouKnow>
         <DidYouKnow icon={TrendingUp} title="Score Impact" color="teal">
           Profiles scoring <strong>80+</strong> receive <strong>21× more recruiter views</strong> and <strong>36× more messages</strong> than profiles scoring under 40.
@@ -671,7 +671,7 @@ const SectionDetailTab = ({ sectionKey, sectionData }) => {
             <AIPulseBadge label="AI Generated" />
           </div>
           <BeforeAfter
-            before="(Your current version — update your LinkedIn profile to see the full before state)"
+            before="(Your current version - update your LinkedIn profile to see the full before state)"
             after={sectionData.optimized_example}
           />
         </div>
@@ -982,7 +982,7 @@ const LearningCenterTab = () => {
   const lessons = [
     {
       icon: User, color: 'indigo', title: 'The Perfect LinkedIn Headline', tag: '3 min read',
-      content: 'Your headline appears in search results, connection requests, and messaging previews. The formula that works: [Seniority] [Role] | [Top Skill] + [Top Skill] | [Unique Value Prop or Impact]. Avoid vague phrases like "Passionate professional" — they signal zero self-awareness to recruiters.',
+      content: 'Your headline appears in search results, connection requests, and messaging previews. The formula that works: [Seniority] [Role] | [Top Skill] + [Top Skill] | [Unique Value Prop or Impact]. Avoid vague phrases like "Passionate professional" - they signal zero self-awareness to recruiters.',
     },
     {
       icon: Search, color: 'violet', title: 'How ATS Systems Actually Work', tag: '5 min read',
