@@ -66,11 +66,11 @@ const ProductWalkthrough = () => {
           <div className="bg-white border border-slate-200/80 rounded-3xl shadow-2xl shadow-slate-200/60 overflow-hidden">
             <div className="grid lg:grid-cols-5 gap-0 lg:relative">
 
-              {/* VIDEO — full width on mobile, 3/5 on desktop */}
-              {/* On mobile: intrinsic 16:9. On desktop: stretches to match right panel height */}
+              {/* VIDEO — single instance, layout via CSS only */}
               <div className="lg:col-span-3 bg-slate-950 relative lg:absolute lg:inset-y-0 lg:left-0 lg:[width:60%]">
-                {/* Mobile: 16:9 via padding trick. Desktop: inset-0 fills full column */}
-                <div className="relative w-full lg:hidden" style={{ paddingBottom: '56.25%' }}>
+                {/* Mobile: 16:9 padding trick. Desktop: absolute inset fills full column */}
+                <div className="relative w-full lg:absolute lg:inset-0" style={{ paddingBottom: '56.25%' }} >
+                  <div className="lg:!pb-0 absolute inset-0">
                   {!playClicked && (
                     <button
                       className="absolute inset-0 w-full h-full flex items-center justify-center group bg-slate-950 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500"
@@ -107,46 +107,7 @@ const ProductWalkthrough = () => {
                       aria-label="STABILIQ platform walkthrough video"
                     />
                   )}
-                </div>
-
-                {/* Desktop: fills full column height — no gap */}
-                <div className="hidden lg:flex absolute inset-0 w-full h-full">
-                  {!playClicked && (
-                    <button
-                      className="w-full h-full flex items-center justify-center group bg-slate-950 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500"
-                      onClick={() => setPlayClicked(true)}
-                      aria-label="Play STABILIQ platform walkthrough video"
-                    >
-                      <img
-                        src="https://img.youtube.com/vi/u7-rDm2ybVw/maxresdefault.jpg"
-                        alt="STABILIQ platform walkthrough thumbnail"
-                        className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-80 transition-opacity duration-300"
-                        loading="lazy"
-                      />
-                      <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-lg tracking-wide">
-                        Full Walkthrough
-                      </div>
-                      <div className="relative z-10 flex flex-col items-center gap-3">
-                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-2xl shadow-black/40 group-hover:scale-110 transition-transform duration-300">
-                          <Play className="h-9 w-9 text-blue-600 fill-blue-600 ml-1" aria-hidden="true" />
-                        </div>
-                        <span className="text-white text-sm font-semibold drop-shadow-lg bg-black/40 backdrop-blur-sm px-4 py-1.5 rounded-full">
-                          Watch Walkthrough
-                        </span>
-                      </div>
-                    </button>
-                  )}
-                  {playClicked && (
-                    <iframe
-                      className="w-full h-full"
-                      src="https://www.youtube.com/embed/u7-rDm2ybVw?autoplay=1&rel=0&modestbranding=1&color=white"
-                      title="STABILIQ Platform Walkthrough — Membership, Financial Assistance & Career Support"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      onLoad={() => setIframeLoaded(true)}
-                      aria-label="STABILIQ platform walkthrough video"
-                    />
-                  )}
+                  </div>
                 </div>
               </div>
 
