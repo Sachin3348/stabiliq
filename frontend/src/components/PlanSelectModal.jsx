@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { Check, Sparkles } from 'lucide-react';
+import { Check, Flame } from 'lucide-react';
 import { PLANS } from '../constants/plans';
 import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
@@ -82,7 +82,7 @@ const PlanSelectModal = ({ onPlanSelected }) => {
                 {plan.popular && (
                   <div className="absolute top-0 right-0 z-10">
                     <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white px-5 py-2 rounded-bl-2xl flex items-center gap-2 font-bold text-xs">
-                      <Sparkles className="h-3.5 w-3.5" />
+                      <Flame className="h-3.5 w-3.5" />
                       MOST POPULAR
                     </div>
                   </div>

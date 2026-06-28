@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { redirectToPayment } from '../utils/payment';
 import { Button } from './ui/button';
-import { Check, Sparkles } from 'lucide-react';
+import { Check, Flame } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { processMembership } from '../mock';
 import { useToast } from '../hooks/use-toast';
@@ -104,7 +104,7 @@ const Pricing = () => {
                 {plan.popular && (
                   <div className="absolute top-0 right-0">
                     <div className="bg-gradient-to-r from-blue-600 to-teal-600 text-white px-6 py-2 rounded-bl-2xl flex items-center gap-2 font-bold text-sm">
-                      <Sparkles className="h-4 w-4" />
+                      <Flame className="h-4 w-4" />
                       MOST POPULAR
                     </div>
                   </div>

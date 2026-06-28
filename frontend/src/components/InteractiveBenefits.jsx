@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Banknote, Briefcase, GraduationCap, CheckCircle, XCircle, FileText, Mail, Target, Lightbulb, Linkedin, Award, BookOpen, Video, FileCheck, Sparkles, ArrowRight } from 'lucide-react';
+import { Banknote, Briefcase, GraduationCap, CheckCircle, XCircle, FileText, Mail, Target, Lightbulb, Linkedin, Award, BookOpen, Video, FileCheck, Star, Flame, Crown, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 
 const InteractiveBenefits = () => {
@@ -311,7 +311,7 @@ const InteractiveBenefits = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: 0.2 }}
                     >
-                      <Sparkles className="h-5 w-5 text-amber-500" />
+                      <Star className="h-5 w-5 text-amber-500" />
                     </motion.div>
                   )}
                 </motion.button>
@@ -424,7 +424,7 @@ const InteractiveBenefits = () => {
                                   transition={{ delay: 0.3 }}
                                 >
                                   <span className="bg-amber-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                                    <Sparkles className="h-3 w-3" />
+                                    <Flame className="h-3 w-3" />
                                     MOST POPULAR
                                   </span>
                                 </motion.div>
@@ -590,7 +590,7 @@ const InteractiveBenefits = () => {
 
                         <motion.div variants={itemVariants} className="mt-8 bg-indigo-50 border-2 border-indigo-300 rounded-2xl p-6 shadow-lg min-w-0">
                           <p className="text-slate-800 font-medium text-center flex items-center justify-center gap-2 flex-wrap">
-                            <Sparkles className="h-5 w-5 text-indigo-600" />
+                            <Crown className="h-5 w-5 text-indigo-600" />
                             <strong>Pro Plan Exclusive:</strong> Get unlimited access to all course modules, future updates, and advanced playbooks
                           </p>
                         </motion.div>
