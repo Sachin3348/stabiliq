@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import WhatIsSection from '../components/WhatIsSection';
+import ProductWalkthrough from '../components/ProductWalkthrough';
 import HowItWorks from '../components/HowItWorks';
 import InteractiveBenefits from '../components/InteractiveBenefits';
 import Pricing from '../components/Pricing';
@@ -17,6 +18,7 @@ const Home = () => {
       <Header />
       <Hero />
       <WhatIsSection />
+      <ProductWalkthrough />
       <HowItWorks />
       <InteractiveBenefits />
       <Pricing />
