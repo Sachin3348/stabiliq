@@ -53,7 +53,7 @@ const ProductWalkthrough = () => {
             </span>
           </h2>
           <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Watch a complete walkthrough of the STABILIQ platform — from membership benefits to your first claim — before you decide.
+            Watch a complete walkthrough of the STABILIQ platform - from membership benefits to your first claim - before you decide.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ const ProductWalkthrough = () => {
           <div className="bg-white border border-slate-200/80 rounded-3xl shadow-2xl shadow-slate-200/60 overflow-hidden">
             <div className="grid lg:grid-cols-5 gap-0 lg:relative">
 
-              {/* VIDEO — single instance, layout via CSS only */}
+              {/* VIDEO - single instance, layout via CSS only */}
               <div className="lg:col-span-3 bg-slate-950 relative lg:absolute lg:inset-y-0 lg:left-0 lg:[width:60%]">
                 {/* Mobile: 16:9 padding trick. Desktop: absolute inset fills full column */}
                 <div className="relative w-full lg:absolute lg:inset-0" style={{ paddingBottom: '56.25%' }} >
@@ -100,7 +100,7 @@ const ProductWalkthrough = () => {
                     <iframe
                       className="absolute inset-0 w-full h-full"
                       src="https://www.youtube.com/embed/u7-rDm2ybVw?autoplay=1&rel=0&modestbranding=1&color=white"
-                      title="STABILIQ Platform Walkthrough — Membership, Financial Assistance & Career Support"
+                      title="STABILIQ Platform Walkthrough - Membership, Financial Assistance & Career Support"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       onLoad={() => setIframeLoaded(true)}
@@ -111,7 +111,7 @@ const ProductWalkthrough = () => {
                 </div>
               </div>
 
-              {/* CONTENT — below video on mobile, right panel on desktop */}
+              {/* CONTENT - below video on mobile, right panel on desktop */}
               {/* lg:col-start-4 pushes content to the right 2/5, leaving left 3/5 for absolute video */}
               <div className="lg:col-span-2 lg:col-start-4 p-8 sm:p-10 flex flex-col justify-between gap-8">
                 <div>
