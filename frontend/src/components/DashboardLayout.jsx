@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, GraduationCap, FileText, Banknote, LogOut, UserCheck, Menu, X } from 'lucide-react';
+import { LayoutDashboard, GraduationCap, FileText, Banknote, LogOut, UserCheck, Menu, X, Gift } from 'lucide-react';
 import stabiliqLogo from '../assets/svgs/logo.svg';
 import { useAuth } from '../context/AuthContext';
 import { Button } from './ui/button';
@@ -28,6 +28,7 @@ const DashboardLayout = ({ children }) => {
     { name: 'Job Transition Toolkit', href: '/dashboard/profile-analysis', icon: FileText, plans: ['basic', 'pro'] },
     { name: 'Financial Assistance', href: '/dashboard/financial-assistance', icon: Banknote, plans: ['basic', 'pro'] },
     { name: 'Career Counsellor', href: '/dashboard/career-counsellor', icon: UserCheck, plans: ['basic', 'pro'] },
+    { name: 'Refer & Earn', href: '/dashboard/referral', icon: Gift, plans: ['basic', 'pro'] },
   ];
 
   return (

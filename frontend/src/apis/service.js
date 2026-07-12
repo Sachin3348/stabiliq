@@ -48,6 +48,15 @@ export function validateCoupon(code, plan, token, context="subscription") {
   });
 }
 
+export function getReferralStats(token) {
+  return axios.get(`${API_BASE_URL}/api/referral/stats`, {
+    headers: {
+      "content-type": "application/json",
+      "authorization": `Bearer ${token}`
+    },
+  });
+}
+
 
 // export function loginAPI(url, data) {
 //   return api.post({

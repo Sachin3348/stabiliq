@@ -14,6 +14,7 @@ import AIUpskill from "./pages/dashboard/AIUpskill";
 import ProfileAnalysis from "./pages/dashboard/ProfileAnalysis";
 import FinancialAssistance from "./pages/dashboard/FinancialAssistance";
 import CareerCounsellor from "./pages/dashboard/CareerCounsellor";
+import Referral from "./pages/dashboard/Referral";
 import PaymentStatusPage from "./pages/payment-status";
 import { Toaster } from "./components/ui/sonner";
 import { Toaster as RadixToaster } from "./components/ui/toaster";
@@ -69,6 +70,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <CareerCounsellor />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard/referral"
+              element={
+                <ProtectedRoute>
+                  <Referral />
                 </ProtectedRoute>
               }
             />

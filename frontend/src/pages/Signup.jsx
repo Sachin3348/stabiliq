@@ -22,7 +22,8 @@ const Signup = () => {
     name: '',
     email: '',
     phone: '',
-    plan: 'basic'
+    plan: 'basic',
+    referralCode: ''
   });
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
@@ -76,13 +77,19 @@ const Signup = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(`${API}/auth/verify-otp`, {
+      const verifyPayload = {
         email: formData.email,
         phone: formData.phone,
         otp,
         name: formData.name,
         plan: formData.plan
-      });
+      };
+
+      if (formData.referralCode.trim()) {
+        verifyPayload.referralCode = formData.referralCode.trim();
+      }
+
+      const response = await axios.post(`${API}/auth/verify-otp`, verifyPayload);
       const plan = localStorage.getItem("selectedPlan");
       if (response.data.success) {
         login(response.data.token, response.data.user);
@@ -191,6 +198,19 @@ const Signup = () => {
                       required
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-slate-700 mb-2">
+                    Referral Code <span className="text-slate-400 font-medium">Optional</span>
+                  </label>
+                  <Input
+                    type="text"
+                    placeholder="Enter referral code"
+                    value={formData.referralCode}
+                    onChange={(e) => setFormData({ ...formData, referralCode: e.target.value.toUpperCase() })}
+                    className="h-12 border-2"
+                  />
                 </div>
 
                 <Button
