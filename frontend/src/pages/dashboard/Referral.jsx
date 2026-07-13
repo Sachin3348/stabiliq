@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Gift, Copy, Share2, Users, Wallet, Check, ArrowRight,
+  Gift, Copy, Share2, Users, Wallet, Check, ArrowRight, Link2,
   UserPlus, IndianRupee, RefreshCcw, AlertCircle, Sparkles
 } from 'lucide-react';
 import DashboardLayout from '../../components/DashboardLayout';
@@ -152,6 +152,7 @@ const Referral = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [codeCopied, setCodeCopied] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
   const [msgCopied, setMsgCopied] = useState(false);
 
   const fetchStats = useCallback(async () => {
@@ -186,8 +187,20 @@ const Referral = () => {
     });
   };
 
+  const referralLink = stats?.referralCode
+    ? `${window.location.origin}/?referralCode=${encodeURIComponent(stats.referralCode)}`
+    : '';
+
+  const handleCopyLink = () => {
+    if (!referralLink) return;
+    copyText(referralLink, () => {
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2200);
+    });
+  };
+
   const shareMessage = stats?.referralCode
-    ? `Use my referral code ${stats.referralCode} to join Stabiliq.`
+    ? `Use my referral code ${stats.referralCode} to join Stabiliq.\n${referralLink}`
     : '';
 
   const handleShare = async () => {
@@ -396,6 +409,38 @@ const Referral = () => {
 
                         <motion.div whileTap={{ scale: 0.96 }}>
                           <Button
+                            onClick={handleCopyLink}
+                            variant="outline"
+                            className="gap-2 border-2 border-slate-200 hover:border-blue-300 hover:bg-blue-50 rounded-xl font-semibold transition-all min-w-[130px]"
+                          >
+                            <AnimatePresence mode="wait">
+                              {linkCopied ? (
+                                <motion.span
+                                  key="link-done"
+                                  className="flex items-center gap-2 text-emerald-600"
+                                  initial={{ opacity: 0, scale: 0.7 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  exit={{ opacity: 0, scale: 0.7 }}
+                                >
+                                  <Check className="h-4 w-4" /> Copied!
+                                </motion.span>
+                              ) : (
+                                <motion.span
+                                  key="link-copy"
+                                  className="flex items-center gap-2"
+                                  initial={{ opacity: 0, scale: 0.7 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  exit={{ opacity: 0, scale: 0.7 }}
+                                >
+                                  <Link2 className="h-4 w-4" /> Copy link
+                                </motion.span>
+                              )}
+                            </AnimatePresence>
+                          </Button>
+                        </motion.div>
+
+                        <motion.div whileTap={{ scale: 0.96 }}>
+                          <Button
                             onClick={handleShare}
                             className="gap-2 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white rounded-xl font-semibold shadow-lg shadow-blue-200/60 transition-all"
                           >
@@ -487,6 +532,12 @@ const Referral = () => {
                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-3">
                       Ready-to-share message
                     </p>
+                    {referralLink && (
+                      <div className="rounded-xl border border-blue-100 bg-blue-50 p-3 mb-3 select-all">
+                        <p className="text-xs font-semibold text-blue-700 mb-1">Referral URL</p>
+                        <p className="text-blue-700 text-sm break-all">{referralLink}</p>
+                      </div>
+                    )}
                     <div className="rounded-xl border border-slate-100 bg-slate-50 p-4 mb-4 select-all">
                       <p className="text-slate-700 text-sm leading-relaxed">{shareMessage}</p>
                     </div>

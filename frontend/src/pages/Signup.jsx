@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Phone, User, KeyRound, ArrowRight } from 'lucide-react';
 import stabiliqLogo from '../assets/svgs/logo.svg';
@@ -8,6 +8,7 @@ import { Input } from '../components/ui/input';
 import { Card, CardContent } from '../components/ui/card';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../hooks/use-toast';
+import { REFERRAL_STORAGE_KEY } from '../constant';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -15,6 +16,7 @@ const API = `${BACKEND_URL}/api`;
 
 const Signup = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login, isAuthenticated } = useAuth();
   const { toast } = useToast();
   const [step, setStep] = useState(1); // 1: Details, 2: OTP
@@ -27,6 +29,29 @@ const Signup = () => {
   });
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const queryReferralCode = (
+      params.get('referralCode') ||
+      params.get('ref') ||
+      params.get('referral') ||
+      ''
+    ).trim().toUpperCase();
+    const storedReferralCode = (localStorage.getItem(REFERRAL_STORAGE_KEY) || '').trim().toUpperCase();
+    const resolvedReferralCode = queryReferralCode || storedReferralCode;
+
+    if (!resolvedReferralCode) {
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      referralCode: prev.referralCode || resolvedReferralCode
+    }));
+
+    localStorage.setItem(REFERRAL_STORAGE_KEY, resolvedReferralCode);
+  }, [location.search]);
 
   const handleSendOTP = async (e) => {
     e.preventDefault();
@@ -92,6 +117,7 @@ const Signup = () => {
       const response = await axios.post(`${API}/auth/verify-otp`, verifyPayload);
       const plan = localStorage.getItem("selectedPlan");
       if (response.data.success) {
+        localStorage.removeItem(REFERRAL_STORAGE_KEY);
         login(response.data.token, response.data.user);
         if (plan && !response.data?.user?.plan) {
           localStorage.removeItem("selectedPlan");

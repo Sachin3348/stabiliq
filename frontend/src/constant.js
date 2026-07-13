@@ -13,6 +13,8 @@ export const PHONEPE_PAYMENT_FINAL_STATE = {
     pendingFailed: "PENDING_FAILED"
 };
 
+export const REFERRAL_STORAGE_KEY = "stabiliq_referral_code";
+
 export const PAYMENT_CATEGORY = {
     applicationFee: "application-fee"
 }
