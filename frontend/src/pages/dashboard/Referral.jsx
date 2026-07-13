@@ -200,7 +200,7 @@ const Referral = () => {
   };
 
   const shareMessage = stats?.referralCode
-    ? `Use my referral code ${stats.referralCode} to join Stabiliq.\n${referralLink}`
+    ? `🚀 Secure your future with Stabiliq and enjoy an exclusive ₹500 discount when you sign up using my referral link.\n\nClaim your discount here:\n${referralLink}`
     : '';
 
   const handleShare = async () => {
