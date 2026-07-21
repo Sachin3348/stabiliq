@@ -291,17 +291,20 @@ const Referral = () => {
                   >
                     Refer &amp; Earn
                   </h1>
-                  <motion.span
+                  {/* <motion.span
                     className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30 tracking-wide"
                     animate={{ scale: [1, 1.06, 1] }}
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
                   >
                     ✦ Active
-                  </motion.span>
+                  </motion.span> */}
                 </div>
-                <p className="text-blue-100 text-sm md:text-base max-w-lg leading-relaxed">
-                  Share your unique code with friends. When they join Stabiliq, you both earn wallet credits instantly.
+                <p className="text-blue-100 text-sm md:text-base max-w-xxl leading-relaxed">
+                  <p className='pb-2'><strong>Invite your friends to Stabiliq!</strong> 🎉 </p>
+                  They get <strong>₹500 OFF</strong> instantly 💸, and you earn <strong>₹500</strong>  for every successful referral, credited directly to your bank account 🏦.
                 </p>
+<br/>
+                <p className="text-blue-100 text-sm md:text-base max-w-xxl leading-relaxed font-sora font-medium">💰 Turn your network into rewards! Keep referring friends and earn up to <strong>₹1 Lakh 💸</strong> every month. 🚀</p>
               </div>
             </div>
           </div>
