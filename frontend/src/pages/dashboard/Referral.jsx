@@ -188,7 +188,7 @@ const Referral = () => {
   };
 
   const referralLink = stats?.referralCode
-    ? `${window.location.origin}/?referralCode=${encodeURIComponent(stats.referralCode)}`
+    ? `${window.location.origin}/signup?referralCode=${encodeURIComponent(stats.referralCode)}`
     : '';
 
   const handleCopyLink = () => {

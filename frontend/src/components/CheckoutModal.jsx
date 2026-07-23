@@ -5,24 +5,33 @@ import { validateCoupon } from '../apis/service';
 import { useAuth } from '@/context/AuthContext';
 
 const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const [couponCode, setCouponCode] = useState('');
   const [couponState, setCouponState] = useState(null); // null | 'validating' | { valid, discountAmount, finalAmount, reason }
   const [couponError, setCouponError] = useState('');
+  const [referralRemoved, setReferralRemoved] = useState(false);
 
   // amounts in rupees
   const basePrice = plan.price;
   const gstAmount = plan.gst;
   const totalAmount = plan.totalPrice;
 
-  const discountedBase = couponState?.valid && couponState.discountAmount != null
-    ? basePrice - couponState.discountAmount
-    : basePrice;
+  const hasReferralDiscount = Boolean(user?.referredByUserId);
+  const referralDiscountAmount = 500;
+
+  const couponApplied = couponState && couponState !== 'validating' && couponState.valid;
+  const couponInvalid = couponState && couponState !== 'validating' && !couponState.valid;
+  const referralApplied = hasReferralDiscount && !referralRemoved && !couponApplied;
+  const discountAmount = referralApplied
+    ? referralDiscountAmount
+    : (couponApplied && couponState.discountAmount != null ? couponState.discountAmount : 0);
+
+  const discountedBase = Math.max(basePrice - discountAmount, 0);
   const recalculatedGst = discountedBase * 0.18;
-  const finalPayable = couponState?.valid ? discountedBase + recalculatedGst : totalAmount;
+  const finalPayable = discountAmount > 0 ? discountedBase + recalculatedGst : totalAmount;
 
   const handleValidateCoupon = async () => {
-    if (!couponCode.trim()) return;
+    if (!couponCode.trim() || referralApplied) return;
     setCouponState('validating');
     setCouponError('');
     try {
@@ -46,9 +55,12 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
     setCouponError('');
   };
 
+  const handleRemoveReferralDiscount = () => {
+    setReferralRemoved(true);
+    setCouponError('');
+  };
+
   const Icon = plan.icon;
-  const couponApplied = couponState && couponState !== 'validating' && couponState.valid;
-  const couponInvalid = couponState && couponState !== 'validating' && !couponState.valid;
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
@@ -85,13 +97,19 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
               <span>Base price (1 year)</span>
               <span>₹{basePrice.toLocaleString('en-IN')}</span>
             </div>
+            {referralApplied && (
+              <div className="flex justify-between text-green-600 font-medium">
+                <span>Referral discount</span>
+                <span>- ₹{referralDiscountAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+              </div>
+            )}
             {couponApplied && (
               <div className="flex justify-between text-green-600 font-medium">
                 <span>Coupon discount</span>
                 <span>- ₹{couponState.discountAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
               </div>
             )}
-            {couponApplied && (
+            {(couponApplied || referralApplied) && (
               <div className="flex justify-between text-slate-500 text-xs">
                 <span>Discounted base</span>
                 <span>₹{discountedBase.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
@@ -99,7 +117,7 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
             )}
             <div className="flex justify-between text-slate-600">
               <span>GST (18%)</span>
-              <span>₹{(couponApplied ? recalculatedGst : gstAmount).toFixed(2)}</span>
+              <span>₹{((couponApplied || referralApplied) ? recalculatedGst : gstAmount).toFixed(2)}</span>
             </div>
             <div className="border-t border-slate-200 pt-2.5 flex justify-between font-bold text-slate-900 text-base">
               <span>Total payable</span>
@@ -113,7 +131,20 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
               <Tag className="h-3.5 w-3.5 inline mr-1.5" />
               Have a coupon?
             </label>
-            {couponApplied ? (
+            {referralApplied ? (
+              <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-3">
+                <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
+                <span className="text-green-700 text-sm font-medium flex-1">
+                  Referral discount of ₹500 applied.
+                </span>
+                <button
+                  onClick={handleRemoveReferralDiscount}
+                  className="text-slate-400 hover:text-slate-600 transition-colors"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            ) : couponApplied ? (
               <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-3">
                 <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
                 <span className="text-green-700 text-sm font-medium flex-1">
@@ -138,11 +169,11 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
                   onKeyDown={(e) => e.key === 'Enter' && handleValidateCoupon()}
                   placeholder="Enter coupon code"
                   className="flex-1 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent uppercase placeholder:normal-case"
-                  disabled={couponState === 'validating'}
+                  disabled={couponState === 'validating' || referralApplied}
                 />
                 <Button
                   onClick={handleValidateCoupon}
-                  disabled={!couponCode.trim() || couponState === 'validating'}
+                  disabled={!couponCode.trim() || couponState === 'validating' || referralApplied}
                   size="sm"
                   className="bg-slate-900 hover:bg-slate-700 text-white rounded-xl px-4 font-semibold"
                 >
@@ -152,6 +183,11 @@ const CheckoutModal = ({ plan, onConfirm, onClose, loading }) => {
                     'Apply'
                   )}
                 </Button>
+              </div>
+            )}
+            {referralApplied && (
+              <div className="mt-2 text-xs text-slate-500">
+                Remove referral discount to apply a custom coupon.
               </div>
             )}
             {couponError && (
